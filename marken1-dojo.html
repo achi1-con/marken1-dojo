@@ -820,7 +820,7 @@ D2C（Direct to Consumer）：メーカーが卸・小売を介さず、自社EC
    昨年度（2025年度）復元問題 — ユーザー受験メモに基づく
    ============================================================ */
 const PAST = [
-{ no:"第1問", theme:"STP・市場細分化（ケース：落語・寄席を題材と推定）／昨年得点区分：A", subs:[
+{ no:"第1問", theme:"STP・市場細分化（ケース：落語・寄席を題材と推定）", subs:[
   { s:"設問1", memo:"3c何の落語か／マーケティングミックス、売上、差別化の言葉を使って必要性を説明せよ",
     intent:"ケース教材（落語・寄席の事例と推定）に対する3C分析ないし事例の特定と、指定語句を用いた戦略立案の必要性の論述。指定語句問題は「語句同士の論理的接続」が採点の中心。",
     link:"E01",
@@ -838,9 +838,9 @@ const PAST = [
     link:"E04",
     ans:`3特徴→具体例→「静的属性から動的・場面ベースへ」という方向性。自分の考えは必ず理由とセットで。→ 演習 E04。` },
 ]},
-{ no:"第2問", theme:"消費者行動（知覚・購買後行動）／昨年得点区分：B ← 最重点強化", subs:[
+{ no:"第2問", theme:"消費者行動（知覚・購買後行動）／最重点強化領域", subs:[
   { s:"設問1・2", memo:"（メモなし・失念）",
-    intent:"第2問の後半が知覚プロセスと購買後行動のため、前半は購買意思決定プロセス、関与、動機づけ、態度、準拠集団などの周辺概念だった可能性が高い。昨年Bだった領域であり、周辺概念まで広く固めることが合格の鍵。",
+    intent:"第2問の後半が知覚プロセスと購買後行動のため、前半は購買意思決定プロセス、関与、動機づけ、態度、準拠集団などの周辺概念だった可能性が高い。周辺概念まで広く固めることが合格の鍵。",
     link:"E08",
     ans:`購買意思決定5段階（E08）、関与と精緻化見込みモデル（E09）に加え、弱点強化問題：多属性態度モデル（E23）、動機づけ理論（E24）、知覚リスク（E25）、クチコミ（E26）まで押さえて周辺領域を全カバー。` },
   { s:"設問3", memo:"選択的歪曲",
@@ -852,7 +852,7 @@ const PAST = [
     link:"E07",
     ans:`定義→条件（高額・高関与・選択肢拮抗）→対応策（フォロー・保証・購入者向け広告）の3段構成。→ 演習 E07。` },
 ]},
-{ no:"第3問", theme:"製品・コモディティ化／昨年得点区分：A", subs:[
+{ no:"第3問", theme:"製品・コモディティ化", subs:[
   { s:"設問1", memo:"商品の属性5つ",
     intent:"「5つ」から、コトラーの製品5階層（中核ベネフィット〜潜在製品）か、ロジャースの普及5属性（相対的優位性〜観察可能性）のいずれか。コモディティ化（差別化喪失）との文脈接続からは製品5階層が本命。両方準備しておくのが安全。",
     link:"E10",
@@ -870,9 +870,9 @@ const PAST = [
     link:"E13",
     ans:`共通原理「競争軸を価格以外へ移す」を先に宣言してから各論を展開。→ 演習 E13。` },
 ]},
-{ no:"第4問", theme:"価格戦略／昨年得点区分：B ← 最重点強化", subs:[
+{ no:"第4問", theme:"価格戦略／最重点強化領域", subs:[
   { s:"設問1", memo:"損益分岐点販売量",
-    intent:"固定費÷（価格−単位変動費）の計算。1級で数少ない計算問題であり確実な得点源。昨年Bだった領域。計算問題は満点を取り、論述で落とした分を取り返す。",
+    intent:"固定費÷（価格−単位変動費）の計算。1級で数少ない計算問題であり確実な得点源。計算問題は満点を取り、論述で落とした分を取り返す。",
     link:"E15",
     ans:`公式を明記し計算過程を書く。目標利益版（固定費＋目標利益）も出題されうる。→ 演習 E15。` },
   { s:"設問2", memo:"カニバの説明。交差弾力性、価格、需要を使う",
@@ -1434,7 +1434,7 @@ async function copyText(text){
 }
 function exportClipboard(){ return copyText(JSON.stringify(S)); }
 
-/* 得点区分換算（合否通知書と同じ物差し） */
+/* 得点区分換算（本試験と同じ物差し） */
 function gradeOf(pct){ // 各問 0-100%
   if(pct>=75) return "S"; if(pct>=50) return "A"; if(pct>=25) return "B"; if(pct>=1) return "C"; return "D";
 }
@@ -1521,7 +1521,7 @@ function reviewQueue(){
     .slice(0,3);
 }
 function nextQuestion(){
-  const prio = ["cb","price","stp","pr","comp"]; // 昨年B領域を最優先
+  const prio = ["cb","price","stp","pr","comp"]; // 重点領域を最優先
   for(const imp of ["A","B","C"]){              // 重要度Aから消化する
     for(const d of prio){
       const e = ESSAYS.find(x=>x.d===d && impOfEssay(x.id)===imp && essayScore(x.id)==null);
@@ -1848,17 +1848,6 @@ function renderHome(){
   </div>
   <p class="muted" style="margin:8px 0 0">ミッションをどれか1つでも行えば「学習した日」になり、連続日数が伸びます。1日15分でOK。タップでその教材に移動します。</p>
 
-  <h2 class="sec">昨年の結果と、今年の作戦</h2>
-  <div class="card">
-    <div class="lastyear">
-      <div class="lygrade"><div class="g ok">A</div><div class="t">第1問<br>STP</div></div>
-      <div class="lygrade"><div class="g ng">B</div><div class="t">第2問<br>消費者行動</div></div>
-      <div class="lygrade"><div class="g ok">A</div><div class="t">第3問<br>製品</div></div>
-      <div class="lygrade"><div class="g ng">B</div><div class="t">第4問<br>価格</div></div>
-    </div>
-    <p style="font-size:14px; margin:12px 0 0">総得点はA（200〜299点）で、合格ライン（240点程度＋上位20%）まであと一歩でした。<b>第1問・第3問はすでに合格水準。</b>勝負は<b style="color:var(--bad)">第2問「消費者行動」と第4問「価格」をBからAに上げる</b>ことです。この2領域は演習を8問・9問に増強済みで、「今日の一問」も弱点領域から優先出題します。各大問60点で計240点。B領域の+15点ずつが合否を分けます。</p>
-  </div>
-
   <h2 class="sec">学習の現在地</h2>
   <div class="stats">
     <div class="stat"><div class="n">${doneQ}<span class="muted" style="font-size:13px">/${totalQ}</span></div><div class="l">記述 採点済み</div></div>
@@ -1898,7 +1887,7 @@ function renderHome(){
   <div class="card" style="font-size:14px">
     <p style="margin:0 0 8px"><b>① 型を持つ。</b>「定義 → 論理展開 → 示唆・自分の考え」の3段構成で書けば安定して部分点が取れる。指定語句がある問題は、<b>語句同士を因果関係でつなぐ</b>ことが採点の中心。</p>
     <p style="margin:0 0 8px"><b>② 時間配分と字数感覚。</b>4題120分＝1題30分。公式模試の小問構成は「30字短答→250字→300字→400字」＝1大問約1,000字。書き出す前に1分で骨子を作り、目標字数±2割で書き切る。週1回は模試モードで通し練習を。</p>
-    <p style="margin:0 0 8px"><b>③ B領域の底上げが最優先。</b>消費者行動と価格は「概念の正確な定義＋指定視点への切り分け」で確実に部分点を積む。計算問題（損益分岐点）は満点必須。</p>
+    <p style="margin:0 0 8px"><b>③ 重点領域の底上げが最優先。</b>消費者行動と価格は「概念の正確な定義＋指定視点への切り分け」で確実に部分点を積む。計算問題（損益分岐点）は満点必須。</p>
     <p style="margin:0"><b>④ 毎日触れる。</b>記述は書かない日でも、音声学習で模範解答の論理展開を耳に入れておく。移動時間が復習時間になる。</p>
   </div>
 
@@ -1935,7 +1924,7 @@ function renderHome(){
     </dl>
   </div>
 
-  <p class="note-src">出典・根拠：試験概要と推薦図書は<a href="https://www.jma-jp.org/marken/level1" target="_blank" rel="noopener">日本マーケティング協会「マーケティング検定1級」公式ページ</a>および<a href="https://www.jma-jp.org/marken/textbook" target="_blank" rel="noopener">公式問題集&参考書籍ページ</a>（2026年7月確認）。出題形式の分析には協会公開の<a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-0mkIIk5XWWpnvFHa9bjEFz7v632KhRK-AXN19hbocvY4Q/viewform" target="_blank" rel="noopener">公式模擬テスト</a>（2026年7月確認）を参照。昨年の得点区分は受験者本人の合否通知書（令和7年度）による。演習・用語の内容はコトラー&ケラー&チェルネフ『マーケティング・マネジメント』等の推薦図書に示された標準的マーケティング理論、および受験者本人の2025年度受験メモに基づく。昨年度問題の復元は記憶メモによるものであり、実際の出題文とは異なる。</p>`;
+  <p class="note-src">出典・根拠：試験概要と推薦図書は<a href="https://www.jma-jp.org/marken/level1" target="_blank" rel="noopener">日本マーケティング協会「マーケティング検定1級」公式ページ</a>および<a href="https://www.jma-jp.org/marken/textbook" target="_blank" rel="noopener">公式問題集&参考書籍ページ</a>（2026年7月確認）。出題形式の分析には協会公開の<a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-0mkIIk5XWWpnvFHa9bjEFz7v632KhRK-AXN19hbocvY4Q/viewform" target="_blank" rel="noopener">公式模擬テスト</a>（2026年7月確認）を参照。演習・用語の内容はコトラー&ケラー&チェルネフ『マーケティング・マネジメント』等の推薦図書に示された標準的マーケティング理論、および受験者の2025年度受験メモに基づく。昨年度問題の復元は記憶メモによるものであり、実際の出題文とは異なる。</p>`;
 }
 
 function renderEssayList(){
@@ -1948,7 +1937,7 @@ function renderEssayList(){
       ${r.total>=240
         ? `<b style="color:var(--good)">合格ライン相当です。この水準を安定させましょう。</b>`
         : `<b style="color:var(--warn)">合格ライン（約240点）まであと${240-r.total}点。</b>採点ポイントの取りこぼしを復習キューで潰しましょう。`}</p>
-      <p class="muted" style="margin:8px 0 0">${r.per.map((p,i)=>`第${i+1}問 ${p.sc==null?"未採点":Math.round(p.sc*100)+"点（"+gradeOf(Math.round(p.sc*100))+"）"}`).join("　")}　※昨年はA・B・A・B</p>
+      <p class="muted" style="margin:8px 0 0">${r.per.map((p,i)=>`第${i+1}問 ${p.sc==null?"未採点":Math.round(p.sc*100)+"点（"+gradeOf(Math.round(p.sc*100))+"）"}`).join("　")}</p>
       <div class="btnrow"><button class="btn ghost" id="mockclose">閉じる</button></div>
     </div>`;
   }
@@ -1988,7 +1977,7 @@ function renderEssayList(){
     </div>
   </div>`;
 
-  html += `<p class="muted" style="margin-top:14px">昨年度の出題形式を再現した記述問題。解答を書いたら「模範解答と採点ポイント」を開き、含められた要素にチェックして自己採点します。<span class="chip gold">昨年度型</span> は2025年度の実出題テーマ、<span class="chip gold">弱点強化</span> は昨年B評価だった領域の追加問題です。</p>
+  html += `<p class="muted" style="margin-top:14px">昨年度の出題形式を再現した記述問題。解答を書いたら「模範解答と採点ポイント」を開き、含められた要素にチェックして自己採点します。<span class="chip gold">昨年度型</span> は2025年度の実出題テーマ、<span class="chip gold">弱点強化</span> は重点強化領域の追加問題です。</p>
   <div class="impfilter"><span class="lbl">重要度で絞り込み：</span>
     ${["all","A","B","C"].map(k=>`<button data-if="${k}" aria-pressed="${impFilter===k}">${k==="all"?"すべて":"ランク"+k}</button>`).join("")}
     <span class="muted" style="font-size:11.5px">A＝昨年出題テーマ＋最有力／B＝定番／C＝周辺</span>
@@ -1997,7 +1986,7 @@ function renderEssayList(){
     const qs = ESSAYS.filter(e=>e.d===d && (impFilter==="all" || impOfEssay(e.id)===impFilter))
       .slice().sort((a,b)=>IMP_ORDER[impOfEssay(a.id)]-IMP_ORDER[impOfEssay(b.id)]);
     if(!qs.length) continue;
-    html += `<h2 class="sec">${name}${(d==="cb"||d==="price")? "　★昨年B・最重点":""}</h2>`;
+    html += `<h2 class="sec">${name}${(d==="cb"||d==="price")? "　★最重点":""}</h2>`;
     html += qs.map(e=>{
       const sc = essayScore(e.id);
       const cls = sc==null? "" : sc>=0.8? "done":"mid";
@@ -2221,7 +2210,7 @@ function renderAudio(){
     </div>
 
     <p class="plnote">📱 <b>使い方のコツ</b>：再生中は他のタブ（用語ドリル等）に移動しても音声は続きます。スマホでは<b>画面を消すと停止する</b>ため、再生中は画面が自動で点灯維持されます（対応端末）。ジムでは画面を伏せずポケットへ。<b>🚗 運転中の操作は絶対にしないでください</b>——乗車前に再生・ループをONにしてから出発を。音声はブラウザ内蔵の合成音声で、通信は不要です。</p>
-    <p class="plnote">🎧 <b>おすすめ</b>：①「用語ドリル×想起モード」＝用語を聞いて数秒で定義を思い出す→答え合わせ。②「模範解答×1.25倍速」＝答案の論理展開を耳から刷り込む。昨年Bだった消費者行動・価格の領域フィルタで重点的に。</p>
+    <p class="plnote">🎧 <b>おすすめ</b>：①「用語ドリル×想起モード」＝用語を聞いて数秒で定義を思い出す→答え合わせ。②「模範解答×1.25倍速」＝答案の論理展開を耳から刷り込む。重点領域（消費者行動・価格）のフィルタで集中的に。</p>
   </div>`;
 }
 
