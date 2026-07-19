@@ -1,0 +1,2509 @@
+<meta charset="utf-8">
+<title>マーケティング検定1級 演習道場</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{
+  --paper:#F7F5F0; --surface:#FFFFFF; --ink:#20283E; --ink2:#5A6178; --line:#E2DFD6;
+  --navy:#1B2A4A; --navy2:#2C4370; --gold:#A8842C; --gold-soft:#F3ECDA;
+  --good:#2E7D4F; --warn:#B05A1E; --bad:#AE3F2E;
+  --chip:#EDEAE1; --focus:#3E63A8;
+  --shadow:0 1px 3px rgba(27,42,74,.08),0 4px 16px rgba(27,42,74,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#151A28; --surface:#1E2536; --ink:#E9E7DF; --ink2:#9AA1B5; --line:#323A50;
+    --navy:#2E4570; --navy2:#3B5688; --gold:#D2AC52; --gold-soft:#3A3320;
+    --good:#5CB784; --warn:#D9884E; --bad:#D96A57;
+    --chip:#2A3247; --focus:#7A9BD8;
+    --shadow:0 1px 3px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#151A28; --surface:#1E2536; --ink:#E9E7DF; --ink2:#9AA1B5; --line:#323A50;
+  --navy:#2E4570; --navy2:#3B5688; --gold:#D2AC52; --gold-soft:#3A3320;
+  --good:#5CB784; --warn:#D9884E; --bad:#D96A57;
+  --chip:#2A3247; --focus:#7A9BD8;
+  --shadow:0 1px 3px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+}
+:root[data-theme="light"]{
+  --paper:#F7F5F0; --surface:#FFFFFF; --ink:#20283E; --ink2:#5A6178; --line:#E2DFD6;
+  --navy:#1B2A4A; --navy2:#2C4370; --gold:#A8842C; --gold-soft:#F3ECDA;
+  --good:#2E7D4F; --warn:#B05A1E; --bad:#AE3F2E;
+  --chip:#EDEAE1; --focus:#3E63A8;
+  --shadow:0 1px 3px rgba(27,42,74,.08),0 4px 16px rgba(27,42,74,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Yu Gothic UI","游ゴシック体",YuGothic,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+  font-size:15.5px; line-height:1.85; -webkit-text-size-adjust:100%;
+}
+.serif{font-family:"Yu Mincho","游明朝",YuMincho,"Hiragino Mincho ProN","MS PMincho",serif}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:4px}
+
+/* ---- header ---- */
+header{
+  position:sticky; top:0; z-index:20; background:var(--navy); color:#F3F0E8;
+  padding:calc(env(safe-area-inset-top) + 10px) 16px 10px;
+}
+.hd-in{max-width:820px; margin:0 auto; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.hd-title{font-size:17px; font-weight:700; letter-spacing:.04em; margin:0}
+.hd-title small{display:block; font-size:10.5px; font-weight:400; letter-spacing:.18em; color:#C9BE9E; text-transform:uppercase}
+.hd-count{margin-left:auto; text-align:right; font-size:11px; color:#C9CFDE; line-height:1.4}
+.hd-count b{font-size:19px; color:#EBD9A6; font-variant-numeric:tabular-nums; font-weight:700}
+nav.tabs{display:flex; gap:2px; max-width:820px; margin:10px auto 0; overflow-x:auto}
+nav.tabs button{
+  appearance:none; border:0; background:transparent; color:#B7BDCD; cursor:pointer;
+  padding:7px 14px 9px; font-size:13.5px; letter-spacing:.05em; white-space:nowrap;
+  border-bottom:2.5px solid transparent;
+}
+nav.tabs button[aria-selected="true"]{color:#FFF; border-bottom-color:var(--gold); font-weight:700}
+
+/* ---- layout ---- */
+main{max-width:820px; margin:0 auto; padding:20px 16px calc(env(safe-area-inset-bottom) + 48px)}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); padding:18px 18px; margin-bottom:14px}
+h2.sec{font-size:13px; letter-spacing:.16em; color:var(--gold); margin:26px 0 10px; font-weight:700}
+h2.sec:first-child{margin-top:0}
+.muted{color:var(--ink2); font-size:13px}
+.chip{display:inline-block; background:var(--chip); color:var(--ink2); border-radius:999px; padding:1px 10px; font-size:11.5px; letter-spacing:.04em}
+.chip.gold{background:var(--gold-soft); color:var(--gold); font-weight:700}
+
+/* ---- home ---- */
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.stat{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; box-shadow:var(--shadow)}
+.stat .n{font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2}
+.stat .l{font-size:11px; color:var(--ink2); letter-spacing:.06em}
+.bar{height:7px; background:var(--chip); border-radius:99px; overflow:hidden; margin-top:6px}
+.bar i{display:block; height:100%; background:linear-gradient(90deg,var(--navy2),var(--gold)); border-radius:99px}
+.dom-row{display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:1px solid var(--line)}
+.dom-row:last-child{border-bottom:0}
+.dom-row .nm{flex:0 0 9.5em; font-size:13.5px; font-weight:600}
+.dom-row .bar{flex:1; margin-top:0}
+.dom-row .pc{flex:0 0 3.4em; text-align:right; font-size:12.5px; color:var(--ink2); font-variant-numeric:tabular-nums}
+.exam-meta{display:grid; grid-template-columns:auto 1fr; gap:3px 14px; font-size:13.5px; margin:0}
+.exam-meta dt{color:var(--ink2); font-size:12.5px}
+.exam-meta dd{margin:0; font-weight:600}
+
+/* ---- 継続支援（ストリーク・ミッション） ---- */
+.daily{display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:stretch}
+.streak{background:var(--navy); color:#F3F0E8; border-radius:10px; padding:14px 16px; text-align:center; display:flex; flex-direction:column; justify-content:center; min-width:92px}
+.streak .n{font-size:30px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.1; color:#EBD9A6}
+.streak .l{font-size:11px; letter-spacing:.06em; color:#C9CFDE}
+.missions{background:var(--surface); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); padding:6px 14px}
+.mission{display:flex; align-items:center; gap:10px; padding:8px 0; border:0; border-bottom:1px solid var(--line); font-size:14px; cursor:pointer; background:none; width:100%; text-align:left; color:var(--ink); appearance:none}
+.mission:last-child{border-bottom:0}
+.mission .mk{flex:0 0 22px; height:22px; border-radius:50%; border:2px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px}
+.mission.done .mk{background:var(--good); border-color:var(--good); color:#fff}
+.mission.done .tx{color:var(--ink2); text-decoration:line-through}
+.mission .pg{margin-left:auto; font-size:12px; color:var(--ink2); font-variant-numeric:tabular-nums; white-space:nowrap}
+.imp{display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
+  min-width:20px; height:20px; border-radius:5px; font-size:11.5px; font-weight:700; align-self:center}
+.imp.A{background:var(--gold); color:#FFF}
+.imp.B{background:var(--chip); color:var(--ink); border:1px solid var(--line)}
+.imp.C{background:transparent; color:var(--ink2); border:1px dashed var(--line)}
+.impfilter{display:flex; gap:6px; flex-wrap:wrap; margin:0 0 12px; align-items:center}
+.impfilter .lbl{font-size:12px; color:var(--ink2); margin-right:2px}
+.impfilter button{appearance:none; border:1px solid var(--line); background:var(--surface); color:var(--ink2); border-radius:999px; padding:3px 12px; font-size:12.5px; cursor:pointer}
+.impfilter button[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#F3F0E8; font-weight:700}
+.lastyear{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+.lygrade{border:1px solid var(--line); border-radius:8px; padding:8px 6px; text-align:center}
+.lygrade .g{font-size:20px; font-weight:700}
+.lygrade .g.ok{color:var(--good)} .lygrade .g.ng{color:var(--bad)}
+.lygrade .t{font-size:10.5px; color:var(--ink2); line-height:1.4}
+.mockfloat{position:fixed; right:12px; bottom:12px; z-index:50; background:var(--navy); color:#EBD9A6; border-radius:999px;
+  padding:9px 16px; font-size:13.5px; font-weight:700; font-variant-numeric:tabular-nums; box-shadow:0 4px 16px rgba(0,0,0,.3); cursor:pointer; border:0}
+
+/* ---- question list ---- */
+.qrow{display:flex; align-items:baseline; gap:10px; width:100%; text-align:left; appearance:none;
+  background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:11px 14px; margin-bottom:8px;
+  cursor:pointer; color:var(--ink); font-size:14.5px; box-shadow:var(--shadow)}
+.qrow:hover{border-color:var(--navy2)}
+.qrow .st{flex:0 0 auto; width:10px; height:10px; border-radius:50%; background:var(--chip); align-self:center}
+.qrow .st.done{background:var(--good)}
+.qrow .st.mid{background:var(--warn)}
+.qrow .ttl{flex:1; font-weight:600; line-height:1.5}
+.qrow .sc{flex:0 0 auto; font-size:12px; color:var(--ink2); font-variant-numeric:tabular-nums}
+
+/* ---- question detail ---- */
+.backlink{appearance:none; border:0; background:none; color:var(--focus); cursor:pointer; font-size:13.5px; padding:0; margin-bottom:12px}
+.q-head{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:8px}
+.q-body{font-size:15.5px; line-height:2; white-space:pre-wrap}
+.q-body .req{background:var(--gold-soft); padding:0 4px; border-radius:3px; font-weight:700}
+textarea.ans{
+  width:100%; min-height:170px; margin-top:12px; padding:12px; border:1px solid var(--line); border-radius:8px;
+  background:var(--paper); color:var(--ink); font-family:inherit; font-size:15px; line-height:1.9; resize:vertical;
+}
+textarea.paste{
+  width:100%; min-height:80px; margin-top:8px; padding:10px; border:1px solid var(--line); border-radius:8px;
+  background:var(--paper); color:var(--ink); font-family:Consolas,monospace; font-size:12px; resize:vertical;
+}
+.charcount{text-align:right; font-size:11.5px; color:var(--ink2); font-variant-numeric:tabular-nums; margin-top:3px}
+.btn{appearance:none; border:0; border-radius:8px; padding:10px 18px; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:.03em}
+.btn.primary{background:var(--navy); color:#F3F0E8}
+:root[data-theme="dark"] .btn.primary{background:var(--navy2)}
+@media (prefers-color-scheme: dark){ .btn.primary{background:var(--navy2)} }
+:root[data-theme="light"] .btn.primary{background:var(--navy)}
+.btn.ghost{background:var(--chip); color:var(--ink)}
+.btnrow{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+.model{border-top:2px solid var(--gold); margin-top:18px; padding-top:14px}
+.model h3{font-size:13px; letter-spacing:.14em; color:var(--gold); margin:0 0 8px; font-weight:700}
+.model .mtext{font-size:14.5px; line-height:2; white-space:pre-wrap}
+.pt{display:flex; gap:10px; align-items:flex-start; padding:8px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:7px; cursor:pointer; font-size:14px; line-height:1.7}
+.pt input{margin-top:5px; accent-color:var(--good); width:17px; height:17px; flex:0 0 auto}
+.pt.on{border-color:var(--good); background:color-mix(in srgb, var(--good) 7%, var(--surface))}
+.scorebox{margin-top:12px; padding:12px 14px; border-radius:8px; background:var(--gold-soft); font-size:14px}
+.scorebox b{font-size:20px; font-variant-numeric:tabular-nums}
+
+/* ---- past ---- */
+.past-q{border-left:3px solid var(--gold); padding-left:14px; margin:16px 0}
+.past-q .memo{font-size:13px; color:var(--ink2); background:var(--chip); border-radius:6px; padding:6px 10px; margin:6px 0; white-space:pre-wrap}
+.past-q h4{margin:0 0 4px; font-size:15px}
+details.ansd{margin-top:6px}
+details.ansd summary{cursor:pointer; font-size:13.5px; color:var(--focus); font-weight:600}
+details.ansd .in{font-size:14px; line-height:1.95; padding:8px 0 2px; white-space:pre-wrap}
+.linkq{appearance:none; border:0; background:none; color:var(--focus); cursor:pointer; font-size:13px; padding:0; text-decoration:underline}
+
+/* ---- cards ---- */
+.fcwrap{max-width:560px; margin:0 auto}
+.fcfilter{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px}
+.fcfilter button{appearance:none; border:1px solid var(--line); background:var(--surface); color:var(--ink2); border-radius:999px; padding:4px 13px; font-size:12.5px; cursor:pointer}
+.fcfilter button[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#F3F0E8; font-weight:700}
+.fcard{background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
+  min-height:230px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  padding:26px 22px; cursor:pointer; user-select:none; -webkit-user-select:none}
+.fcard .term{font-size:21px; font-weight:700; letter-spacing:.02em}
+.fcard .def{font-size:14.5px; line-height:1.95; text-align:left; white-space:pre-wrap}
+.fcard .hint{margin-top:14px; font-size:11.5px; color:var(--ink2); letter-spacing:.08em}
+.fcnav{display:flex; gap:10px; margin-top:14px; justify-content:center; align-items:center}
+.fcnav .cnt{font-size:12.5px; color:var(--ink2); font-variant-numeric:tabular-nums; min-width:64px; text-align:center}
+.btn.know{background:color-mix(in srgb, var(--good) 15%, var(--surface)); color:var(--good); border:1px solid var(--good)}
+.btn.dunno{background:color-mix(in srgb, var(--bad) 10%, var(--surface)); color:var(--bad); border:1px solid var(--bad)}
+
+/* ---- audio player ---- */
+.plwrap{max-width:560px; margin:0 auto}
+.plnow{background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); padding:20px 20px; text-align:center}
+.plnow .pl-kicker{font-size:11px; letter-spacing:.14em; color:var(--gold); font-weight:700}
+.plnow .pl-title{font-size:18px; font-weight:700; margin:6px 0 2px; line-height:1.5}
+.plnow .pl-cnt{font-size:12px; color:var(--ink2); font-variant-numeric:tabular-nums}
+.plnow .pl-text{font-size:13.5px; color:var(--ink2); line-height:1.9; text-align:left; margin-top:12px; max-height:190px; overflow-y:auto; white-space:pre-wrap; border-top:1px solid var(--line); padding-top:10px}
+.plctrl{display:flex; gap:14px; justify-content:center; align-items:center; margin-top:16px}
+.plbtn{appearance:none; border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:50%;
+  width:52px; height:52px; font-size:19px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center}
+.plbtn.main{width:72px; height:72px; font-size:26px; background:var(--navy); color:#F3F0E8; border-color:var(--navy)}
+:root[data-theme="dark"] .plbtn.main{background:var(--navy2); border-color:var(--navy2)}
+@media (prefers-color-scheme: dark){ .plbtn.main{background:var(--navy2); border-color:var(--navy2)} }
+:root[data-theme="light"] .plbtn.main{background:var(--navy); border-color:var(--navy)}
+.plopts{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px}
+.plopts button{appearance:none; border:1px solid var(--line); background:var(--surface); color:var(--ink2); border-radius:999px; padding:5px 14px; font-size:12.5px; cursor:pointer}
+.plopts button[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#F3F0E8; font-weight:700}
+.plnote{font-size:12px; color:var(--ink2); line-height:1.8; margin-top:14px}
+
+/* ---- 穴埋めドリル ---- */
+.modetoggle{display:flex; gap:0; margin-bottom:14px; border:1px solid var(--line); border-radius:9px; overflow:hidden; width:fit-content}
+.modetoggle button{appearance:none; border:0; background:var(--surface); color:var(--ink2); padding:7px 18px; font-size:13.5px; cursor:pointer}
+.modetoggle button[aria-pressed="true"]{background:var(--navy); color:#F3F0E8; font-weight:700}
+.clz-q{font-size:16px; line-height:2.1; text-align:left}
+.clz-q .blank{display:inline-block; background:var(--gold-soft); color:var(--gold); border-radius:5px; padding:0 10px; font-weight:700; font-size:13px; letter-spacing:.04em}
+.clz-a{margin-top:14px; border-top:1px solid var(--line); padding-top:12px; text-align:left; width:100%}
+.clz-a .row{display:flex; gap:8px; font-size:14.5px; line-height:1.9; margin-bottom:4px}
+.clz-a .row b{color:var(--gold); flex:0 0 auto}
+
+/* ---- キーワード自動チェック ---- */
+.kwwrap{display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 4px}
+.kw{display:inline-block; border-radius:999px; padding:2px 11px; font-size:12.5px; font-weight:600}
+.kw.hit{background:color-mix(in srgb, var(--good) 12%, var(--surface)); color:var(--good); border:1px solid var(--good)}
+.kw.miss{background:color-mix(in srgb, var(--bad) 8%, var(--surface)); color:var(--bad); border:1px dashed var(--bad)}
+
+/* ---- 論点マップ ---- */
+.tp-sum{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px}
+.tp-sum .cell{background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:9px 6px; text-align:center; box-shadow:var(--shadow)}
+.tp-sum .cell .n{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums}
+.tp-sum .cell .l{font-size:10.5px; color:var(--ink2)}
+.tp-row{display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); font-size:14px}
+.tp-row:last-child{border-bottom:0}
+.tp-row .nm{flex:1; line-height:1.6}
+.tp-row.r1 .nm{color:var(--bad); font-weight:700}
+.tp-row.r2 .nm{color:var(--warn)}
+.tp-btns{display:flex; gap:4px; flex:0 0 auto}
+.tp-btns button{appearance:none; width:34px; height:30px; border:1px solid var(--line); background:var(--surface); color:var(--ink2); border-radius:7px; font-size:13px; cursor:pointer}
+.tp-btns button.on3{background:var(--good); border-color:var(--good); color:#fff}
+.tp-btns button.on2{background:var(--warn); border-color:var(--warn); color:#fff}
+.tp-btns button.on1{background:var(--bad); border-color:var(--bad); color:#fff}
+
+/* ---- 直前総まとめ ---- */
+.sheet-item{border-left:3px solid var(--gold); padding:2px 0 2px 14px; margin:0 0 18px}
+.sheet-item h4{margin:0 0 4px; font-size:15px}
+.sheet-item .bd{font-size:13.5px; line-height:1.95; color:var(--ink); white-space:pre-wrap}
+
+.note-src{font-size:12px; color:var(--ink2); line-height:1.8; border-top:1px solid var(--line); margin-top:26px; padding-top:12px}
+.note-src a{color:var(--focus)}
+.datamsg{font-size:13px; margin:8px 0 0; color:var(--good); font-weight:600; min-height:1em}
+
+@media (max-width:560px){
+  nav.tabs button{padding:7px 8px 9px; font-size:12.5px; letter-spacing:0}
+  .stats{grid-template-columns:repeat(3,1fr); gap:7px}
+  .stat{padding:10px}
+  .stat .n{font-size:19px}
+  .dom-row .nm{flex-basis:8em; font-size:12.5px}
+  main{padding:14px 12px calc(env(safe-area-inset-bottom) + 40px)}
+  .card{padding:15px 14px}
+}
+@media (prefers-reduced-motion: no-preference){
+  .view{animation:fade .18s ease}
+  @keyframes fade{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
+}
+</style>
+
+<header>
+  <div class="hd-in">
+    <h1 class="hd-title serif">マーケティング検定1級 演習道場
+      <small>JMA Marketing Certification — Grade 1</small></h1>
+    <div class="hd-count">2026年度試験（9/6）まで<br><b id="cd">—</b> 日</div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-v="home">ホーム</button>
+    <button role="tab" aria-selected="false" data-v="essay">記述演習</button>
+    <button role="tab" aria-selected="false" data-v="past">昨年度問題</button>
+    <button role="tab" aria-selected="false" data-v="cards">用語ドリル</button>
+    <button role="tab" aria-selected="false" data-v="audio">音声学習</button>
+    <button role="tab" aria-selected="false" data-v="topics">論点マップ</button>
+  </nav>
+</header>
+<main id="main"></main>
+
+<script>
+"use strict";
+/* ============================================================
+   データ：出題領域
+   ============================================================ */
+const DOMAINS = {
+  stp:   "STP・市場細分化",
+  cb:    "消費者行動",
+  pr:    "製品・コモディティ化",
+  price: "価格戦略",
+  comp:  "競争戦略・サービス・ブランド",
+};
+
+/* ============================================================
+   記述式演習問題
+   出典基盤：コトラー&ケラー&チェルネフ『マーケティング・マネジメント』、
+   『マーケティング(New Liberal Arts Selection)』等の標準的マーケティング理論
+   ============================================================ */
+const ESSAYS = [
+/* ---------- STP ---------- */
+{ id:"E01", d:"stp", min:12, title:"マーケティング・ミックスと差別化の必要性【昨年度型】",
+  q:`ある成熟市場で事業を営む企業を想定する。「マーケティング・ミックス」「売上」「差別化」の3語を必ず用いて、STPを踏まえたマーケティング戦略立案の必要性を250字程度で説明しなさい。`,
+  model:`【解答骨子】
+市場が成熟し顧客ニーズが多様化するなかでは、全顧客に同一の働きかけをしても売上の拡大は見込めない。そこで市場を細分化し、自社が優位に立てる標的セグメントを選択し、競合に対して差別化されたポジショニングを確立する必要がある。そのうえで、製品・価格・流通・プロモーションから成るマーケティング・ミックスを、ポジショニングと一貫するよう設計・統合することで、標的顧客に価値が的確に伝わる。差別化が明確であれば価格競争を回避でき、標的顧客の継続的支持を通じて安定的な売上と収益の確保につながる。`,
+  points:[
+    "STPの流れ（細分化→標的設定→ポジショニング）に触れている",
+    "差別化をポジショニングと結び付けて説明している",
+    "4P（マーケティング・ミックス）の一貫性・整合性に言及している",
+    "差別化→価格競争の回避→売上・収益という因果を示している",
+    "指定語句3つをすべて自然に使用している",
+  ]},
+{ id:"E02", d:"stp", min:10, title:"細分化の4変数と具体例【昨年度型】",
+  q:`消費者市場の細分化変数である「地理的変数」「人口動態変数」「心理的変数」「行動変数」をそれぞれ説明し、各変数を用いたマーケティングの具体例を2つずつ挙げなさい。`,
+  model:`【解答骨子】
+①地理的変数：地域・都市規模・気候などで細分化。例：降雪地域向けスタッドレスタイヤ、関西限定の味付け商品。
+②人口動態変数：年齢・性別・所得・家族構成・職業など。例：シニア向けの簡単操作スマートフォン、単身世帯向け小容量食品。
+③心理的変数：ライフスタイル・価値観・パーソナリティ。例：健康志向層向けオーガニック食品、アウトドア志向層向けの高機能ウェア。
+④行動変数：使用頻度・求めるベネフィット・ロイヤルティ・使用場面。例：ヘビーユーザー向けの定額サブスクリプション、贈答場面向けのギフト仕様商品。
+（補足）実務では単一変数でなく複数変数を組み合わせて用いる。`,
+  points:[
+    "4変数それぞれの定義を正確に述べている",
+    "各変数につき妥当な具体例を2つ挙げている",
+    "例が変数の内容と正しく対応している（例：使用場面は行動変数）",
+    "複数変数の組み合わせ利用に言及している（加点）",
+  ]},
+{ id:"E03", d:"stp", min:12, title:"最適な細分化の程度【昨年度型】",
+  q:`市場細分化は細かく行うほどよいとは限らない。「マーケティングへの反応」「コスト」「セグメント規模」「売上」の4語を必ず用いて、最適な細分化の程度について論じなさい。`,
+  model:`【解答骨子】
+細分化の目的は、マーケティングへの反応が同質的な顧客集団を見出し、施策の効果を高めることにある。細分化が粗すぎればセグメント内で反応が不均質となり、施策の的中率が下がる。他方、細かくしすぎると各セグメント規模が縮小し、そこから見込める売上が小さくなる一方で、セグメントごとに異なるミックスを開発・展開するコストは増大し、利益を圧迫する。したがって最適な細分化の程度とは、①セグメント内の反応の同質性（かつセグメント間の異質性）が確保され、②売上がコストを十分に上回る規模を維持できる水準である。効果的な細分化の要件（測定可能性・利益確保可能性・到達可能性・差別化可能性・実行可能性）を満たすことが判断基準となる。`,
+  points:[
+    "細分化の便益＝セグメント内の反応の同質性を示している",
+    "過度な細分化の弊害＝規模縮小・売上減とコスト増を示している",
+    "「粗すぎ／細かすぎ」のトレードオフとして構成している",
+    "効果的細分化の5要件（測定・規模・到達・差別化・実行可能性）に言及している",
+    "指定語句4つをすべて使用している",
+  ]},
+{ id:"E04", d:"stp", min:12, title:"リキッド消費とセグメンテーションの方向性【昨年度型】",
+  q:`「リキッド消費」の概念を説明し、その具体例を2つ挙げなさい。また、リキッド消費が広がる市場において、セグメンテーションの細分化の程度は今後どのような方向に向かうべきか、あなたの考えを論じなさい。`,
+  model:`【解答骨子】
+リキッド消費とは、Bardhi と Eckhardt が提唱した概念で、所有を前提とする固定的・永続的な消費（ソリッド消費）と対比され、①短命性（価値を感じる期間が短く、状況に応じて消費対象が移ろう）、②アクセス・ベース（所有せず必要なときだけ利用する）、③脱物質（モノそのものよりサービスや体験を重視する）を特徴とする流動的な消費様式である。
+具体例：カーシェアリング、ファッションレンタル、音楽・動画のサブスクリプション。
+方向性：リキッド消費下では、同一人物でも状況・文脈により求める価値が変わるため、年齢・性別など固定的な属性による静的な細分化の有効性が低下する。今後は利用場面（オケージョン）や行動データに基づく、より動的で細かな細分化（究極的には One to One に近い水準）へ向かうべきである。ただし細分化のコストと規模のバランス（E03参照）は依然として制約となる。`,
+  points:[
+    "3特徴（短命性・アクセスベース・脱物質）を挙げている",
+    "ソリッド消費との対比を示している",
+    "妥当な具体例を2つ挙げている",
+    "属性ベースの静的細分化→場面・行動ベースの動的細分化への転換を論じている",
+    "細分化の程度は「より細かく・動的に」という方向性を根拠付きで述べている",
+  ]},
+{ id:"E05", d:"stp", min:10, title:"標的市場選択の5パターン",
+  q:`標的市場の選択パターンを5つ挙げ、それぞれの内容と、どのような企業・状況に適するかを説明しなさい。`,
+  model:`【解答骨子】
+①単一セグメント集中：1セグメントに特化。経営資源の乏しい中小企業に適するが、需要変動・競合参入のリスクが集中する。
+②選択的専門化：魅力度の高い複数セグメントを選択。リスク分散になるがシナジーは限定的。
+③製品専門化：特定製品で複数セグメントに対応。技術面の評判を築けるが、代替技術の登場に弱い。
+④市場専門化：特定顧客集団の多様なニーズに複数製品で対応。顧客との関係は深まるが、その市場の縮小リスクを負う。
+⑤フルカバレッジ：全セグメントに対応。大企業のみ可能で、無差別型と差別型がある。`,
+  points:[
+    "5パターンを漏れなく列挙している",
+    "各パターンの内容を正しく説明している",
+    "適する企業規模・状況やリスクに言及している",
+  ]},
+/* ---------- 消費者行動 ---------- */
+{ id:"E06", d:"cb", min:12, title:"知覚の選択性（注意・歪曲・保持）【昨年度型】",
+  q:`消費者の知覚プロセスにおける「選択的注意」「選択的歪曲」「選択的保持」をそれぞれ説明し、マーケターへの示唆を述べなさい。`,
+  model:`【解答骨子】
+消費者は日々大量の刺激にさらされるため、情報を選択的に処理する。
+①選択的注意：大半の刺激をふるいにかけ、現在のニーズに関連する刺激や、期待からの逸脱が大きい刺激に注意を向ける。→ マーケターは標的顧客のニーズに関連づけ、目立つ表現で注意を獲得する必要がある。
+②選択的歪曲：受け取った情報を、自分の先入観や既存のブランド信念に合致するように解釈する傾向。強いブランドへの好意的な先入観は中立情報すら好意的に解釈させる。→ ブランドに対する事前の信念形成が重要。
+③選択的保持：自分の態度や信念を支持する情報を選択的に記憶に残す。好きなブランドの長所は覚え、競合の長所は忘れやすい。→ 反復訴求により記憶への定着を図る必要がある。`,
+  points:[
+    "3つの概念を正しく区別して定義している",
+    "選択的歪曲＝先入観・既存信念に合わせた解釈、と述べている",
+    "各概念についてマーケターへの示唆を付している",
+    "強いブランドほど歪曲・保持が有利に働く点に触れている（加点）",
+  ]},
+{ id:"E07", d:"cb", min:12, title:"認知的不協和と購買後行動【昨年度型】",
+  q:`「認知的不協和」の概念を説明し、それが大きくなりやすい購買の条件を挙げなさい。また、マーケターが取るべき対応策を具体的に述べなさい。`,
+  model:`【解答骨子】
+認知的不協和とは、フェスティンガーの理論に基づく概念で、購買後に「この選択は本当に正しかったのか」という心理的な緊張・不快感が生じる状態を指す。選ばなかった選択肢の魅力や、選んだ製品の欠点を認識することで生じる。
+大きくなりやすい条件：①高額な購買、②関与が高い購買、③選択肢間の魅力が拮抗している、④意思決定のやり直しが困難。
+消費者は不協和を低減するため、自分の選択を支持する情報を探索し（選択的情報接触）、購入品を正当化しようとする。
+マーケターの対応：①購買直後のフォロー（お礼状・確認メール・使いこなし情報の提供）、②保証・返品制度による安心の提供、③購入者の選択を肯定する広告・コンテンツ（購入者も広告を見る）、④アフターサービスや利用者コミュニティで満足を強化。これにより再購買・好意的な口コミにつなげる。`,
+  points:[
+    "認知的不協和＝購買後の心理的緊張、と正しく定義している",
+    "不協和が大きくなる条件（高額・高関与・選択肢拮抗）を挙げている",
+    "消費者の不協和低減行動に触れている",
+    "マーケターの対応策を複数、具体的に挙げている",
+    "対応の目的（再購買・口コミ）まで言及している（加点）",
+  ]},
+{ id:"E08", d:"cb", min:12, title:"購買意思決定プロセスの5段階",
+  q:`消費者の購買意思決定プロセスの5段階を挙げ、各段階でマーケターが打つべき施策を説明しなさい。`,
+  model:`【解答骨子】
+①問題認識：現状と理想のギャップの自覚。→ 広告等でニーズを喚起する。
+②情報探索：内部探索（記憶）と外部探索（口コミ・広告・店頭等）。→ 想起集合に入るためのブランド認知構築、検索時に見つかる情報整備。
+③代替品評価：属性ごとの重視度に基づく比較評価。→ 自社が優位な属性の重要性を訴求、比較しやすい情報提供。
+④購買決定：他者の態度や状況要因で意図が変わりうる。→ 在庫・決済・接客など購買障壁の除去。
+⑤購買後行動：満足／不満足、認知的不協和。→ フォローアップで不協和を低減し、再購買・推奨につなげる。
+（補足）関与が低い購買では段階の省略・順序変化が起こる。`,
+  points:[
+    "5段階を正しい順序で挙げている",
+    "各段階の内容を正確に説明している",
+    "各段階に対応する施策を示している",
+    "低関与時にはプロセスが省略されることに言及している（加点)",
+  ]},
+{ id:"E09", d:"cb", min:12, title:"関与と精緻化見込みモデル",
+  q:`消費者の「関与」の概念を説明したうえで、精緻化見込みモデルにおける態度形成の2つのルートを説明し、それぞれに適したコミュニケーション施策を述べなさい。`,
+  model:`【解答骨子】
+関与とは、対象（製品・購買決定）に対する消費者の思い入れや重要性の知覚の程度をいう。関与の高低により情報処理の深さが変わる。
+精緻化見込みモデル（ペティ＆カシオッポ）では、態度形成に2つのルートがある。
+①中心的ルート：関与と処理能力が高い場合、メッセージの論拠そのものを吟味して態度を形成する。形成された態度は持続的で行動と結びつきやすい。→ 製品の性能・根拠データ・比較情報など実質的な情報提供が有効。
+②周辺的ルート：関与または処理能力が低い場合、有名人・音楽・雰囲気・情報量の多さなど周辺的手がかりで態度を形成する。態度は一時的で変わりやすい。→ 好感度の高いタレント起用、パッケージ、広告の反復などが有効。`,
+  points:[
+    "関与の定義を述べている",
+    "2ルートの分岐条件（関与・処理能力）を示している",
+    "中心的ルート＝論拠の吟味、周辺的ルート＝手がかり、と正しく説明している",
+    "各ルートに適合した施策を挙げている",
+  ]},
+{ id:"E23", d:"cb", min:12, title:"多属性態度モデルと意思決定ルール【弱点強化】",
+  q:`多属性態度モデルを説明し、補償型と非補償型の意思決定ルールの違いを述べなさい。また、マーケターがこのモデルから得られる示唆を具体的に挙げなさい。`,
+  model:`【解答骨子】
+多属性態度モデル（フィッシュバイン型）では、ブランドへの態度は「各属性についての信念（そのブランドが属性をどの程度満たすか）×属性の重要度」の総和で決まると考える。
+補償型ルール：ある属性の弱みを別の属性の強みで補って総合評価する。
+非補償型ルール：補完が働かない。連結型（全属性が最低基準を超える必要）、分離型（1つでも突出した属性があれば選択）、辞書編集型（最重要属性から順に比較し決定）など。
+示唆：①自社が優位な属性の「重要度」を高める訴求（リポジショニング）、②弱い属性への「信念」を製品改良・情報提供で改善、③新属性の追加による評価軸の変更、④非補償型が使われる場面（時間がない・低関与）では、最低基準のクリアと最重要属性での優位が不可欠。`,
+  points:[
+    "態度＝信念×重要度の総和、という構造を述べている",
+    "補償型＝弱みを強みで補う総合評価、と説明している",
+    "非補償型の具体的ルール（連結型・辞書編集型など）を挙げている",
+    "態度を変える打ち手（重要度の変更・信念の改善・新属性）を挙げている",
+    "意思決定ルールが使い分けられる状況に言及している（加点）",
+  ]},
+{ id:"E24", d:"cb", min:12, title:"動機づけ理論とマーケティング【弱点強化】",
+  q:`マズローの欲求階層説とハーズバーグの2要因理論をそれぞれ説明し、マーケティングへの応用を述べなさい。`,
+  model:`【解答骨子】
+マズローの欲求階層説：人間の欲求を生理的欲求→安全欲求→社会的欲求（所属と愛）→承認欲求→自己実現欲求の5階層で捉え、低次の欲求が満たされると高次の欲求が動機づけ要因になるとする。
+応用：同じ製品でも訴求する欲求階層を選べる。例えば自動車は、安全性能（安全欲求）、家族との時間（社会的欲求）、ステータス（承認欲求）、自分らしさ（自己実現）と、標的により訴求を変えられる。
+ハーズバーグの2要因理論：不満足を防ぐ「衛生要因」と、満足を生む「動機づけ要因」は別次元であるとする。
+応用：不具合・欠品・待ち時間など衛生要因の解消は不満を防ぐだけで、購買の積極的理由にはならない。選ばれるためには、購買を動機づける差別化要因（満足要因）を特定し、それを強化・訴求する必要がある。
+両理論とも「顧客はなぜ買うのか」という動機の理解を通じて、訴求点の設計に役立つ。`,
+  points:[
+    "5階層を正しい順序で挙げている",
+    "低次充足→高次動機化のメカニズムを述べている",
+    "衛生要因と動機づけ要因の区別を説明している",
+    "「不満の解消は満足を生まない」という含意を述べている",
+    "それぞれ具体的なマーケティング応用例を挙げている",
+  ]},
+{ id:"E25", d:"cb", min:12, title:"知覚リスクと低減行動【弱点強化】",
+  q:`「知覚リスク」の概念と主な種類を挙げ、消費者がリスクを低減するために取る行動を説明しなさい。また、マーケターの対応策を述べなさい。`,
+  model:`【解答骨子】
+知覚リスクとは、購買の結果に対する不確実性から消費者が感じる主観的なリスクをいう。
+種類：①機能的リスク（期待どおり機能しない）、②金銭的リスク（支払いに見合わない）、③身体的リスク（安全への危害）、④社会的リスク（周囲からの評価低下）、⑤心理的リスク（自己イメージとの不一致）、⑥時間的リスク（探索・買い直しの時間損失）。
+消費者の低減行動：入念な情報収集、口コミ・レビューの参照、有名ブランド・実績ある店舗の選択、少量・お試し購入、購買の延期。
+マーケターの対応：①保証・返金制度、②無料サンプル・トライアル、③レビュー・事例の充実、④受賞歴・認証などの権威づけ、⑤ブランド構築による信頼の事前形成。高額・高関与の購買ほどリスク低減の支援が効果的であり、購買後の認知的不協和の低減にも接続する。`,
+  points:[
+    "知覚リスク＝購買結果の不確実性への主観的リスク、と定義している",
+    "リスクの種類を3つ以上挙げている",
+    "消費者の低減行動を複数挙げている",
+    "マーケターの対応策を複数挙げている",
+    "高関与購買・認知的不協和との関係に言及している（加点）",
+  ]},
+{ id:"E26", d:"cb", min:12, title:"クチコミとデジタル時代のコミュニケーション【弱点強化】",
+  q:`クチコミが広告より強い影響力を持つ理由を説明しなさい。また、デジタル時代のクチコミ（eクチコミ）の特徴と、企業がクチコミを促進するための施策を述べなさい。`,
+  model:`【解答骨子】
+クチコミが強い理由：①発信者に商業的意図がなく信頼性が高い、②自分と似た立場の消費者からの情報で共感・自分ごと化しやすい、③双方向で疑問を確かめられる。
+eクチコミの特徴：①レビューとして保存され、購買検討時点で参照される、②拡散の速度と範囲が地理を超える、③匿名の多数の評価が集約され「数」自体が信頼の手がかりになる、④否定的情報も可視化・残存する。
+促進施策：①語りたくなる優れた体験・話題の設計、②購入後のレビュー依頼の仕組み化、③インフルエンサー・アンバサダーの活用（広告関係の明示が前提）、④UGC（顧客の投稿）を促すキャンペーン、⑤否定的クチコミへの誠実で迅速な対応。
+留意点：ステルスマーケティングは景品表示法で規制されており、関係性の開示など倫理・法令の順守が不可欠。`,
+  points:[
+    "信頼性の源泉（非商業性・類似性）を説明している",
+    "eクチコミの特徴（保存性・拡散性・数の効果）を挙げている",
+    "促進施策を3つ以上挙げている",
+    "否定的クチコミへの対応に触れている",
+    "ステマ規制など倫理・法令面に言及している（加点）",
+  ]},
+/* ---------- 製品・コモディティ化 ---------- */
+{ id:"E10", d:"pr", min:10, title:"製品の5つの階層【昨年度型】",
+  q:`コトラーの製品概念における5つの階層（レベル）を挙げ、ホテルを例にそれぞれ説明しなさい。`,
+  model:`【解答骨子】
+①中核ベネフィット：顧客が本当に購入している根源的な便益。例：休息と睡眠。
+②基本製品：ベネフィットを製品として具体化した基本形。例：ベッド・バスルーム・タオル。
+③期待製品：買い手が通常期待する属性・条件の束。例：清潔なベッド、静かな部屋。
+④膨張製品（拡大製品）：顧客の期待を超える付加的なサービス・便益。差別化は主にこの層で生じる。例：上質なアメニティ、優れたコンシェルジュサービス。
+⑤潜在製品：将来ありうる拡張・変化の可能性。例：新しい宿泊体験の提案。
+（示唆）競争が進むと膨張製品は次第に期待製品へと変わり（期待水準の上昇）、絶えざる付加価値の更新が必要になる。これはコモディティ化とも関連する。`,
+  points:[
+    "5階層を正しい順序・名称で挙げている",
+    "中核ベネフィット＝根源的便益、を最初に置いている",
+    "各層に整合した具体例を付している",
+    "差別化は膨張製品の層で生じること、膨張製品はやがて期待製品化することに言及している",
+  ]},
+{ id:"E11", d:"pr", min:12, title:"コモディティ化の要因（需要と供給）【昨年度型】",
+  q:`「コモディティ化」とは何かを説明し、コモディティ化が生じる要因を需要側・供給側の両面から論じなさい。`,
+  model:`【解答骨子】
+コモディティ化とは、企業間の技術・品質水準が同質化し、製品・サービスの間で機能や品質による差別化が困難となり、顧客から見てどの企業のものも同じに見え、価格のみが選択基準となっていく現象をいう。
+供給側の要因：①技術の成熟・標準化により品質が横並びになる、②模倣の容易化（部品の外部調達・モジュール化により、組み合わせれば誰でも一定品質を実現できる）、③過剰性能（技術向上が顧客の要求水準を超え、性能差が意味を失う）、④供給過剰・競争激化。
+需要側の要因：①顧客の学習・経験の蓄積により製品を見る目が肥え、基本機能で十分と判断する、②ニーズの飽和・低関与化（違いを吟味する動機の低下）、③情報化により価格比較が容易になり、価格感度が上昇する。`,
+  points:[
+    "コモディディ化の定義（差別化困難→価格のみが基準）を述べている",
+    "供給側要因（技術成熟・模倣容易化・過剰性能など）を複数挙げている",
+    "需要側要因（顧客の学習・低関与化・価格比較の容易化など）を複数挙げている",
+    "需要・供給の両面を明示的に区別して構成している",
+  ]},
+{ id:"E12", d:"pr", min:10, title:"コモディティ化の市場への帰結【昨年度型】",
+  q:`製品市場がコモディティ化すると、その市場はどのようになるか。企業行動と市場構造の観点から説明しなさい。`,
+  model:`【解答骨子】
+①価格競争の激化：差別化要素が失われるため、企業は価格でしか競争できず、値下げ競争が常態化する。
+②収益性の低下：業界全体の利益率が低下し、マーケティング投資（ブランド構築・研究開発）の原資が失われ、さらなる同質化を招く悪循環に陥る。
+③規模・コスト競争へ：低価格を支えるため規模の経済・経験曲線効果の追求が競争の焦点となり、大規模企業・低コスト企業に有利な構造になる。淘汰・撤退が進み、業界再編が起こりうる。
+④顧客のスイッチング常態化：ブランド・ロイヤルティが低下し、価格やポイント等の販促で購買先が容易に変わる。
+⑤製品開発の焦点が価格対応（容量・仕様調整）に偏り、価値革新が停滞する。`,
+  points:[
+    "価格競争の激化を挙げている",
+    "業界全体の利益率低下と投資原資の喪失（悪循環）を述べている",
+    "規模・コスト競争化と淘汰・再編に言及している",
+    "ロイヤルティ低下・スイッチングの常態化に触れている",
+  ]},
+{ id:"E13", d:"pr", min:14, title:"脱コモディティ化の方策【昨年度型】",
+  q:`コモディティ化した市場から脱却するために企業が取りうる方策を、多面的に論じなさい。`,
+  model:`【解答骨子】（機能・品質以外の価値次元へ競争軸を移すことが基本原理）
+①経験価値による差別化：製品の機能ではなく、使用・購買の過程で得られる感覚的・情緒的な体験（五感・感動・自己表現）で価値を創る。例：スターバックスの「第三の場所」。
+②ブランド構築：意味的・象徴的価値により指名買いを生み、価格比較の土俵から降りる。
+③サービス化・ソリューション化（コト売り）：モノ単体でなく、成果や課題解決までを提供する。例：機器＋保守＋運用支援のパッケージ化。
+④カテゴリー・イノベーション：既存カテゴリー内の改良ではなく、新しい使用文脈・市場カテゴリー自体を創造して比較軸を無効化する。
+⑤顧客関係の構築：サブスクリプション、会員化、カスタマイズ（マス・カスタマイゼーション）により顧客との継続的関係を築き、スイッチングコストを高める。
+⑥チャネル・提供方法の革新：D2Cなど買い方・届け方の価値で差別化する。
+（まとめ）共通するのは、価格以外の選択基準を顧客の中に再構築することである。`,
+  points:[
+    "「競争軸を機能・価格以外へ移す」という基本原理を示している",
+    "経験価値・情緒的価値による差別化を挙げている",
+    "ブランド構築による指名買い化を挙げている",
+    "サービス化・ソリューション化（コト売り）を挙げている",
+    "3つ以上の方策を「多面的に」構成し、具体例を添えている",
+  ]},
+{ id:"E14", d:"pr", min:10, title:"イノベーション普及の5属性",
+  q:`ロジャースによる、新製品（イノベーション）の普及速度を左右する5つの製品属性を挙げ、それぞれ説明しなさい。`,
+  model:`【解答骨子】
+①相対的優位性：既存製品より優れていると知覚される程度。大きいほど普及が速い。
+②両立性（適合性）：既存の価値観・生活習慣・使用経験と適合する程度。
+③複雑性：理解や使用の難しさ。高いほど普及は遅れる。
+④試用可能性：小規模に試せる程度。お試し・サンプルがあると採用リスクが下がる。
+⑤観察可能性（可視性）：使用の結果が他者から見える程度。見えやすいほど模倣・口コミで普及が加速する。
+（示唆）マーケターは無料試用、デモ、利用が可視化される仕掛け等で普及を促進できる。`,
+  points:[
+    "5属性を漏れなく挙げている",
+    "各属性と普及速度の関係（方向）を正しく述べている",
+    "施策への示唆を付している（加点）",
+  ]},
+/* ---------- 価格 ---------- */
+{ id:"E15", d:"price", min:12, title:"損益分岐点販売量の計算【昨年度型】",
+  q:`ある製品の販売価格は1,200円、1個あたり変動費は700円、固定費は年間2,000万円である。
+(1) 損益分岐点販売量を求めなさい（計算過程も示すこと）。
+(2) 目標利益500万円を達成するために必要な販売量を求めなさい。
+(3) 損益分岐点分析が価格設定において果たす役割を簡潔に述べなさい。`,
+  model:`【解答骨子】
+(1) 損益分岐点販売量 ＝ 固定費 ÷（販売価格 − 単位変動費）＝ 単位貢献利益で固定費を回収できる数量
+　＝ 20,000,000 ÷（1,200 − 700）＝ 20,000,000 ÷ 500 ＝ 40,000個
+(2) 必要販売量 ＝（固定費 ＋ 目標利益）÷ 単位貢献利益
+　＝（20,000,000 ＋ 5,000,000）÷ 500 ＝ 50,000個
+(3) 役割：想定価格のもとで損失を出さないために必要な最低販売量を明らかにし、その数量が市場規模・自社シェアから見て現実的かを検証できる。複数の価格案について達成可能性を比較でき、コスト志向の価格設定（目標利益法）の基礎となる。ただし需要の価格弾力性や競合の反応は考慮されない点に限界がある。`,
+  points:[
+    "公式「固定費÷（価格−単位変動費）」を正しく示している",
+    "(1) 40,000個 と正答している",
+    "(2)（固定費＋目標利益）÷貢献利益 ＝ 50,000個 と正答している",
+    "(3) 価格案の実現可能性検証という役割を述べている",
+    "需要・競合を考慮しない限界に言及している（加点）",
+  ]},
+{ id:"E16", d:"price", min:12, title:"カニバリゼーションと交差弾力性【昨年度型】",
+  q:`「カニバリゼーション」とは何か、「交差弾力性」「価格」「需要」の3語を必ず用いて説明しなさい。また、企業があえてカニバリゼーションを許容する場合があるのはなぜか述べなさい。`,
+  model:`【解答骨子】
+カニバリゼーション（共食い）とは、自社の新製品・新ブランドが、競合ではなく自社の既存製品の需要を奪ってしまう現象をいう。2財の関係は交差弾力性（一方の財の価格変化率に対する他方の財の需要量変化率）で捉えられ、交差弾力性が正であれば両財は代替関係にある。自社製品同士の交差弾力性が正に大きい場合、たとえば新製品の価格を引き下げたり新製品を投入したりすると、既存製品の需要が大きく減少し、全社の売上・利益が純増しないおそれがある。
+許容する理由：①放置すれば競合に奪われる需要なら、自社内で奪うほうがよい（先取りによる自己革新）、②技術転換期に旧製品に固執すると市場全体を失う、③セグメント拡大や価格帯カバーのため。企業は増分（インクリメンタル）の売上・利益で評価すべきである。`,
+  points:[
+    "カニバリゼーション＝自社製品間の需要の奪い合い、と定義している",
+    "交差弾力性の定義（価格変化率に対する需要変化率）を正しく述べている",
+    "交差弾力性が正＝代替関係、という関係を使って説明している",
+    "指定語句3つを使用している",
+    "許容する理由（競合に奪われるより自社で／自己革新）を述べている",
+  ]},
+{ id:"E17", d:"price", min:12, title:"規模の経済と経験曲線効果【昨年度型】",
+  q:`「規模の経済」と「経験曲線効果」をそれぞれ説明し、両者の共通点と相違点を述べなさい。`,
+  model:`【解答骨子】
+規模の経済：一定期間における生産・事業規模が大きいほど、製品単位あたりコストが低下する効果。固定費（設備・研究開発・広告等）がより多くの生産量に分散されること、大量仕入れによる購買力等により生じる。
+経験曲線効果：累積生産量が倍増するごとに、単位あたりコストが一定率（経験的に約10〜30%）で低下するという経験則（BCGが提唱）。作業者の習熟、工程改善、製品設計の改良など、組織の学習の蓄積により生じる。
+共通点：いずれも単位コストの低下をもたらし、低価格戦略やコスト・リーダーシップの源泉となる。市場シェアの追求を正当化する論理となる点も共通する。
+相違点：①規模の経済は「ある一時点の生産規模」に依存する静態的な効果であるのに対し、経験曲線効果は「過去からの累積生産量」に依存する動態的な効果である。②発生メカニズムが異なる（固定費の分散 vs 学習・改善の蓄積）。③経験曲線効果は規模が小さくても長く作り続ければ蓄積される。`,
+  points:[
+    "規模の経済＝一時点の規模による単位コスト低下、と定義している",
+    "経験曲線効果＝累積生産量の倍増ごとに一定率のコスト低下、と定義している",
+    "共通点＝単位コスト低下・コスト優位の源泉、を述べている",
+    "相違点＝一時点の規模（静態的）vs 累積量・学習（動態的）を対比している",
+    "発生メカニズムの違い（固定費分散 vs 習熟・改善）に触れている",
+  ]},
+{ id:"E18", d:"price", min:12, title:"実質値下げ（増量パック）の理由【昨年度型】",
+  q:`ある菓子メーカーが、表示価格を据え置いたまま内容量を増やす「実質値下げ」を実施した。表示価格の引き下げではなくこの方法を選ぶ理由を、「消費者行動」と「競合の反応」の2つの視点から論じなさい。`,
+  model:`【解答骨子】
+消費者行動の視点：①消費者は内的参照価格（この商品はいくらという記憶価格）を基準に価格を判断する。表示価格を下げると参照価格自体が下がり、元の価格に戻した際に「値上げ」と知覚され需要が落ち込む。増量なら参照価格を毀損せず、終了時も反発が小さい。②単位あたり価格の計算は認知的負荷が高く、消費者は「増量＝お得」と直感的に知覚しやすい（お得感の演出）。③安売りによるブランドイメージ・品質知覚の低下を避けられる。
+競合の反応の視点：①明示的な値下げは競合に即座に観察され、対抗値下げを誘発して価格競争（値下げ合戦）に陥りやすい。増量は値下げ幅が見えにくく、競合が追随の要否・程度を判断しづらいため、報復的な価格競争を回避しやすい。②増量は期間・対象を限定した一時的施策として実施でき、価格体系を崩さずに需要を刺激できる。`,
+  points:[
+    "内的参照価格の毀損回避を挙げている",
+    "値戻し時に値上げと知覚される問題に触れている",
+    "単価計算の負荷／お得感の知覚など消費者心理を挙げている",
+    "明示的値下げは競合の追随・価格競争を招きやすいことを述べている",
+    "増量は競合から見えにくく報復を誘発しにくい点を述べている",
+  ]},
+{ id:"E19", d:"price", min:10, title:"新製品の価格設定：上澄み吸収と市場浸透",
+  q:`新製品の価格設定における「上澄み吸収価格戦略（スキミング・プライシング）」と「市場浸透価格戦略（ペネトレーション・プライシング）」を説明し、それぞれが有効となる条件を述べなさい。`,
+  model:`【解答骨子】
+上澄み吸収価格戦略：発売時に高価格を設定し、価格感度の低い革新層から順に利益を回収した後、段階的に価格を下げて市場を広げる。有効条件：①製品の革新性・差別性が高い、②高価格でも十分な需要（高い知覚価値）がある、③模倣・参入が当面困難（特許等）、④少量生産でもコストが過大にならない、⑤高価格が品質シグナルとして機能する。
+市場浸透価格戦略：発売時から低価格を設定して一気に普及とシェア獲得を図る。有効条件：①需要の価格弾力性が高い、②規模の経済・経験曲線効果が働き、数量拡大が低コストにつながる、③低価格が参入障壁として機能する、④ネットワーク外部性など早期普及の価値が大きい。`,
+  points:[
+    "両戦略の内容を正しく説明している",
+    "スキミングの有効条件（革新性・模倣困難・価格感度の低い層）を挙げている",
+    "ペネトレーションの有効条件（高い価格弾力性・規模の経済/経験曲線・参入抑止）を挙げている",
+    "経験曲線効果との接続を示している（加点）",
+  ]},
+{ id:"E27", d:"price", min:12, title:"価格差別とダイナミック・プライシング【弱点強化】",
+  q:`「価格差別」とは何かを説明し、成立するための条件を挙げなさい。また、ダイナミック・プライシングの利点と留意点を述べなさい。`,
+  model:`【解答骨子】
+価格差別とは、同一またはほぼ同一の製品・サービスを、顧客や購買状況によって異なる価格で販売し、顧客ごとの支払意思額の差から利益を最大化する手法。例：学生割引、時間帯別料金、地域別価格、早期予約割引。
+成立条件：①顧客の価格感度（支払意思額）を識別・区分できる、②低価格で購入した顧客からの転売（裁定取引）を防止できる、③価格差への顧客の反発や法規制を回避できる。
+ダイナミック・プライシング：需給バランス・時期・在庫に応じて価格を機動的に変動させる手法。ホテル・航空券・スポーツ観戦など、在庫できない（消滅性の高い）サービスと相性がよい。
+利点：①需要の平準化（閑散期の稼働向上・繁忙期の収益最大化）、②支払意思額の高い顧客からの利益回収、③在庫ロスの削減。
+留意点：①「同じものを高く買わされた」という不公平感が信頼・ブランドを毀損するおそれ、②参照価格が混乱し価格への信頼が低下、③価格変動の理由の説明・上限設定など運用ルールが必要。`,
+  points:[
+    "価格差別の定義と具体例を挙げている",
+    "成立3条件（感度の識別・転売防止・反発回避）を挙げている",
+    "ダイナミック・プライシングの利点（収益最大化・需要平準化）を述べている",
+    "公平性の知覚・参照価格への影響という留意点を述べている",
+    "サービスの消滅性との接続を示している（加点）",
+  ]},
+{ id:"E28", d:"price", min:12, title:"値上げの方法と反発を抑える工夫【弱点強化】",
+  q:`原材料費の高騰が続く状況で、メーカーが値上げを行う際に取りうる方法を挙げなさい。また、顧客の反発を抑えるための工夫を、消費者の知覚の観点から論じなさい。`,
+  model:`【解答骨子】
+値上げの方法：①表示価格の引き上げ、②内容量の削減（実質値上げ）、③製品ラインの再編（上位品への誘導、廉価版の追加で選択肢を残す）、④割引・販促の縮小、⑤付帯サービスの有償化。
+知覚の観点からの工夫：
+①内的参照価格を急激に壊さない：小刻み・段階的な改定にする。
+②公正価格の知覚を守る：値上げの理由（原材料高騰・品質維持のため）を誠実に説明する。理由の開示は「便乗値上げ」との知覚を防ぐ。
+③価値の同時向上：リニューアル・増量・品質改善と同時に実施し、「値上げ」ではなく「価値向上」として提示する。
+④心理的節目への配慮：キリの良い価格帯（例：ワンコイン）を超える場合は反発が大きいため、ライン再編等で対応する。
+⑤既存顧客への配慮：移行猶予期間や既存プラン据え置きで、ロイヤル顧客の離反を防ぐ。
+留意：内容量削減による実質値上げは短期的に気づかれにくいが、発覚した際に「隠された」という不信を招くリスクがあり、説明責任がより重要になる。`,
+  points:[
+    "値上げの方法を3つ以上挙げている",
+    "内的参照価格・公正価格の知覚という概念を使っている",
+    "理由の説明が反発を抑える効果を述べている",
+    "価値向上との同時実施を挙げている",
+    "実質値上げの信頼毀損リスクに言及している",
+  ]},
+{ id:"E29", d:"price", min:12, title:"サブスクリプションとフリーミアム【弱点強化】",
+  q:`サブスクリプション型の価格設定が企業と顧客の双方にもたらす利点を説明しなさい。また、フリーミアムの仕組みと成功の条件を述べなさい。`,
+  model:`【解答骨子】
+企業側の利点：①継続課金による売上の安定・予測可能性の向上、②顧客生涯価値（LTV）の最大化、③利用データの継続的な獲得による改善・提案、④顧客との継続的関係の構築（スイッチングコストが高まり、脱コモディティ化にも寄与）。
+顧客側の利点：①初期負担の軽減、②常に最新の製品・サービスを利用できる、③いつでも解約できることによる知覚リスクの低減。所有せず利用するというリキッド消費（アクセス・ベース）の潮流とも適合する。
+フリーミアム：基本機能を無料で提供し、上位機能・容量・広告除去などを有料化するモデル。
+成功条件：①無料版でも価値が明確に伝わる、②無料から有料への転換動機が明確に設計されている（機能制限・容量・利用量）、③追加ユーザーの限界費用が低いデジタル財である、④無料ユーザー自体がネットワーク効果・クチコミに貢献する構造がある。
+留意点：解約率（チャーンレート）の管理が生命線であり、無料ユーザーの維持コストと有料転換率のバランスを常に監視する必要がある。`,
+  points:[
+    "企業側利点（収益安定・LTV・データ・関係構築）を挙げている",
+    "顧客側利点（初期負担減・リスク低減）を挙げている",
+    "リキッド消費（アクセスベース）との接続を示している",
+    "フリーミアムの転換設計（無料→有料の動機）を説明している",
+    "チャーン管理・無料ユーザーのコストという留意点を述べている",
+  ]},
+{ id:"E30", d:"price", min:10, title:"EDLPとハイ・ロー価格政策【弱点強化】",
+  q:`小売業の価格政策である「EDLP」と「ハイ・ロー価格政策」を比較し、それぞれの利点と適する状況を述べなさい。`,
+  model:`【解答骨子】
+EDLP（エブリデー・ロー・プライス）：特売に頼らず常時低価格を維持する政策。
+利点：①価格への信頼形成（いつ買っても損しない）、②需要が平準化され物流・人員配置が効率化、③チラシ・特売の販促コスト削減、④参照価格が安定する。
+適する状況：大規模で低コストのオペレーションを持つ小売、価格重視の顧客層、購買頻度の高い定番品。
+ハイ・ロー価格政策：通常価格を維持しつつ、定期的な特売で集客する政策。
+利点：①特売による集客力・話題性、②お買い得感の演出による来店動機の創出、③価格感度の高い顧客は特売で、低い顧客は通常価格で買うという実質的な価格差別が働き、利益を確保できる、④在庫処分に柔軟。
+適する状況：生鮮・ファッションなど鮮度・季節性の高い商材、チラシ・特売文化が強い商圏。
+留意点：ハイ・ローの多用は内的参照価格を引き下げ、「特売でしか買わない」顧客行動（チェリーピッキング）を助長するおそれがある。`,
+  points:[
+    "両政策の定義を正しく述べている",
+    "EDLPの利点（信頼・オペレーション効率・販促費減）を挙げている",
+    "ハイ・ローの利点（集客・実質的な価格差別）を挙げている",
+    "参照価格・特売待ち行動への影響に言及している",
+    "それぞれ適する状況を対比している",
+  ]},
+/* ---------- 競争戦略・サービス・ブランド ---------- */
+{ id:"E20", d:"comp", min:12, title:"競争地位別戦略（コトラー）",
+  q:`コトラーの競争地位別戦略における4つの地位（リーダー、チャレンジャー、フォロワー、ニッチャー）それぞれの定石となる戦略を説明しなさい。`,
+  model:`【解答骨子】
+①リーダー（最大シェア）：市場全体の拡大（フルカバレッジ・周辺需要拡大）、シェア防衛（同質化対応＝チャレンジャーの差別化を模倣し無効化）、非価格対応（価格競争は自社の損失が最大のため避ける）。
+②チャレンジャー（2〜3位でトップを狙う）：リーダーが追随できない・しにくい差別化で正面から挑戦する。リーダーの弱み（構造的ジレンマ）を突く。
+③フォロワー（上位を狙わない追随者）：上位企業の成功を迅速に模倣し、開発・教育コストを節約して収益を確保する。
+④ニッチャー：大手が参入しない特定の小市場に資源を集中し、その市場内で疑似的な独占（ミニ・リーダー）の地位を築く。専門化が鍵。`,
+  points:[
+    "4地位を正しく対応づけている",
+    "リーダーの同質化対応・非価格対応・周辺需要拡大を挙げている",
+    "チャレンジャー＝リーダーができない差別化、を述べている",
+    "ニッチャー＝特定市場への集中と疑似独占、を述べている",
+  ]},
+{ id:"E21", d:"comp", min:12, title:"サービスの4特性と対応策",
+  q:`サービスがモノ（有形財）と異なる4つの特性を挙げ、それぞれがもたらすマーケティング上の課題と対応策を述べなさい。`,
+  model:`【解答骨子】
+①無形性：購買前に見て確かめられない→品質の事前評価が困難。対応：施設・ユニフォーム・実績数値など物的証拠（フィジカル・エビデンス）による有形化、口コミ・レビューの活用。
+②不可分性（同時性）：生産と消費が同時で、提供者と顧客が現場に共在→提供者の質がそのまま品質になる、大量供給が難しい。対応：人材の採用・教育、複数拠点化、セルフサービス化。
+③変動性（品質の非均一性）：誰が・いつ・どこで提供するかで品質が変動。対応：マニュアル化・標準化、教育訓練、顧客満足の測定とフィードバック。
+④消滅性（非貯蔵性）：在庫できず、機会損失や供給過剰が生じる。対応：需要の平準化（時間帯別価格・予約制・オフピーク販促）、供給能力の柔軟化（パートタイム人員等）。`,
+  points:[
+    "4特性（無形性・不可分性・変動性・消滅性）を挙げている",
+    "各特性が生む課題を説明している",
+    "各特性に対応した施策（有形化・標準化・需要平準化等）を挙げている",
+  ]},
+{ id:"E22", d:"comp", min:12, title:"ブランド・エクイティ",
+  q:`「ブランド・エクイティ」とは何かを説明し、その構成要素と、高いブランド・エクイティが企業にもたらす利点を述べなさい。`,
+  model:`【解答骨子】
+ブランド・エクイティとは、ブランドが製品・サービスに付与する付加価値であり、ブランドに対する消費者の知識・反応の差として現れる資産である。同じ製品でもブランドが付くことで知覚・選好・支払意思額が変わるとき、その差がエクイティである。
+構成要素（アーカーの枠組み）：①ブランド認知、②知覚品質、③ブランド連想（イメージ）、④ブランド・ロイヤルティ、⑤その他の資産（商標等）。
+利点：①価格プレミアム（価格競争からの離脱＝脱コモディティ化）、②ロイヤルティによる安定的な売上・マーケティングコストの低減、③流通交渉力の向上、④ブランド拡張による新製品導入の成功率向上、⑤競合の攻撃や危機への耐性。`,
+  points:[
+    "エクイティ＝ブランドが付与する付加価値・資産、と定義している",
+    "構成要素（認知・知覚品質・連想・ロイヤルティ）を挙げている",
+    "価格プレミアムと価格競争からの離脱を挙げている",
+    "ロイヤルティ・拡張・交渉力など複数の利点を述べている",
+  ]},
+/* ---------- トレンド概念（リキッド消費枠への保険） ---------- */
+{ id:"E31", d:"cb", min:14, title:"行動経済学とマーケティング【トレンド】",
+  q:`プロスペクト理論の要点（参照点依存・損失回避・感応度逓減）を説明し、価格設定・販売促進への応用例を挙げなさい。また「ナッジ」とは何かを説明し、マーケティングでの活用例と留意点を述べなさい。`,
+  model:`【解答骨子】
+プロスペクト理論（カーネマン＆トベルスキー）：人は絶対的な水準ではなく、参照点からの利得・損失として価値を評価する（参照点依存）。同じ額でも利得の喜びより損失の痛みを大きく感じ（損失回避）、利得・損失が大きくなるほど感応は鈍る（感応度逓減）。
+応用例：①メーカー希望価格からの値引き表示（参照点を高く置き利得として知覚させる）、②「今買わないと損」の損失フレーム訴求（期間限定・残りわずか）、③値下げ・特典は分けて提示し、値上げは一度にまとめる（快の分離・痛みの統合）、④ポイント制度（貯めたポイントを失いたくない損失回避がスイッチングを抑止）。
+ナッジ：選択の自由を残したまま、選択環境（選択アーキテクチャ）の設計によって望ましい行動を後押しする仕掛け（セイラー）。
+活用例：①デフォルト設定（初期選択を推奨プランに）、②松竹梅の3段階提示（極端回避により中位を選ばせる）、③おすすめ表示・レジ横配置。
+留意点：消費者の不利益へ誘導する設計（スラッジ、ダークパターン）は不信・ブランド毀損・規制リスクを招く。顧客利益と両立する設計が不可欠。`,
+  points:[
+    "参照点依存（絶対水準でなく変化で評価）を説明している",
+    "損失回避（利得より損失を強く感じる）を説明している",
+    "価格・販促への応用例を2つ以上挙げている",
+    "ナッジ＝選択の自由を残した選択環境の設計、と説明している",
+    "スラッジ・ダークパターンへの倫理的留意を述べている",
+  ]},
+{ id:"E32", d:"comp", min:12, title:"カスタマージャーニーとエンゲージメント【トレンド】",
+  q:`「カスタマージャーニー」の概念と、ジャーニーマップを作成する意義を説明しなさい。また「カスタマー・エンゲージメント」とは何か、企業がそれを高めるための施策を述べなさい。`,
+  model:`【解答骨子】
+カスタマージャーニー：顧客が認知→検討→購買→利用→推奨に至る一連の体験プロセスを旅にたとえた概念。デジタル化により顧客接点（タッチポイント）がオンライン・オフラインに多様化し、購買前後を含む体験全体が競争の対象となった。
+ジャーニーマップの意義：①顧客視点で全接点を可視化し、部門縦割りで分断された施策を統合できる、②各段階の感情の起伏や不満点（ペインポイント）を特定し、改善の優先順位を付けられる、③段階ごとに適したコンテンツ・チャネルを設計できる（例：検討段階には比較情報）。
+カスタマー・エンゲージメント：購買にとどまらない、顧客のブランドへの能動的な関与・愛着。継続利用、レビュー投稿、推奨、共創への参加などとして現れる。
+施策：①ファンコミュニティ・イベントの運営、②UGC（顧客の投稿）を促す仕掛け、③データに基づくパーソナライズされた継続的コミュニケーション、④商品開発への顧客参加（共創）。
+エンゲージメントの高い顧客は、LTVの向上と推奨（新規顧客の獲得）の両面で収益に貢献する。`,
+  points:[
+    "ジャーニー＝認知から推奨までの体験プロセス、と説明している",
+    "タッチポイントの多様化という背景に触れている",
+    "マップの意義（可視化・ペインポイント特定・施策統合）を挙げている",
+    "エンゲージメント＝購買を超えた能動的関与、と定義している",
+    "施策を複数挙げ、LTV・推奨への貢献に接続している",
+  ]},
+{ id:"E33", d:"comp", min:12, title:"パーパス・ブランディングとサステナブル・マーケティング【トレンド】",
+  q:`「パーパス・ブランディング」とは何かを説明しなさい。また、サステナブル・マーケティングやエシカル消費の潮流が企業のマーケティングに与える影響と、取り組み上の留意点を述べなさい。`,
+  model:`【解答骨子】
+パーパス・ブランディング：パーパス（企業の社会的存在意義）を軸にブランドを構築する手法。機能的価値・情緒的価値を超えて「何のために存在するか」を示し、価値観への共感によって顧客・従業員との強い絆を作る。背景には、社会課題への関心の高まり、価値観で商品を選ぶ消費者（特に若年層）の増加、ESG投資の拡大がある。
+サステナブル・マーケティング：顧客・企業・社会の長期的利益を両立させるマーケティング。コトラーの社会志向のマーケティング・コンセプトの発展形。
+エシカル消費：環境・人権・地域への配慮を基準に商品を選ぶ消費行動。
+影響：①社会的価値が新たな差別化軸・価格プレミアムの源泉になる（脱コモディティ化）、②原材料調達・製造・容器包装・廃棄まで、マーケティング設計の対象が拡大する、③情報開示とトレーサビリティへの要求が高まる。
+留意点：実態を伴わない環境訴求（グリーンウォッシング）は、発覚時に強い不信とブランド毀損を招く。パーパスと事業・製品の一貫性、認証・データなど証拠に基づく訴求が不可欠である。`,
+  points:[
+    "パーパス＝社会的存在意義、と定義している",
+    "価値観への共感による絆、という機能を説明している",
+    "社会志向のマーケティング・コンセプトと接続している",
+    "エシカル消費を説明し、差別化・脱コモディティ化への影響を述べている",
+    "グリーンウォッシングのリスクと一貫性の必要に言及している",
+  ]},
+{ id:"E34", d:"pr", min:12, title:"コト消費・トキ消費と経験価値【トレンド】",
+  q:`「モノ消費からコト消費へ」といわれる変化を説明し、近年の「トキ消費」の概念にも触れなさい。また、モノを販売する企業がコト消費に対応するための方策を述べなさい。`,
+  model:`【解答骨子】
+モノ消費：製品の所有や機能そのものに価値を見出す消費。
+コト消費：体験・サービス・時間の過ごし方に価値を見出す消費（経験価値の重視）。背景：物質的な充足とコモディティ化により所有の価値が低下したこと、SNSで体験が共有・拡散されるようになったこと。
+トキ消費：その時・その場でしか味わえない、非再現性の体験に「参加すること」自体に価値を見出す消費（限定イベント・ライブ・フェス等）。非再現性・参加性・貢献性が特徴とされ、SNSでの共有と親和性が高い。
+対応方策：①製品を体験で包む（ワークショップ、体験型店舗）、②使用場面・過ごし方の提案（レシピ提案、コーディネート提案）、③限定性・イベント性の付与（期間限定、コラボレーション）、④ファンコミュニティの形成、⑤サービス化（サブスクリプション、レンタル）。
+モノを「体験の道具」と位置づけ直し、経験価値で差別化することが脱コモディティ化にもつながる。`,
+  points:[
+    "モノ消費＝所有・機能、コト消費＝体験（経験価値）と対比している",
+    "背景（物質的充足・コモディティ化・SNS共有）を述べている",
+    "トキ消費＝非再現性・参加性を説明している",
+    "対応方策を2つ以上、具体的に挙げている",
+    "経験価値による脱コモディティ化と接続している",
+  ]},
+{ id:"E35", d:"comp", min:12, title:"OMOとD2C【トレンド】",
+  q:`「OMO」と「D2C」をそれぞれ説明しなさい。また、これらの潮流が従来のチャネル戦略とブランド構築をどのように変えるかを論じなさい。`,
+  model:`【解答骨子】
+OMO（Online Merges with Offline）：オンラインとオフラインの境界をなくし、顧客IDとデータで統合された一つの購買体験として設計する考え方。企業側のチャネル統合であるオムニチャネルをさらに進め、顧客体験を起点にオンとオフを融合する。例：アプリ会員証による店頭・EC横断の行動データ統合、店舗で試してECで購入、ネット注文の店頭受取。
+D2C（Direct to Consumer）：メーカーが卸・小売を介さず、自社ECやSNSを通じて消費者に直接販売するモデル。
+利点：①顧客データを直接獲得し、製品改善やCRMに活用できる、②中間マージンの削減、③ブランドの世界観・ストーリーを一貫して伝えられる、④顧客との直接的な関係・コミュニティを築ける。
+変化：チャネルは単なる「販売経路」から「顧客体験とデータの接点」へと役割が変わる。ブランド構築は、マス広告による一方向の訴求から、SNS・コミュニティを通じた関係構築・共創型へと重心が移る。
+留意点：物流・顧客対応を自社で担う負担、自力での集客コスト。`,
+  points:[
+    "OMO＝顧客体験起点でのオンライン・オフライン融合、と説明している",
+    "オムニチャネルとの違い（企業側統合か顧客体験起点か）に触れている",
+    "D2C＝中間流通を介さない直接販売、と説明している",
+    "D2Cの利点（データ・マージン・世界観・関係）を複数挙げている",
+    "チャネル観・ブランド構築の変化を論じている",
+  ]},
+/* ---------- 公式模擬テスト対応 ---------- */
+{ id:"E36", d:"cb", min:8, chars:250, title:"顧客知覚価値【公式模試型】",
+  q:`顧客の購買決定の枠組みとしての「顧客知覚価値」の概念について、250字以内で説明しなさい。（公式模擬テスト 問2型）`,
+  model:`【解答骨子】
+顧客知覚価値とは、ある提供物から顧客が得られると知覚する総顧客便益と、その入手・使用に要すると知覚する総顧客コストの差（または比）である。総顧客便益には、製品の機能的便益に加え、付帯サービス、従業員の対応、ブランドイメージがもたらす便益が含まれる。総顧客コストには、金銭的コストだけでなく、時間的コスト、労力（エネルギー）コスト、心理的コストが含まれる。顧客は複数の選択肢の中から、知覚価値が最大のものを選ぶと考えられる。したがってマーケターは、便益の総和を高めるか、コストの総和を下げることで、選ばれる確率を高めることができる。価値は主観的な知覚であるため、その伝達も重要となる。`,
+  points:[
+    "総顧客便益と総顧客コストの差（比）として定義している",
+    "便益の内訳（製品・サービス・従業員・イメージ）に触れている",
+    "コストの内訳（金銭・時間・労力・心理）に触れている",
+    "顧客は知覚価値が最大の選択肢を選ぶ、という購買決定の枠組みを述べている",
+    "便益増大かコスト低減という打ち手まで言及している（加点）",
+  ]},
+{ id:"E37", d:"cb", min:16, chars:700, title:"ムード消費のメカニズムとSTP対応【公式模試型】",
+  q:`「ムード消費」はどのようなメカニズムで発生するか、「自動化」「問題解決」「中核的便益」の3語を必ず用いて、消費者心理の観点から300字以内で論じなさい。
+また、ムード消費の広がりに対応するマーケティング戦略を、セグメンテーション・ターゲティング・ポジショニングの3つの観点から、具体例を含めて400字以内で論じなさい。（公式模擬テスト 問3・4型）`,
+  model:`【解答骨子】
+（メカニズム）ムードとは、特定の対象に向かわない、比較的弱く一時的な気分状態をいう。通常の購買は、問題認識に始まり情報探索・代替品評価を経る問題解決の過程をとるが、ムード消費では「気分を変えたい・保ちたい」という内的状態が引き金となり、明確な問題認識や入念な比較を経ない、自動化された購買として生起する。選択の理由は製品の中核的便益（機能そのもの）ではなく、気分の改善・維持という情緒的便益にあり、低関与のヒューリスティックな処理によって意思決定が行われる。
+（STP対応）セグメンテーション：年齢や性別などの固定的属性ではなく、気分状態・利用場面（オケージョン）で市場を切る（例：頑張った日の「ご褒美」場面、平日夜の「リフレッシュ」場面）。ターゲティング：ムードが発生するシーン・時間帯・文脈に到達できるかで標的を選ぶ（通勤帰りの店頭、夜のSNS接触など）。ポジショニング：機能の優位性ではなく、情緒・世界観による位置づけを築く（例：コンビニの高価格帯スイーツは「自分へのご褒美」という報酬的ポジションを確立し、菓子の機能ではなく気分価値で選ばれている）。`,
+  points:[
+    "ムード＝対象を特定しない一時的な気分状態、と定義している",
+    "問題解決型の意思決定過程を経ない「自動化された購買」として説明している",
+    "中核的便益ではなく情緒的便益が選択理由であることを述べている",
+    "気分・場面（オケージョン）による細分化を提案している",
+    "情緒・世界観によるポジショニングを具体例付きで述べている",
+    "指定語句3語と指定観点（STP）をすべて使用している",
+  ]},
+];
+
+/* ============================================================
+   昨年度（2025年度）復元問題 — ユーザー受験メモに基づく
+   ============================================================ */
+const PAST = [
+{ no:"第1問", theme:"STP・市場細分化（ケース：落語・寄席を題材と推定）／昨年得点区分：A", subs:[
+  { s:"設問1", memo:"3c何の落語か／マーケティングミックス、売上、差別化の言葉を使って必要性を説明せよ",
+    intent:"ケース教材（落語・寄席の事例と推定）に対する3C分析ないし事例の特定と、指定語句を用いた戦略立案の必要性の論述。指定語句問題は「語句同士の論理的接続」が採点の中心。",
+    link:"E01",
+    ans:`差別化→価格競争回避→売上、STP→マーケティング・ミックスの一貫性、という因果の鎖を作るのが定石。→ 演習 E01 で型を練習。` },
+  { s:"設問2", memo:"デモジオサイコ行動の具体例を2個",
+    intent:"細分化4変数（人口動態・地理・心理・行動）の理解と、各変数に正しく対応した具体例を挙げられるか。",
+    link:"E02",
+    ans:`定義→例の順で書く。例が変数とズレる（使用場面をサイコに入れる等）のが典型的失点。→ 演習 E02。` },
+  { s:"設問3", memo:"最適なセグメント細分化。マーケティングへの反応、コスト、セグメント規模、売上を使う",
+    intent:"「細かいほどよいわけではない」というトレードオフの論述。指定4語を因果でつなげるか。",
+    link:"E03",
+    ans:`反応の同質性（便益）↔ 規模縮小・コスト増（費用）の対置構造で書き、効果的細分化の5要件で締める。→ 演習 E03。` },
+  { s:"設問4", memo:"リキッド消費の例、今後の方向性とセグメントの細分化の程度",
+    intent:"最新の消費研究（Bardhi & Eckhardt のリキッド消費）と細分化論の応用接続。1級らしい「知識×自分の見解」型。",
+    link:"E04",
+    ans:`3特徴→具体例→「静的属性から動的・場面ベースへ」という方向性。自分の考えは必ず理由とセットで。→ 演習 E04。` },
+]},
+{ no:"第2問", theme:"消費者行動（知覚・購買後行動）／昨年得点区分：B ← 最重点強化", subs:[
+  { s:"設問1・2", memo:"（メモなし・失念）",
+    intent:"第2問の後半が知覚プロセスと購買後行動のため、前半は購買意思決定プロセス、関与、動機づけ、態度、準拠集団などの周辺概念だった可能性が高い。昨年Bだった領域であり、周辺概念まで広く固めることが合格の鍵。",
+    link:"E08",
+    ans:`購買意思決定5段階（E08）、関与と精緻化見込みモデル（E09）に加え、弱点強化問題：多属性態度モデル（E23）、動機づけ理論（E24）、知覚リスク（E25）、クチコミ（E26）まで押さえて周辺領域を全カバー。` },
+  { s:"設問3", memo:"選択的歪曲",
+    intent:"知覚の選択性3概念のうち「歪曲」の正確な定義（先入観・既存信念に合わせて情報を解釈する傾向）。",
+    link:"E06",
+    ans:`注意・歪曲・保持の3点セットで覚え、必ずマーケターへの示唆まで書く。→ 演習 E06。` },
+  { s:"設問4", memo:"認知的不協和",
+    intent:"購買後の心理的緊張の定義、生じやすい条件、マーケターの対応策。",
+    link:"E07",
+    ans:`定義→条件（高額・高関与・選択肢拮抗）→対応策（フォロー・保証・購入者向け広告）の3段構成。→ 演習 E07。` },
+]},
+{ no:"第3問", theme:"製品・コモディティ化／昨年得点区分：A", subs:[
+  { s:"設問1", memo:"商品の属性5つ",
+    intent:"「5つ」から、コトラーの製品5階層（中核ベネフィット〜潜在製品）か、ロジャースの普及5属性（相対的優位性〜観察可能性）のいずれか。コモディティ化（差別化喪失）との文脈接続からは製品5階層が本命。両方準備しておくのが安全。",
+    link:"E10",
+    ans:`製品5階層 → 演習 E10、普及5属性 → 演習 E14。どちらも「5つ列挙＋各説明＋例」の型。` },
+  { s:"設問2", memo:"コモディティ化する要因。需要と供給視点で",
+    intent:"供給側（技術成熟・模倣容易化・過剰性能）と需要側（顧客の学習・低関与化・価格比較の容易化）を区別して論じられるか。",
+    link:"E11",
+    ans:`「供給側／需要側」の見出しを立てて書くと構成点が取りやすい。→ 演習 E11。` },
+  { s:"設問3", memo:"コモディティ化すると市場はどうなるか",
+    intent:"帰結の連鎖：価格競争→利益率低下→投資原資喪失→さらなる同質化、規模競争化と淘汰。",
+    link:"E12",
+    ans:`単発の列挙でなく「悪循環」として因果でつなぐと高評価。→ 演習 E12。` },
+  { s:"設問4", memo:"コモディティ化脱却を多面的に",
+    intent:"「多面的に」が指示語。経験価値・ブランド・サービス化・カテゴリー創造・顧客関係など3つ以上の異なる次元を挙げ、具体例を添える。",
+    link:"E13",
+    ans:`共通原理「競争軸を価格以外へ移す」を先に宣言してから各論を展開。→ 演習 E13。` },
+]},
+{ no:"第4問", theme:"価格戦略／昨年得点区分：B ← 最重点強化", subs:[
+  { s:"設問1", memo:"損益分岐点販売量",
+    intent:"固定費÷（価格−単位変動費）の計算。1級で数少ない計算問題であり確実な得点源。昨年Bだった領域。計算問題は満点を取り、論述で落とした分を取り返す。",
+    link:"E15",
+    ans:`公式を明記し計算過程を書く。目標利益版（固定費＋目標利益）も出題されうる。→ 演習 E15。` },
+  { s:"設問2", memo:"カニバの説明。交差弾力性、価格、需要を使う",
+    intent:"カニバリゼーションを経済学の概念（交差弾力性）で説明させる、知識の接続力を試す問題。",
+    link:"E16",
+    ans:`「交差弾力性が正＝代替関係」を軸に、自社製品間で需要を食い合う構造を説明。→ 演習 E16。` },
+  { s:"設問3", memo:"規模の経済と経験曲線効果の説明、共通点、違い",
+    intent:"混同しやすい2概念の厳密な区別。静態（一時点の規模）vs 動態（累積量・学習）。",
+    link:"E17",
+    ans:`「定義→定義→共通点→相違点」の4段落構成が書きやすく採点もされやすい。→ 演習 E17。` },
+  { s:"設問4", memo:"ポテチの実質値下げをやる理由。消費者行動、競合の反応の視点で",
+    intent:"増量パック（実質値下げ）の合理性を、参照価格・知覚（消費者行動）と価格競争回避（競合反応）の2視点で論じる応用問題。価格の応用問題に備え、価格差別（E27）・値上げ（E28）・サブスク（E29）・EDLP（E30）の弱点強化問題も用意。",
+    link:"E18",
+    ans:`視点が2つ指定されたら必ず両方に見出しを立てて配点を取り切る。→ 演習 E18。` },
+]},
+];
+
+/* ============================================================
+   用語ドリル（フラッシュカード）
+   ============================================================ */
+const CARDS = [
+{d:"stp",t:"STP",f:"セグメンテーション（市場細分化）→ターゲティング（標的市場の選択）→ポジショニング（競合に対する自社の位置づけの確立）という標的市場設定のプロセス。マーケティング・ミックスはポジショニングと一貫させる。"},
+{d:"stp",t:"効果的な細分化の5要件",f:"①測定可能性 ②利益確保可能性（十分な規模）③到達可能性 ④差別化可能性（反応の異質性）⑤実行可能性。"},
+{d:"stp",t:"細分化の4変数",f:"地理的変数（地域・気候）、人口動態変数（年齢・性別・所得・家族構成）、心理的変数（ライフスタイル・価値観）、行動変数（使用頻度・ベネフィット・ロイヤルティ・使用場面）。"},
+{d:"stp",t:"リキッド消費",f:"Bardhi & Eckhardt。短命性・アクセスベース・脱物質を特徴とする流動的な消費様式。所有前提のソリッド消費と対比。例：カーシェア、サブスク。"},
+{d:"stp",t:"ポジショニング",f:"標的顧客の頭の中に、競合と比べた自社製品の独自の位置（知覚）を築く活動。知覚マップで分析。差別化の軸は「重要性・独自性・優越性・伝達可能性・先制性・支払可能性・収益性」で評価。"},
+{d:"stp",t:"標的市場選択の5パターン",f:"単一セグメント集中／選択的専門化／製品専門化／市場専門化／フルカバレッジ。"},
+{d:"stp",t:"One to Oneマーケティング",f:"顧客一人ひとりを個別のセグメントとみなし、個別対応する究極の細分化。データとデジタル技術で実現可能性が拡大。"},
+{d:"cb",t:"選択的注意",f:"消費者は大半の刺激をふるいにかけ、現在のニーズに関連する刺激や期待から逸脱した刺激に注意を向ける。"},
+{d:"cb",t:"選択的歪曲",f:"受け取った情報を、自分の先入観や既存のブランド信念に合致するように解釈する傾向。強いブランドは中立情報も好意的に解釈される。"},
+{d:"cb",t:"選択的保持",f:"自分の態度や信念を支持する情報を選択的に記憶に残す傾向。好きなブランドの長所は記憶され、競合の長所は忘れられやすい。"},
+{d:"cb",t:"認知的不協和",f:"購買後に「この選択は正しかったか」と感じる心理的緊張（フェスティンガー）。高額・高関与・選択肢拮抗で大。対応：購買後フォロー、保証、購入者の選択を肯定する広告。"},
+{d:"cb",t:"購買意思決定プロセス",f:"問題認識→情報探索→代替品評価→購買決定→購買後行動 の5段階。低関与では省略・順序変化あり。"},
+{d:"cb",t:"関与",f:"対象（製品・購買）に対する思い入れ・重要性の知覚の程度。関与の高低で情報処理の深さと意思決定プロセスが変わる。"},
+{d:"cb",t:"精緻化見込みモデル",f:"ペティ&カシオッポ。関与・処理能力が高→中心的ルート（論拠を吟味、態度は持続的）。低→周辺的ルート（タレント・雰囲気等の手がかり、態度は一時的）。"},
+{d:"cb",t:"想起集合",f:"購買時に消費者の記憶から想起されるブランドの集合。ここに入らなければ選ばれない。ブランド認知構築の目標。"},
+{d:"cb",t:"準拠集団",f:"個人の態度や行動に影響を与える集団。所属集団・願望集団・拒否集団。影響は情報的・功利的・価値表出的。"},
+{d:"cb",t:"内的参照価格",f:"消費者が記憶に持つ「この商品はこのくらいの価格」という基準。実売価格はこれと比較して高い/安いと知覚される。値下げの常態化は参照価格を毀損する。"},
+{d:"cb",t:"マズローの欲求階層",f:"生理的→安全→社会的（所属と愛）→承認→自己実現。低次の欲求が満たされると高次の欲求が動機づけ要因になるとする理論。"},
+{d:"cb",t:"多属性態度モデル",f:"ブランドへの態度＝各属性への信念（どの程度満たすか）×属性の重要度 の総和とするモデル（フィッシュバイン型）。示唆：重要度の変更・信念の改善・新属性の追加で態度を変えられる。"},
+{d:"cb",t:"知覚リスク",f:"購買結果の不確実性から感じる主観的リスク。機能的・金銭的・身体的・社会的・心理的・時間的。低減行動：情報収集・有名ブランド選択・少量試用。対応：保証・トライアル・レビュー。"},
+{d:"cb",t:"ハーズバーグの2要因理論",f:"不満足を防ぐ衛生要因と、満足を生む動機づけ要因は別次元とする理論。不満の解消だけでは選ばれる理由にならない。購買を動機づける差別化要因の特定・訴求が必要。"},
+{d:"pr",t:"製品の5階層",f:"中核ベネフィット→基本製品→期待製品→膨張製品→潜在製品。差別化は主に膨張製品の層で生じ、やがて期待製品化する（期待水準の上昇）。"},
+{d:"pr",t:"コモディティ化",f:"技術・品質の同質化により機能面の差別化が困難となり、顧客からどれも同じに見え、価格だけが選択基準になる現象。"},
+{d:"pr",t:"コモディティ化の供給側要因",f:"技術の成熟・標準化、モジュール化による模倣容易化、過剰性能（性能が要求水準を超え差が無意味化）、供給過剰。"},
+{d:"pr",t:"コモディティ化の需要側要因",f:"顧客の学習（目が肥え基本機能で十分と判断）、ニーズ飽和・低関与化、情報化による価格比較の容易化と価格感度上昇。"},
+{d:"pr",t:"脱コモディティ化の方策",f:"経験価値による差別化／ブランド構築／サービス化・ソリューション化（コト売り）／カテゴリー・イノベーション／顧客関係構築（サブスク・カスタマイズ）。共通原理は競争軸を価格以外へ移すこと。"},
+{d:"pr",t:"経験価値マーケティング",f:"製品の機能ではなく、購買・使用の過程で得られる感覚的・情緒的・自己表現的な体験に価値を置くアプローチ。例：スターバックスの「第三の場所」。"},
+{d:"pr",t:"イノベーション普及の5属性",f:"ロジャース：相対的優位性・両立性・複雑性（負の影響）・試用可能性・観察可能性。普及速度を左右する。"},
+{d:"pr",t:"イノベーター理論の採用者区分",f:"イノベーター2.5%→アーリーアダプター13.5%→アーリーマジョリティ34%→レイトマジョリティ34%→ラガード16%。普及率16%の壁（キャズム論はムーア）。"},
+{d:"pr",t:"製品ライフサイクル",f:"導入期（認知構築）→成長期（差別化・流通拡大）→成熟期（シェア防衛・リマーケティング）→衰退期（撤退・収穫）。段階ごとに戦略の定石が異なる。"},
+{d:"pr",t:"計画的陳腐化",f:"新モデル投入により既存品を心理的・機能的に古く感じさせ、買い替えを促す戦略。"},
+{d:"price",t:"損益分岐点販売量",f:"固定費 ÷（販売価格 − 単位変動費）。目標利益達成販売量は（固定費＋目標利益）÷ 単位貢献利益。"},
+{d:"price",t:"貢献利益（限界利益）",f:"販売価格 − 単位変動費。1個売るごとに固定費回収と利益に貢献する額。"},
+{d:"price",t:"交差弾力性",f:"A財の価格変化率に対するB財の需要量変化率。正＝代替財、負＝補完財、ゼロ近傍＝独立財。"},
+{d:"price",t:"カニバリゼーション",f:"自社の新製品が自社既存製品の需要を奪う共食い現象。自社製品間の交差弾力性が正に大きいと発生。増分売上・利益で評価し、競合に奪われるより自社で奪う判断もある。"},
+{d:"price",t:"需要の価格弾力性",f:"価格変化率に対する需要量変化率。弾力性が高い＝値下げで需要が大きく伸びる。ペネトレーション価格の前提条件。"},
+{d:"price",t:"規模の経済",f:"一時点の生産・事業規模が大きいほど単位コストが低下する効果。固定費の分散、購買力による。静態的。"},
+{d:"price",t:"経験曲線効果",f:"累積生産量が倍増するごとに単位コストが一定率（約10〜30%）低下する経験則（BCG）。習熟・工程改善など学習の蓄積による。動態的。"},
+{d:"price",t:"上澄み吸収価格戦略",f:"スキミング。発売時高価格→段階的に引き下げ。革新性が高く模倣困難、価格感度の低い層が存在する場合に有効。"},
+{d:"price",t:"市場浸透価格戦略",f:"ペネトレーション。発売時から低価格で一気に普及・シェア獲得。価格弾力性が高く、規模の経済・経験曲線が働く場合に有効。"},
+{d:"price",t:"価格設定の3つの基本アプローチ",f:"コスト志向（コストプラス・目標利益）／需要・価値志向（知覚価値・需要の強さ）／競争志向（実勢価格・入札）。"},
+{d:"price",t:"心理的価格設定",f:"端数価格（198円）、威光価格（高価格＝高品質シグナル）、慣習価格、価格ライニング。参照価格の管理を含む。"},
+{d:"price",t:"EDLP",f:"エブリデー・ロー・プライス。特売（ハイ&ロー）に対し常時低価格を維持する政策。価格の信頼性確保と販促・物流コスト低減が狙い。"},
+{d:"price",t:"価格差別",f:"同一の製品・サービスを顧客や状況により異なる価格で販売し、支払意思額の差から利益を最大化。例：学割・時間帯別料金。成立条件：感度の識別・転売防止・反発回避。"},
+{d:"price",t:"ダイナミック・プライシング",f:"需給・時期に応じ価格を機動的に変える手法。消滅性の高いサービス（ホテル・航空）と好相性。利点：収益最大化・需要平準化。留意：公平性の知覚毀損。"},
+{d:"price",t:"フリーミアム",f:"基本機能を無料提供し上位機能を有料化するモデル。限界費用の低いデジタル財に適合。成功条件：無料でも価値が伝わる・明確な転換動機・チャーン管理。"},
+{d:"comp",t:"競争地位別戦略",f:"リーダー（周辺需要拡大・同質化対応・非価格対応）／チャレンジャー（リーダーができない差別化）／フォロワー（迅速な模倣で低コスト）／ニッチャー（特定市場に集中し疑似独占）。"},
+{d:"comp",t:"ポーターの3つの基本戦略",f:"コスト・リーダーシップ／差別化／集中（コスト集中・差別化集中）。中途半端（スタック・イン・ザ・ミドル）は低収益に陥るとされる。"},
+{d:"comp",t:"サービスの4特性",f:"無形性・不可分性（生産と消費の同時性）・変動性（品質の非均一性）・消滅性（在庫不可）。それぞれ有形化・人材教育・標準化・需要平準化で対応。"},
+{d:"comp",t:"サービス・プロフィット・チェーン",f:"従業員満足→サービス品質→顧客満足→顧客ロイヤルティ→企業の成長・収益性という因果連鎖のモデル。"},
+{d:"comp",t:"ブランド・エクイティ",f:"ブランドが製品に付与する付加価値・資産。構成要素：認知・知覚品質・連想・ロイヤルティ（アーカー）。価格プレミアムと脱価格競争をもたらす。"},
+{d:"comp",t:"ブランド拡張",f:"確立したブランドを別カテゴリーの新製品に適用すること。導入コスト低減と成功率向上が利点だが、失敗時の毀損や希薄化のリスクがある。"},
+{d:"comp",t:"プッシュ戦略とプル戦略",f:"プッシュ：流通業者への販促・人的販売で製品を押し込む。プル：消費者への広告等で指名需要を作り流通に引かせる。関与・ブランド差の大きさで使い分け。"},
+{d:"comp",t:"CRMとLTV",f:"顧客関係管理。顧客生涯価値（LTV）＝顧客が取引期間全体でもたらす利益の現在価値。新規獲得コストは維持コストより高く、優良顧客の維持が収益の鍵。"},
+{d:"cb",t:"プロスペクト理論",f:"カーネマン&トベルスキー。人は参照点からの利得・損失で価値を評価し（参照点依存）、利得より損失を強く感じ（損失回避）、額が大きくなるほど感応が鈍る（感応度逓減）。値引き表示・損失フレーム訴求・ポイント制度の理論的基盤。"},
+{d:"cb",t:"ナッジ",f:"セイラー。選択の自由を残したまま、選択環境（選択アーキテクチャ）の設計で望ましい行動を後押しする仕掛け。例：デフォルト設定、松竹梅提示（極端回避）。不利益への誘導（スラッジ・ダークパターン）は不信・規制リスク。"},
+{d:"comp",t:"カスタマージャーニー",f:"顧客が認知→検討→購買→利用→推奨に至る体験プロセス。ジャーニーマップで接点（タッチポイント）と感情を可視化し、ペインポイントの特定と施策の統合に使う。"},
+{d:"comp",t:"カスタマー・エンゲージメント",f:"購買を超えた顧客のブランドへの能動的関与・愛着（継続利用・レビュー・推奨・共創参加）。コミュニティ、UGC促進、パーソナライズで高め、LTVと推奨に貢献。"},
+{d:"comp",t:"パーパス・ブランディング",f:"パーパス（企業の社会的存在意義）を軸にしたブランド構築。価値観への共感で顧客・従業員との絆を作る。事業との一貫性が命で、実態なき訴求（グリーンウォッシング）は逆効果。"},
+{d:"comp",t:"エシカル消費",f:"環境・人権・地域への配慮を基準に商品を選ぶ消費行動。サステナブル・マーケティング（顧客・企業・社会の長期利益の両立）の需要側の現れ。社会的価値が差別化軸・プレミアムの源泉になる。"},
+{d:"comp",t:"OMO",f:"Online Merges with Offline。顧客IDとデータでオンライン・オフラインを統合した一つの購買体験として設計する考え方。企業側のチャネル統合（オムニチャネル）を顧客体験起点に進めたもの。"},
+{d:"comp",t:"D2C",f:"Direct to Consumer。メーカーが卸・小売を介さず自社EC・SNSで直接販売するモデル。顧客データの直接獲得、中間マージン削減、世界観の一貫伝達、コミュニティ形成が利点。"},
+{d:"pr",t:"コト消費・トキ消費",f:"コト消費＝所有より体験・時間の過ごし方に価値（経験価値）。トキ消費＝その時・その場限りの非再現性の体験への参加自体に価値（限定イベント・フェス）。非再現性・参加性・貢献性が特徴。"},
+{d:"cb",t:"顧客知覚価値",f:"総顧客便益（製品・サービス・従業員・イメージ）− 総顧客コスト（金銭・時間・労力・心理）の差（または比）。顧客は知覚価値が最大の選択肢を選ぶ。打ち手は便益の増大かコストの低減。※公式模擬テスト出題"},
+{d:"cb",t:"ムード消費",f:"一時的な気分（ムード）の維持・改善を目的に、問題解決型の意思決定を経ず自動的に生じる消費。中核的便益（機能）より情緒的便益が購買理由。気分・場面による細分化と情緒訴求で対応。※公式模擬テスト出題"},
+{d:"pr",t:"製品の3層モデル",f:"製品を中核（本質的便益）・形態（品質・特徴・デザイン・ブランド・パッケージ）・付随機能（配達・保証・アフターサービス等の付加的なサービス・便益）で捉える枠組み（『ゼミナール マーケティング入門』）。コトラー5階層と対応させて覚える。※公式模擬テスト出題（付随機能）"},
+];
+
+/* ============================================================
+   音声原稿 — 耳で聞いて理解できる話し言葉に書き下ろしたスクリプト。
+   画面表示用の教材本文とは別に管理する（キーは用語名・問題ID）。
+   ============================================================ */
+const CARD_AUDIO = {
+"STP":"エスティーピーとは、マーケティング戦略の基本となるプロセスです。まず市場を細かく分けるセグメンテーション、次にねらう市場を選ぶターゲティング、最後に、競合と比べた自社の位置づけを定めるポジショニング、という3つの段階から成り立っています。製品や価格などのマーケティング・ミックスは、このポジショニングと一貫させることが重要です。",
+"効果的な細分化の5要件":"効果的な市場細分化には、5つの要件があります。1つ目は測定可能性です。セグメントの規模や購買力が測れることです。2つ目は利益確保可能性です。十分な規模と収益性があることです。3つ目は到達可能性です。流通やメディアを通じて、そのセグメントに働きかけられることです。4つ目は差別化可能性です。セグメントごとに、マーケティングへの反応が異なることです。5つ目は実行可能性です。自社の資源で、実際に施策を実行できることです。",
+"細分化の4変数":"消費者市場を細分化する変数は、大きく4種類あります。1つ目は地理的変数です。地域や都市の規模、気候などで分けます。2つ目は人口動態変数です。年齢、性別、所得、家族構成などで分けます。3つ目は心理的変数です。ライフスタイルや価値観で分けます。4つ目は行動変数です。使用頻度、求めるベネフィット、ロイヤルティ、使う場面などで分けます。実務では、これらの変数を組み合わせて使います。",
+"リキッド消費":"リキッド消費とは、バーディとエックハートが提唱した概念で、所有を前提としない、流動的な消費のあり方のことです。特徴は3つあります。1つ目は、価値を感じる期間が短い、短命性です。2つ目は、所有せず、必要なときだけ利用する、アクセスベースです。3つ目は、モノそのものより、サービスや体験を重視する、脱物質です。例としては、カーシェアリングや、音楽や動画のサブスクリプションが挙げられます。これと対比される、所有を前提とした従来型の消費は、ソリッド消費と呼ばれます。",
+"ポジショニング":"ポジショニングとは、標的顧客の頭の中に、競合と比べた自社製品の独自の位置づけを築く活動です。分析には、2つの軸で各ブランドの位置を図に描く、知覚マップがよく使われます。差別化の軸を選ぶときは、顧客にとって重要か、独自のものか、競合より優れているか、わかりやすく伝えられるか、真似されにくいか、その分を支払ってもらえるか、そして自社に利益をもたらすか、という基準で評価します。",
+"標的市場選択の5パターン":"標的市場の選び方には、5つのパターンがあります。1つ目は、1つのセグメントに絞り込む、単一セグメント集中です。2つ目は、魅力的な複数のセグメントを選ぶ、選択的専門化です。3つ目は、特定の製品で複数のセグメントに対応する、製品専門化です。4つ目は、特定の顧客層のさまざまなニーズに応える、市場専門化です。5つ目は、すべてのセグメントに対応する、フルカバレッジです。フルカバレッジは、大企業だけが取れる選択です。",
+"One to Oneマーケティング":"ワン・トゥ・ワン・マーケティングとは、顧客一人ひとりを1つのセグメントとみなして、個別に対応する、いわば究極の細分化です。顧客データとデジタル技術の発達によって、実現の可能性が広がっています。",
+"選択的注意":"選択的注意とは、消費者が、日々受け取る大量の刺激の大半をふるいにかけて、ごく一部にしか注意を向けないことです。人は、いま自分が必要としているものに関係する刺激や、予想から大きく外れた刺激に注意を向けます。ですからマーケターは、標的顧客のニーズに関連づけた、目立つ表現で注意を獲得する必要があります。",
+"選択的歪曲":"選択的歪曲とは、受け取った情報を、自分の先入観や、もともと持っているブランドへの信念に合うように、解釈してしまう傾向のことです。強いブランドに好意を持つ消費者は、中立的な情報さえ好意的に解釈します。だからこそ、ブランドへの良い信念を、事前に作っておくことが重要になります。",
+"選択的保持":"選択的保持とは、自分の態度や信念を支持する情報だけを、選んで記憶に残す傾向のことです。好きなブランドの長所はよく覚えている一方で、競合ブランドの長所は忘れられやすいのです。マーケターは、繰り返し訴求することで、記憶への定着を図る必要があります。",
+"認知的不協和":"認知的不協和とは、フェスティンガーの理論にもとづく概念で、購買のあとに、この選択は本当に正しかったのだろうか、という心理的な緊張を感じることです。高額な買い物、思い入れの強い買い物、選択肢どうしの魅力が拮抗していた買い物ほど、大きくなります。マーケターの対応としては、購入直後のフォロー、保証や返品制度による安心の提供、そして、購入者の選択を肯定する広告が有効です。",
+"購買意思決定プロセス":"消費者の購買意思決定プロセスは、5つの段階から成ります。第1段階は、現状と理想のギャップに気づく、問題認識です。第2段階は、情報探索です。第3段階は、候補を比べる代替品評価です。第4段階は、購買の決定です。そして第5段階が、購買後の行動です。なお、関与が低い買い物では、段階が省略されたり、順序が変わったりします。",
+"関与":"関与とは、製品や購買に対する、消費者の思い入れや、重要性の感じ方の程度のことです。関与が高いか低いかによって、情報処理の深さや、意思決定の丁寧さが変わります。",
+"精緻化見込みモデル":"精緻化見込みモデルとは、ペティとカシオッポが提唱した、態度が作られる道筋には2つのルートがある、とするモデルです。関与と、情報を処理する能力がともに高いときは、中心的ルートがはたらきます。メッセージの中身をじっくり吟味して態度が作られるため、その態度は長続きします。一方、関与や処理能力が低いときは、周辺的ルートがはたらきます。タレントの好感度や雰囲気といった手がかりで態度が作られるため、その態度は一時的で、変わりやすいものになります。",
+"想起集合":"想起集合とは、消費者が買い物のときに、記憶の中から思い浮かべるブランドの集まりのことです。この集合に入っていなければ、そもそも選ばれることがありません。ブランド認知を築く目標は、この想起集合に入ることです。",
+"準拠集団":"準拠集団とは、個人の態度や行動に影響を与える集団のことです。自分が属している所属集団、あこがれの対象である願望集団、距離を置きたい拒否集団があります。影響の与え方には、情報を提供する影響、周囲への同調を促す影響、そして、自分の価値観を表現させる影響の、3種類があります。",
+"内的参照価格":"内的参照価格とは、消費者が記憶の中に持っている、この商品はだいたいこのくらいの値段だ、という基準のことです。実際の売価は、この基準と比べて、高い、安いと判断されます。値下げを続けると、この基準そのものが下がってしまい、元の価格に戻したときに、値上げだと受け取られてしまいます。",
+"マズローの欲求階層":"マズローの欲求階層説では、人間の欲求を5つの段階で捉えます。下から順に、生理的欲求、安全の欲求、所属と愛の欲求、承認の欲求、そして自己実現の欲求です。低い階層の欲求が満たされると、より高い階層の欲求が、行動の動機になると考えます。",
+"多属性態度モデル":"多属性態度モデルとは、ブランドに対する態度が、どのように決まるかを説明するモデルです。消費者は、そのブランドが各属性をどの程度満たしているか、という信念と、その属性をどれだけ重視するか、という重要度を、掛け合わせて足し上げ、総合的な態度を作る、と考えます。マーケターへの示唆としては、自社が強い属性の重要度を高める訴求や、弱い属性への信念の改善、新しい属性の追加によって、態度を変えられる、ということが挙げられます。",
+"知覚リスク":"知覚リスクとは、買った結果がどうなるかわからない、という不確実性から、消費者が感じる主観的なリスクのことです。性能への不安である機能的リスク、お金を無駄にする金銭的リスク、周囲からどう見られるかという社会的リスクなど、いくつかの種類があります。消費者はリスクを減らすために、情報を集めたり、有名なブランドを選んだり、少量だけ試したりします。マーケターは、保証や返金、無料のお試し、レビューの充実によって、このリスクを下げることができます。",
+"ハーズバーグの2要因理論":"ハーズバーグの2要因理論とは、不満足を防ぐ衛生要因と、満足を生み出す動機づけ要因は、まったく別のものだ、とする理論です。例えば、不具合や欠品といった不満の種を解消しても、不満がなくなるだけで、選ばれる理由にはなりません。買いたいという気持ちを生み出す、動機づけ要因を見つけて訴求することが必要です。",
+"製品の5階層":"コトラーは、製品を5つの階層で捉えました。第1の階層は、中核ベネフィットです。顧客が本当に買っている、根源的な便益のことです。第2の階層は、便益を製品として形にした、基本製品です。第3の階層は、買い手が当然期待する条件を備えた、期待製品です。第4の階層は、期待を超える付加価値を持つ、膨張製品です。差別化は、主にこの膨張製品の層で生まれます。第5の階層は、将来の可能性を含む、潜在製品です。競争が進むと、膨張製品はやがて当たり前の期待製品に変わるため、付加価値を更新し続ける必要があります。",
+"コモディティ化":"コモディティ化とは、企業間の技術や品質が似通ってしまい、機能による差別化が難しくなって、顧客からはどの会社の製品も同じに見え、価格だけが選択の基準になっていく現象のことです。",
+"コモディティ化の供給側要因":"コモディティ化が起こる、供給側の要因は主に4つあります。1つ目は、技術が成熟して標準化し、品質が横並びになることです。2つ目は、部品の外部調達やモジュール化によって、真似することが簡単になることです。3つ目は、過剰性能です。性能の向上が顧客の要求水準を超えてしまい、性能の差が意味を失うことです。4つ目は、供給過剰による競争の激化です。",
+"コモディティ化の需要側要因":"コモディティ化が起こる、需要側の要因は主に3つあります。1つ目は、顧客が学習して目が肥え、基本機能で十分だと判断するようになることです。2つ目は、ニーズが満たされて関心が薄れていく、低関与化です。3つ目は、インターネットで価格の比較が簡単になり、価格への感度が上がることです。",
+"脱コモディティ化の方策":"コモディティ化から抜け出す方策に共通する原理は、競争の軸を、価格以外へ移すことです。具体的には、体験の価値で差別化する経験価値戦略、指名買いを生み出すブランド構築、モノではなく課題解決まで提供するサービス化、新しい市場カテゴリーそのものを作り出すカテゴリー・イノベーション、そして、サブスクリプションやカスタマイズによる、顧客との関係の構築があります。",
+"経験価値マーケティング":"経験価値マーケティングとは、製品の機能ではなく、買う過程や使う過程で得られる、感覚的、情緒的な体験に価値を置く考え方です。有名な例がスターバックスです。コーヒーというモノではなく、家庭でも職場でもない、第三の場所という体験を提供しています。",
+"イノベーション普及の5属性":"ロジャースは、新製品の普及の速さを左右する、5つの属性を挙げました。1つ目は、既存の製品より優れていると感じられる、相対的優位性です。2つ目は、いままでの生活習慣や価値観に合っている、両立性です。3つ目は、複雑性です。これだけは、高いほど普及が遅れます。4つ目は、小さく試すことができる、試用可能性です。5つ目は、使っている様子が他人から見える、観察可能性です。",
+"イノベーター理論の採用者区分":"イノベーター理論では、新製品を採用する順番で、消費者を5つのグループに分けます。最初に採用するイノベーターは、全体の2.5パーセントです。次のアーリーアダプターは、13.5パーセントです。続くアーリーマジョリティと、レイトマジョリティは、それぞれ34パーセントです。そして、最後まで採用しないラガードが、16パーセントです。イノベーターとアーリーアダプターを合わせた、普及率16パーセントを超えられるかが壁とされ、この溝を強調した理論が、ムーアのキャズム論です。",
+"製品ライフサイクル":"製品ライフサイクルは、4つの段階から成ります。導入期は、製品の認知を築く段階です。成長期は、差別化と流通の拡大を進める段階です。成熟期は、シェアを守りながら、新しい用途や使い方を提案する段階です。衰退期は、撤退するか、投資を抑えて利益を刈り取るかを判断する段階です。このように、段階ごとに戦略の定石が異なります。",
+"計画的陳腐化":"計画的陳腐化とは、新しいモデルを次々と投入することで、既存の製品を心理的、機能的に古く感じさせて、買い替えを促す戦略のことです。",
+"損益分岐点販売量":"損益分岐点販売量とは、損失も利益も出ない販売量のことです。固定費を、販売価格から1個あたりの変動費を引いた金額、つまり貢献利益で割って求めます。目標とする利益を達成する販売量を求めるときは、固定費に目標利益を足してから、同じように貢献利益で割ります。",
+"貢献利益（限界利益）":"貢献利益とは、限界利益とも呼ばれ、販売価格から、1個あたりの変動費を引いた金額のことです。1個売るごとに、固定費の回収と利益の獲得に、この金額だけ貢献する、という意味を持ちます。",
+"交差弾力性":"交差弾力性とは、ある商品の価格が変化したときに、別の商品の需要がどれだけ変化するかを表す指標です。この値がプラスであれば、2つの商品は代替関係にあります。マイナスであれば補完関係、ゼロに近ければ、互いに無関係だとわかります。",
+"カニバリゼーション":"カニバリゼーションとは、共食いという意味で、自社の新製品が、競合ではなく、自社の既存製品の売上を奪ってしまう現象のことです。自社製品どうしの交差弾力性が、大きなプラスのときに起こります。評価するときは、会社全体で、売上と利益がどれだけ純粋に増えたかで判断します。また、放っておけば競合に奪われる需要なら、自社の中で奪うほうがよい、という考え方から、あえて許容する場合もあります。",
+"需要の価格弾力性":"需要の価格弾力性とは、価格の変化率に対して、需要がどれだけ変化するかを表す指標です。弾力性が高い商品は、値下げすると需要が大きく伸びます。これは、低価格で一気に市場へ浸透する、ペネトレーション価格戦略の前提条件になります。",
+"規模の経済":"規模の経済とは、ある時点での生産や事業の規模が大きいほど、製品1個あたりのコストが下がる効果のことです。設備や研究開発、広告といった固定費が、多くの生産量に分散されることなどで生じます。ある一時点の規模で決まる、静態的な効果です。",
+"経験曲線効果":"経験曲線効果とは、累積の生産量が2倍になるごとに、1個あたりのコストが、およそ10パーセントから30パーセントずつ下がっていく、という経験則です。ボストン・コンサルティング・グループが提唱しました。作業者の習熟や、工程の改善といった、学習の積み重ねによって生じます。過去からの累積生産量で決まる、動態的な効果です。",
+"上澄み吸収価格戦略":"上澄み吸収価格戦略は、スキミングとも呼ばれます。発売のときに高い価格を設定し、価格をあまり気にしない革新的な層から利益を回収したあと、段階的に価格を下げて、市場を広げていく戦略です。製品の革新性が高く、当面は真似されにくい場合に有効です。",
+"市場浸透価格戦略":"市場浸透価格戦略は、ペネトレーションとも呼ばれます。発売のときから低い価格を設定して、一気に普及とシェアの獲得をねらう戦略です。需要の価格弾力性が高く、規模の経済や経験曲線効果がはたらく場合に有効です。",
+"価格設定の3つの基本アプローチ":"価格設定の基本的なアプローチは、3つあります。1つ目は、かかったコストに利益を上乗せする、コスト志向です。2つ目は、顧客が感じる価値や、需要の強さをもとに決める、需要志向です。3つ目は、競合の実勢価格に合わせる、競争志向です。",
+"心理的価格設定":"心理的価格設定には、代表的な手法が4つあります。1つ目は端数価格です。198円のように、わずかに安く見せる方法です。2つ目は威光価格です。高い価格そのものが、品質の証になる価格です。3つ目は慣習価格です。長年の相場が定着している価格のことです。4つ目は価格ライニングです。商品の価格帯を、いくつかの段階に揃える方法です。",
+"EDLP":"イーディーエルピーとは、エブリデー・ロー・プライスの略で、特売で価格を上げ下げするのではなく、常に低価格を維持する価格政策のことです。価格への信頼を作るとともに、特売のための販促費や、物流コストを減らせる利点があります。",
+"価格差別":"価格差別とは、同じ製品やサービスを、顧客や状況によって異なる価格で販売し、支払ってもよいと思う金額の差から、利益を最大化する手法です。例としては、学生割引や、時間帯別の料金があります。成立するには、3つの条件が必要です。1つ目は、顧客の価格感度を見分けられることです。2つ目は、安く買った人からの転売を防げることです。3つ目は、不公平だという反発や、法律の規制を避けられることです。",
+"ダイナミック・プライシング":"ダイナミック・プライシングとは、需要と供給や、時期に応じて、価格を機動的に変える手法です。ホテルや航空券のように、在庫できない、消滅性の高いサービスと相性がよい方法です。利点は、収益の最大化と、需要の平準化です。ただし、同じ商品を高く買わされた、という不公平感を生むと、ブランドを傷つけるおそれがあるため、注意が必要です。",
+"フリーミアム":"フリーミアムとは、基本的な機能を無料で提供し、上位の機能を有料にする価格モデルです。追加のコストがほとんどかからない、デジタルの財に適しています。成功の条件は、無料版でも価値がしっかり伝わること、有料版に切り替えたくなる明確な理由を設計すること、そして、解約率、いわゆるチャーンを管理することです。",
+"競争地位別戦略":"コトラーの競争地位別戦略では、市場での地位に応じて、取るべき定石が異なります。シェア1位のリーダーは、市場全体を広げ、挑戦者の差別化をすばやく真似て無効化し、価格競争は避けます。2位、3位のチャレンジャーは、リーダーが真似できない差別化で挑みます。フォロワーは、上位企業の成功をすばやく模倣して、コストを抑えます。ニッチャーは、大手が来ない小さな市場に集中して、その中で疑似的な独占を築きます。",
+"ポーターの3つの基本戦略":"ポーターの3つの基本戦略を説明します。1つ目は、コストの低さで勝つ、コスト・リーダーシップです。2つ目は、価値の違いで勝つ、差別化です。3つ目は、特定の市場に絞り込む、集中です。どれも選ばずに中途半端になると、収益性が低くなるとされています。",
+"サービスの4特性":"サービスには、モノと異なる4つの特性があります。1つ目は、形がなく、事前に確かめられない無形性です。2つ目は、生産と消費が同時に起こる、不可分性です。3つ目は、提供する人や状況によって品質がばらつく、変動性です。4つ目は、在庫ができない消滅性です。それぞれに対して、目に見える証拠づくり、人材の教育、マニュアル化と標準化、需要の平準化、といった対応を取ります。",
+"サービス・プロフィット・チェーン":"サービス・プロフィット・チェーンとは、従業員の満足がサービスの品質を高め、それが顧客の満足とロイヤルティにつながり、最終的に企業の成長と収益をもたらす、という因果の連鎖を表したモデルです。",
+"ブランド・エクイティ":"ブランド・エクイティとは、ブランドが製品にもたらす付加価値を、資産として捉えた概念です。アーカーの枠組みでは、ブランド認知、知覚品質、ブランド連想、ブランド・ロイヤルティなどから構成されます。エクイティが高いと、価格プレミアムが得られ、価格競争から抜け出すことができます。",
+"ブランド拡張":"ブランド拡張とは、確立したブランドの名前を、別のカテゴリーの新製品に使うことです。新製品の導入コストを抑えて、成功率を高められる一方で、失敗したときには元のブランドまで傷つくリスクや、ブランドのイメージが薄まるリスクがあります。",
+"プッシュ戦略とプル戦略":"プッシュ戦略とは、卸や小売といった流通業者への販売促進や、人的販売によって、製品を店頭へ押し込んでいく方法です。一方のプル戦略とは、消費者に直接広告をすることで指名需要を作り、お店のほうから製品を置きたくなるよう仕向ける方法です。ブランドの力や、顧客の関与の高さによって使い分けます。",
+"CRMとLTV":"シーアールエムとは、顧客関係管理のことです。エルティーブイ、すなわち顧客生涯価値とは、1人の顧客が、取引期間の全体を通じてもたらしてくれる利益のことです。新しい顧客を獲得するコストは、既存のお客様を維持するコストよりもずっと高いため、優良顧客との関係の維持が、収益の鍵になります。",
+"プロスペクト理論":"プロスペクト理論とは、カーネマンとトベルスキーが提唱した、人の価値判断の理論です。ポイントは3つあります。1つ目は、参照点依存です。人は絶対的な水準ではなく、基準となる点からの利得か損失かで、価値を評価します。2つ目は、損失回避です。同じ金額でも、得をした喜びより、損をした痛みのほうを大きく感じます。3つ目は、感応度逓減です。利得も損失も、大きくなるほど感じ方が鈍っていきます。値引き表示や、今買わないと損という訴求、ポイント制度の効果は、この理論で説明できます。",
+"ナッジ":"ナッジとは、セイラーが提唱した概念で、選択の自由を残したまま、選択肢の見せ方や環境の設計によって、望ましい行動をそっと後押しする仕掛けのことです。例としては、最初から推奨プランが選ばれているデフォルト設定や、松竹梅の3段階で真ん中を選ばせる見せ方があります。ただし、消費者の不利益に誘導する設計は、スラッジやダークパターンと呼ばれ、不信や規制のリスクを招くため、注意が必要です。",
+"カスタマージャーニー":"カスタマージャーニーとは、顧客が商品を認知して、検討し、購買して、利用し、推奨するに至るまでの、一連の体験のプロセスを、旅にたとえた概念です。このプロセスを図にしたものが、ジャーニーマップです。顧客との接点、つまりタッチポイントと、そのときの感情を見える化することで、不満のポイントを特定し、部門ごとにばらばらな施策を、顧客視点で統合することができます。",
+"カスタマー・エンゲージメント":"カスタマー・エンゲージメントとは、購買にとどまらない、顧客のブランドへの能動的な関与や愛着のことです。継続的な利用、レビューの投稿、友人への推奨、商品開発への参加といった形で現れます。コミュニティの運営や、お客様の投稿を促す仕掛け、一人ひとりに合わせたコミュニケーションで高めることができ、顧客生涯価値と、新しいお客様の獲得の両面で、収益に貢献します。",
+"パーパス・ブランディング":"パーパス・ブランディングとは、パーパス、すなわち企業の社会的な存在意義を軸にして、ブランドを築く手法です。機能や情緒的な魅力を超えて、何のために存在するのかを示し、価値観への共感によって、顧客や従業員との強い絆を作ります。大切なのは、掲げたパーパスと、実際の事業や製品との一貫性です。実態を伴わない訴求は、グリーンウォッシングと呼ばれ、かえって信頼を失います。",
+"エシカル消費":"エシカル消費とは、環境や人権、地域への配慮を基準にして、商品を選ぶ消費行動のことです。顧客と企業と社会の、長期的な利益の両立を目指す、サステナブル・マーケティングの、需要側の現れといえます。この潮流のもとでは、社会的な価値が、新しい差別化の軸や、価格プレミアムの源泉になります。",
+"OMO":"オーエムオーとは、オンライン・マージズ・ウィズ・オフラインの略で、オンラインとオフラインの境界をなくし、顧客のアイディーとデータでつながった、一つの購買体験として設計する考え方です。企業側のチャネル統合である、オムニチャネルをさらに進めて、顧客の体験を起点に、オンとオフを融合させるものです。例としては、アプリの会員証で、お店とネット通販の行動をつなぐことが挙げられます。",
+"D2C":"ディーツーシーとは、ダイレクト・トゥ・コンシューマーの略で、メーカーが卸や小売を通さずに、自社の通販サイトやエスエヌエスで、消費者に直接販売するモデルです。利点は4つあります。顧客データを直接得られること。中間マージンを削減できること。ブランドの世界観を一貫して伝えられること。そして、顧客との直接的な関係やコミュニティを築けることです。",
+"コト消費・トキ消費":"コト消費とは、モノの所有よりも、体験や時間の過ごし方に価値を見出す消費のことです。さらにトキ消費とは、その時、その場でしか味わえない、二度と再現できない体験に、参加すること自体に価値を見出す消費です。限定イベントやライブ、フェスなどが例で、非再現性、参加性、貢献性が特徴とされます。モノを売る企業にとっては、製品を体験で包むことが、コモディティ化から抜け出す道になります。",
+"顧客知覚価値":"顧客知覚価値とは、顧客が得られると感じる便益の合計から、支払うと感じるコストの合計を引いた差のことです。便益には、製品の機能だけでなく、サービス、従業員の対応、ブランドイメージが含まれます。コストには、お金だけでなく、時間、労力、心理的な負担が含まれます。顧客は、この知覚価値が最も大きい選択肢を選ぶと考えられます。ですからマーケターの打ち手は、便益を増やすか、コストを減らすか、の2方向になります。",
+"ムード消費":"ムード消費とは、一時的な気分、つまりムードを、保ちたい、あるいは良くしたい、という動機から生まれる消費のことです。通常の購買のような、問題解決の過程を経ずに、自動的に生じるのが特徴です。選ばれる理由は、製品の中核的な便益、つまり機能そのものではなく、気分の改善という、情緒的な便益にあります。対応するマーケティングは、気分や場面で市場を細分化し、機能ではなく、情緒や世界観で位置づけることが基本になります。",
+"製品の3層モデル":"製品の3層モデルとは、製品を3つの層で捉える枠組みです。1つ目は中核です。製品がもたらす本質的な便益のことです。2つ目は形態です。品質、特徴、デザイン、ブランド、パッケージといった、目に見える要素のことです。3つ目は付随機能です。配達、保証、アフターサービスといった、製品に付け加えられる、付加的なサービスや便益のことです。コトラーの5階層モデルと、対応させて覚えてください。",
+};
+
+const ESSAY_AUDIO = {
+E01:{q:"成熟市場の企業を想定して、マーケティング・ミックス、売上、差別化という3つの言葉を使いながら、エスティーピーを踏まえた戦略立案の必要性を説明する問題です。",
+m:"市場が成熟して顧客ニーズが多様化すると、すべての顧客に同じ働きかけをしても、売上の拡大は見込めません。そこで、市場を細分化し、自社が優位に立てる標的セグメントを選び、競合に対して差別化されたポジショニングを築く必要があります。そのうえで、製品、価格、流通、プロモーションから成るマーケティング・ミックスを、ポジショニングと一貫するように設計します。差別化が明確であれば、価格競争を避けることができ、標的顧客の継続的な支持を通じて、安定した売上と収益につながります。"},
+E02:{q:"市場細分化の4つの変数、地理的変数、人口動態変数、心理的変数、行動変数を説明し、それぞれ具体例を挙げる問題です。",
+m:"地理的変数とは、地域や都市の規模、気候による細分化です。例えば、雪の多い地域向けのスタッドレスタイヤや、関西限定の味付けの商品です。人口動態変数とは、年齢、性別、所得、家族構成などによる細分化です。例えば、シニア向けの簡単操作のスマートフォンや、単身世帯向けの小容量食品です。心理的変数とは、ライフスタイルや価値観による細分化です。例えば、健康志向の人に向けたオーガニック食品や、アウトドア好きに向けた高機能ウェアです。行動変数とは、使用頻度や、求めるベネフィット、使う場面による細分化です。例えば、ヘビーユーザー向けの定額サブスクリプションや、贈り物の場面に向けたギフト仕様の商品です。実務では、これらの変数を組み合わせて使います。"},
+E03:{q:"市場細分化は、細かいほどよいとは限りません。マーケティングへの反応、コスト、セグメント規模、売上という4つの言葉を使って、最適な細分化の程度を論じる問題です。",
+m:"細分化の目的は、マーケティングへの反応が同質的な顧客グループを見つけて、施策の効果を高めることにあります。細分化が粗すぎると、同じセグメントの中で反応がばらばらになり、施策が的中しません。逆に、細かくしすぎると、1つあたりのセグメント規模が小さくなって、見込める売上が減る一方で、セグメントごとに違う施策を作って届けるコストは増え、利益を圧迫します。したがって、最適な細分化の程度とは、セグメント内の反応の同質性が確保でき、なおかつ、売上がコストを十分に上回る規模を保てる水準だといえます。判断の基準としては、規模を測定できるか、十分な利益を確保できるか、そのセグメントに到達できるか、反応に違いがあるか、実行できるか、という効果的な細分化の5つの要件が使えます。"},
+E04:{q:"リキッド消費の概念と具体例、そして、リキッド消費が広がる市場で、セグメンテーションの細分化はどこへ向かうべきかを論じる問題です。",
+m:"リキッド消費とは、バーディとエックハートが提唱した概念で、所有を前提としない、流動的な消費のあり方です。特徴は3つあります。1つ目は、価値を感じる期間が短い、短命性です。2つ目は、所有せず、必要なときだけ使う、アクセスベースです。3つ目は、モノより体験を重視する、脱物質です。具体例としては、カーシェアリングや、音楽と動画のサブスクリプションが挙げられます。こうした市場では、同じ人でも状況によって求める価値が変わるため、年齢や性別といった固定的な属性による細分化は、効きにくくなります。今後は、利用場面や行動データにもとづく、より動的で細かな細分化、究極的にはワン・トゥ・ワンに近い水準へ向かうべきだと考えます。ただし、細分化のコストと、セグメント規模のバランスという制約は残ります。"},
+E05:{q:"標的市場の選択パターンを5つ挙げて、それぞれの内容と、適する状況を説明する問題です。",
+m:"1つ目は、単一セグメント集中です。1つのセグメントに特化する方法で、経営資源の少ない中小企業に向いていますが、需要の変動や競合の参入といったリスクが集中します。2つ目は、選択的専門化です。魅力的な複数のセグメントを選ぶ方法で、リスクは分散しますが、相乗効果は限られます。3つ目は、製品専門化です。特定の製品で複数のセグメントに対応する方法で、技術の評判を築けますが、代わりの技術が登場すると弱いという欠点があります。4つ目は、市場専門化です。特定の顧客層の多様なニーズに、複数の製品で応える方法で、顧客との関係は深まりますが、その市場が縮小するリスクを負います。5つ目は、フルカバレッジです。すべてのセグメントに対応する方法で、大企業だけが取れる選択です。"},
+E06:{q:"知覚プロセスにおける、選択的注意、選択的歪曲、選択的保持を説明し、マーケターへの示唆を述べる問題です。",
+m:"消費者は、毎日大量の刺激にさらされているため、情報を選択的に処理しています。まず、選択的注意とは、大半の刺激をふるいにかけて、いまのニーズに関係する刺激や、予想から外れた刺激だけに注意を向けることです。マーケターは、標的顧客のニーズに関連づけた、目立つ表現で注意を獲得する必要があります。次に、選択的歪曲とは、受け取った情報を、自分の先入観や、ブランドへの信念に合うように解釈してしまうことです。強いブランドであれば、中立的な情報さえ好意的に解釈されます。ですから、事前に良い信念を作っておくことが大切です。最後に、選択的保持とは、自分の態度を支持する情報だけを記憶に残すことです。マーケターは、繰り返し訴求して、記憶への定着を図る必要があります。"},
+E07:{q:"認知的不協和の概念と、それが大きくなりやすい条件、そして、マーケターが取るべき対応策を述べる問題です。",
+m:"認知的不協和とは、フェスティンガーの理論にもとづく概念で、購買のあとに、この選択は本当に正しかったのか、という心理的な緊張や不快感が生じることです。選ばなかった選択肢の魅力や、選んだ製品の欠点に気づくことで生まれます。高額な買い物、思い入れの強い買い物、選択肢どうしの魅力が拮抗していた買い物ほど、大きくなります。消費者は、この不快感を減らすために、自分の選択を支持する情報を探して、購入を正当化しようとします。マーケターの対応は、3つあります。まず、購入直後のお礼や、使いこなし情報といったフォローです。次に、保証や返品制度による、安心の提供です。そして、購入者の選択を肯定する広告です。実は、すでに購入した人も広告を見ています。こうした対応が、再購買と、良い口コミにつながっていきます。"},
+E08:{q:"消費者の購買意思決定プロセスの5段階と、各段階でマーケターが打つべき施策を説明する問題です。",
+m:"第1段階は、問題認識です。現状と理想のギャップに気づく段階で、マーケターは広告などでニーズを呼び起こします。第2段階は、情報探索です。記憶の中を探る内部探索と、口コミや広告を調べる外部探索があります。買い物のときに思い浮かべてもらえるブランドの集まり、つまり想起集合に入ることが目標になります。第3段階は、代替品評価です。消費者は属性ごとの重視度で候補を比べるため、自社が優位に立てる属性の重要性を訴えます。第4段階は、購買決定です。在庫や決済、接客といった、購買の障壁を取り除きます。第5段階は、購買後行動です。認知的不協和をフォローで和らげて、再購買と推奨につなげます。なお、関与が低い買い物では、これらの段階は省略されることがあります。"},
+E09:{q:"関与の概念と、精緻化見込みモデルにおける2つのルート、そして、それぞれに適した施策を説明する問題です。",
+m:"関与とは、製品や購買に対する、思い入れや重要性の感じ方の程度です。精緻化見込みモデルは、ペティとカシオッポが提唱したもので、態度が作られる道筋は2つあるとします。1つ目は、中心的ルートです。関与と処理能力が高いとき、人はメッセージの中身をじっくり吟味して態度を作ります。この態度は長持ちして、行動に結びつきやすいため、性能のデータや比較情報といった、中身のある情報提供が有効です。2つ目は、周辺的ルートです。関与か処理能力が低いとき、人は有名人や音楽、雰囲気といった手がかりで態度を作ります。この態度は一時的で変わりやすいため、好感度の高いタレントの起用や、広告の繰り返しが有効です。"},
+E10:{q:"コトラーの製品概念における5つの階層を、ホテルを例にして説明する問題です。",
+m:"第1の階層は、中核ベネフィットです。顧客が本当に買っている根源的な便益のことで、ホテルであれば、休息と睡眠です。第2の階層は、基本製品です。便益を形にしたもので、ベッドやバスルームです。第3の階層は、期待製品です。買い手が当然期待する条件のことで、清潔なベッドや、静かな部屋です。第4の階層は、膨張製品です。期待を超える付加的なサービスのことで、上質なアメニティや、優れたコンシェルジュです。差別化は、主にこの層で生まれます。第5の階層は、潜在製品です。将来ありうる拡張の可能性のことです。ここで重要なのは、競争が進むと、膨張製品はやがて当たり前の期待製品に変わってしまう、ということです。だから、付加価値を更新し続ける必要があり、この議論はコモディティ化にもつながっていきます。"},
+E11:{q:"コモディティ化とは何かを説明し、その要因を、需要側と供給側の両面から論じる問題です。",
+m:"コモディティ化とは、企業間の技術や品質が同質化して、機能による差別化が難しくなり、顧客からはどの製品も同じに見えて、価格だけが選択の基準になっていく現象です。供給側の要因は、4つあります。1つ目は、技術が成熟して標準化することです。2つ目は、モジュール化によって、真似が簡単になることです。3つ目は、性能が顧客の要求水準を超えてしまう、過剰性能です。4つ目は、供給過剰による競争の激化です。次に、需要側の要因は3つあります。1つ目は、顧客が学習して目が肥え、基本機能で十分だと判断するようになることです。2つ目は、ニーズが満たされて関心が薄れる、低関与化です。3つ目は、インターネットで価格の比較が簡単になり、価格への感度が上がることです。"},
+E12:{q:"製品市場がコモディティ化すると、その市場はどうなっていくかを説明する問題です。",
+m:"コモディティ化が進むと、市場は次のように変わっていきます。まず、差別化の要素が失われるため、企業は価格でしか競争できなくなり、値下げ競争が常態化します。すると、業界全体の利益率が下がって、ブランド構築や研究開発に投資するお金が失われ、さらに同質化が進む、という悪循環に陥ります。競争の焦点は、規模の経済と経験曲線効果によるコスト削減に移っていくため、大規模で低コストの企業が有利になり、淘汰や業界再編が起こります。顧客の側では、ブランドへのロイヤルティが下がり、価格やポイント次第で、買う先を簡単に変えるようになります。"},
+E13:{q:"コモディティ化した市場から脱却するために、企業が取りうる方策を、多面的に論じる問題です。",
+m:"脱コモディティ化の基本原理は、競争の軸を、機能や価格以外へ移すことです。第1に、経験価値による差別化です。機能ではなく、買う過程や使う過程の体験で価値を作ります。スターバックスの、第三の場所が有名な例です。第2に、ブランドの構築です。意味的、象徴的な価値によって指名買いを生み、価格比較の土俵から降ります。第3に、サービス化、いわゆるコト売りです。モノ単体ではなく、保守や運用支援まで含めた、課題の解決を提供します。第4に、カテゴリー・イノベーションです。新しい市場カテゴリーそのものを作って、比較の軸を無効にします。第5に、顧客関係の構築です。サブスクリプションやカスタマイズで継続的な関係を築き、乗り換えのコストを高めます。これらに共通するのは、価格以外の選択基準を、顧客の中に作り直すことです。"},
+E14:{q:"ロジャースによる、新製品の普及速度を左右する、5つの属性を説明する問題です。",
+m:"1つ目は、相対的優位性です。既存の製品より優れていると感じられる程度のことで、大きいほど普及が速くなります。2つ目は、両立性です。いままでの価値観や生活習慣に合っている程度のことです。3つ目は、複雑性です。理解や使用の難しさのことで、これだけは高いほど普及が遅れます。4つ目は、試用可能性です。小さく試せる程度のことで、お試しやサンプルがあると、採用のリスクが下がります。5つ目は、観察可能性です。使っている様子や結果が、他人から見える程度のことで、見えやすいほど、口コミや真似で普及が加速します。マーケターは、無料の試用やデモ、利用が目に見える仕掛けによって、普及を後押しできます。"},
+E15:{q:"計算問題です。販売価格は1200円、1個あたりの変動費は700円、固定費は年間2000万円です。損益分岐点販売量と、目標利益500万円を達成する販売量を求めます。",
+m:"損益分岐点販売量は、固定費を、販売価格から1個あたりの変動費を引いた金額、つまり貢献利益で割って求めます。この問題では、1200円から700円を引いて、貢献利益は1個あたり500円です。固定費の2000万円を500円で割ると、4万個になります。これが損益分岐点販売量です。次に、目標利益を達成する販売量は、固定費に目標利益を足してから、貢献利益で割ります。2000万円に500万円を足した2500万円を、500円で割ると、5万個です。損益分岐点分析の役割は、想定した価格で損を出さないために必要な、最低限の販売量を明らかにして、それが市場の規模から見て現実的かどうかを検証できることです。ただし、需要の価格弾力性や、競合の反応は考慮されない、という限界もあります。"},
+E16:{q:"カニバリゼーションとは何かを、交差弾力性、価格、需要という言葉を使って説明し、あえて許容する理由も述べる問題です。",
+m:"カニバリゼーションとは、共食いという意味で、自社の新製品が、競合ではなく、自社の既存製品の需要を奪ってしまう現象です。2つの商品の関係は、交差弾力性で捉えられます。これは、一方の商品の価格の変化率に対して、もう一方の商品の需要がどれだけ変化するかを表す指標です。交差弾力性がプラスであれば、2つは代替関係にあります。自社製品どうしの交差弾力性が大きなプラスの場合、新製品を投入したり、値下げしたりすると、既存製品の需要が大きく減って、会社全体では売上が増えないおそれがあります。それでも、あえて許容する理由があります。放っておけば競合に奪われてしまう需要なら、自社の中で奪うほうがよいからです。また、技術の転換期に古い製品にこだわると、市場全体を失いかねません。判断は、会社全体でどれだけ増えたか、という増分の売上と利益で行うべきです。"},
+E17:{q:"規模の経済と、経験曲線効果をそれぞれ説明し、両者の共通点と相違点を述べる問題です。",
+m:"規模の経済とは、ある時点での生産や事業の規模が大きいほど、1個あたりのコストが下がる効果です。設備や広告といった固定費が、多くの生産量に分散されることで生じます。一方、経験曲線効果とは、累積の生産量が2倍になるごとに、1個あたりのコストが一定の割合、およそ10パーセントから30パーセントずつ下がる、という経験則です。作業者の習熟や、工程の改善といった、学習の積み重ねで生じます。共通点は、どちらも単位あたりのコストを下げて、コスト優位や低価格戦略の源泉になることです。相違点は2つあります。1つ目に、規模の経済は、ある一時点の規模で決まる静態的な効果ですが、経験曲線効果は、過去からの累積量で決まる動態的な効果です。2つ目に、生じる仕組みが異なります。固定費の分散によるものと、学習の蓄積によるもの、という違いです。ですから経験曲線効果は、規模が小さくても、長く作り続ければ蓄積されていきます。"},
+E18:{q:"菓子メーカーが、表示価格の引き下げではなく、増量という実質値下げを選ぶ理由を、消費者行動と、競合の反応という2つの視点から論じる問題です。",
+m:"まず、消費者行動の視点です。消費者は、この商品はだいたいいくら、という内的参照価格を基準に、高い安いを判断しています。表示価格を下げると、この基準そのものが下がってしまい、あとで価格を元に戻したときに、値上げだと受け取られて需要が落ち込みます。増量であれば、この基準を壊さずに、お得感を出せます。また、1グラムあたりの価格を計算するのは面倒なので、消費者は、増量イコールお得と、直感的に感じてくれます。安売りによる、ブランドイメージの低下も避けられます。次に、競合の反応の視点です。表示価格の値下げは、競合からすぐに見えるため、対抗の値下げを招いて、値下げ合戦に陥りがちです。増量は、実質的な値下げの幅が見えにくく、競合が追随すべきかどうか判断しづらいため、報復的な価格競争を避けやすいのです。さらに増量は、期間を限定した一時的な施策として実施できるので、価格の体系を崩さずに、需要を刺激できます。"},
+E19:{q:"新製品の価格設定である、上澄み吸収価格戦略と、市場浸透価格戦略を説明し、それぞれが有効となる条件を述べる問題です。",
+m:"上澄み吸収価格戦略、いわゆるスキミングは、発売のときに高い価格を設定して、価格をあまり気にしない革新的な層から利益を回収したあと、段階的に価格を下げて市場を広げる戦略です。有効なのは、製品の革新性が高いとき、高くても買いたい人が十分にいるとき、特許などで当面は真似されにくいとき、そして、高い価格そのものが品質の証として機能するときです。一方、市場浸透価格戦略、いわゆるペネトレーションは、発売のときから低い価格を設定して、一気に普及とシェアの獲得をねらう戦略です。有効なのは、需要の価格弾力性が高いとき、規模の経済や経験曲線効果によって、数量の拡大がコストの低下につながるとき、低価格が参入障壁として機能するとき、そして、早く普及させること自体に価値があるときです。"},
+E20:{q:"コトラーの競争地位別戦略における、リーダー、チャレンジャー、フォロワー、ニッチャー、それぞれの定石を説明する問題です。",
+m:"シェア1位のリーダーの定石は、3つあります。1つ目は、市場全体を広げることです。2つ目は、同質化対応です。挑戦者の差別化をすばやく真似て、無効にしてしまうことです。3つ目は、非価格対応です。価格競争では自社の損失が最も大きくなるため、避けるのが定石です。次に、2位、3位のチャレンジャーは、リーダーが構造的に真似できない差別化で、正面から挑みます。フォロワーは、上位を狙わず、上位企業の成功をすばやく模倣することで、開発コストを節約しながら収益を確保します。最後にニッチャーは、大手が参入しない小さな市場に資源を集中して、その中で疑似的な独占、いわばミニリーダーの地位を築きます。鍵になるのは、専門化です。"},
+E21:{q:"サービスがモノと異なる4つの特性と、それぞれがもたらす課題、対応策を説明する問題です。",
+m:"サービスには、4つの特性があります。第1に、無形性です。買う前に見て確かめられないため、品質の事前評価が難しい、という課題があります。対応は、施設や制服、実績の数字といった、目に見える証拠で品質を伝えることです。第2に、不可分性です。生産と消費が同時に起こるため、提供する人の質が、そのまま品質になります。対応は、人材の採用と教育、そして、セルフサービス化です。第3に、変動性です。誰が、いつ提供するかによって、品質がばらつきます。対応は、マニュアル化と標準化、教育訓練、そして、顧客満足の測定です。第4に、消滅性です。サービスは在庫できないため、機会の損失や、供給の過剰が生じます。対応は、時間帯別の価格や予約制による需要の平準化と、パートタイム人員の活用などによる、供給能力の柔軟化です。"},
+E22:{q:"ブランド・エクイティとは何かを説明し、その構成要素と、企業にもたらす利点を述べる問題です。",
+m:"ブランド・エクイティとは、ブランドが製品やサービスにもたらす付加価値を、資産として捉えた概念です。同じ製品でも、ブランドがつくことで、顧客の評価や、支払ってもよいと思う金額が変わるとき、その差がエクイティです。アーカーの枠組みでは、ブランド認知、知覚品質、ブランド連想、ブランド・ロイヤルティなどから構成されます。企業にもたらす利点は、5つあります。第1に、価格プレミアムが得られ、価格競争から抜け出せます。第2に、ロイヤルティによって売上が安定し、マーケティングのコストが下がります。第3に、流通に対する交渉力が高まります。第4に、ブランド拡張によって、新製品の成功率が上がります。第5に、競合の攻撃や、危機への耐性が高まります。"},
+E23:{q:"多属性態度モデルを説明し、補償型と非補償型の意思決定ルールの違いと、マーケターへの示唆を述べる問題です。",
+m:"多属性態度モデルとは、ブランドへの態度がどのように決まるかを説明するモデルです。消費者は、そのブランドが各属性をどの程度満たしているかという信念と、その属性をどれだけ重視するかという重要度を、掛け合わせて足し上げ、総合的な態度を作ると考えます。意思決定のルールには、2つのタイプがあります。補償型は、ある属性の弱みを、別の属性の強みで補って、総合点で評価するルールです。一方、非補償型では、弱みを補うことができません。例えば、すべての属性が最低基準を超える必要がある連結型や、最も重視する属性から順番に比べて決める、辞書編集型があります。マーケターへの示唆は、次のとおりです。自社が強い属性の重要度を高めるように訴求すること。弱い属性への信念を、製品の改良や情報提供で改善すること。そして、新しい属性を追加して、評価の軸そのものを変えることです。また、時間がないときや関与が低いときは非補償型が使われやすいため、最低基準のクリアと、最重要属性での優位が欠かせません。"},
+E24:{q:"マズローの欲求階層説と、ハーズバーグの2要因理論を説明し、マーケティングへの応用を述べる問題です。",
+m:"マズローの欲求階層説では、人間の欲求を5つの段階で捉えます。下から順に、生理的欲求、安全の欲求、所属と愛の欲求、承認の欲求、そして自己実現の欲求です。低い階層が満たされると、より高い階層の欲求が動機になると考えます。応用としては、同じ製品でも、訴求する欲求の階層を選べる、ということがあります。例えば自動車なら、安全性能を訴えるのは安全の欲求、家族との時間を訴えるのは所属と愛の欲求、ステータスを訴えるのは承認の欲求への働きかけです。次に、ハーズバーグの2要因理論では、不満足を防ぐ衛生要因と、満足を生み出す動機づけ要因は、別のものだと考えます。応用として重要なのは、不具合や欠品、待ち時間といった不満の種を解消しても、不満がなくなるだけで、選ばれる理由にはならない、ということです。選ばれるためには、購買を動機づける差別化の要因を見つけて、それを強化し、訴求する必要があります。"},
+E25:{q:"知覚リスクの概念と種類、消費者のリスク低減行動、そして、マーケターの対応策を述べる問題です。",
+m:"知覚リスクとは、購買の結果に対する不確実性から、消費者が感じる主観的なリスクのことです。種類としては、期待どおりに機能しないかもしれない機能的リスク、支払いに見合わないかもしれない金銭的リスク、安全への不安である身体的リスク、周囲からの評価が下がるかもしれない社会的リスク、自分のイメージに合わないかもしれない心理的リスク、そして、探し直しの手間がかかる時間的リスクがあります。消費者はこのリスクを減らすために、入念に情報を集めたり、口コミやレビューを参照したり、有名なブランドを選んだり、少量だけ試したり、購入を先延ばしにしたりします。マーケターの対応としては、保証や返金の制度、無料サンプルやお試し、レビューや事例の充実、受賞歴や認証といった権威づけ、そして、ブランドの構築による信頼の事前形成が有効です。高額で関与の高い買い物ほど、リスクを下げる支援が効果を発揮します。"},
+E26:{q:"クチコミが広告より強い理由と、デジタル時代のクチコミの特徴、そして、企業がクチコミを促進する施策を述べる問題です。",
+m:"クチコミが広告より強い理由は、3つあります。1つ目は、発信する人に商業的な意図がないため、信頼されやすいことです。2つ目は、自分と似た立場の消費者からの情報なので、共感しやすく、自分ごとになりやすいことです。3つ目は、双方向なので、疑問をその場で確かめられることです。デジタル時代のクチコミ、いわゆるイークチコミには、次の特徴があります。レビューとして保存され、買い物を検討するその時点で参照されること。拡散の速さと範囲が、地理を超えること。そして、多数の評価が集約されて、数そのものが信頼の手がかりになることです。企業がクチコミを促進する施策としては、まず、語りたくなるような優れた体験を設計すること。購入後にレビューを依頼する仕組みを作ること。インフルエンサーやアンバサダーを活用すること。そして、お客様の投稿を促すキャンペーンがあります。あわせて、否定的なクチコミには誠実で迅速に対応することが大切です。なお、広告であることを隠す、いわゆるステルスマーケティングは、景品表示法で規制されており、関係性の開示が必須です。"},
+E27:{q:"価格差別とは何かと、その成立条件、そして、ダイナミック・プライシングの利点と留意点を述べる問題です。",
+m:"価格差別とは、同じ製品やサービスを、顧客や購買の状況によって異なる価格で販売し、支払ってもよいと思う金額の差から、利益を最大化する手法です。例としては、学生割引、時間帯別の料金、早期予約割引があります。成立するには、3つの条件が必要です。1つ目は、顧客の価格感度を見分けて、区分できることです。2つ目は、安く買った人からの転売を防げることです。3つ目は、価格差への反発や、法律の規制を避けられることです。次に、ダイナミック・プライシングとは、需要と供給のバランスや、時期、在庫に応じて、価格を機動的に変える手法です。ホテルや航空券のような、在庫できないサービスと相性がよい方法です。利点は、閑散期の稼働を上げ、繁忙期の収益を最大化できることと、需要の平準化です。留意点としては、同じものを高く買わされた、という不公平感が、信頼やブランドを傷つけるおそれがあること。参照価格が混乱して、価格への信頼が下がりうること。そのため、価格変動の理由の説明や、上限の設定といった、運用のルールが必要になることです。"},
+E28:{q:"原材料費の高騰が続くなかで、メーカーが取りうる値上げの方法と、顧客の反発を抑える工夫を、知覚の観点から論じる問題です。",
+m:"値上げの方法は、主に5つあります。表示価格の引き上げ。内容量を減らす実質値上げ。上位製品への誘導や、廉価版の追加といった、製品ラインの再編。割引や販促の縮小。そして、付帯サービスの有償化です。顧客の反発を抑える工夫を、知覚の観点から説明します。1つ目は、内的参照価格を急激に壊さないことです。一度に大きく上げるのではなく、小刻みに、段階的に改定します。2つ目は、公正な価格だという知覚を守ることです。原材料の高騰や品質維持のため、という理由を誠実に説明することで、便乗値上げだという受け取られ方を防ぎます。3つ目は、価値の向上と同時に行うことです。リニューアルや品質改善とあわせて実施すれば、単なる値上げではなく、価値の向上として受け止められます。4つ目は、心理的な節目への配慮です。そして5つ目は、既存のお客様への配慮です。移行の猶予期間や、既存プランの据え置きで、ロイヤルな顧客の離反を防ぎます。なお、内容量を減らす実質値上げは、短期的には気づかれにくいのですが、発覚したときに、隠されたという不信を招くリスクがあるため、説明責任がいっそう重要になります。"},
+E29:{q:"サブスクリプション型の価格設定が、企業と顧客にもたらす利点と、フリーミアムの仕組み、成功の条件を述べる問題です。",
+m:"まず、企業側の利点です。継続的な課金によって、売上が安定し、予測しやすくなります。顧客生涯価値、エルティーブイを最大化できます。利用データを継続的に得られるので、改善や提案に活かせます。そして、顧客との継続的な関係が築かれて、乗り換えのコストが高まるため、脱コモディティ化にもつながります。次に、顧客側の利点です。初期の負担が軽くなります。常に最新のサービスを使えます。そして、いつでも解約できるため、知覚リスクが下がります。所有せずに利用する、リキッド消費の流れとも合っています。次に、フリーミアムとは、基本機能を無料で提供し、上位の機能や容量、広告の除去などを有料にするモデルです。成功の条件は4つあります。無料版でも価値がはっきり伝わること。無料から有料へ切り替えたくなる動機が、明確に設計されていること。追加ユーザーのコストがほとんどかからない、デジタルの財であること。そして、無料ユーザー自身が、クチコミやネットワーク効果に貢献する構造があることです。最後に留意点として、解約率、いわゆるチャーンの管理が生命線になります。"},
+E30:{q:"小売業の価格政策である、イーディーエルピーと、ハイ・ロー価格政策を比較して、それぞれの利点と適する状況を述べる問題です。",
+m:"イーディーエルピー、エブリデー・ロー・プライスとは、特売に頼らず、常に低価格を維持する政策です。利点は4つあります。いつ買っても損をしない、という価格への信頼が生まれること。需要が平準化されて、物流や人員配置が効率化されること。チラシや特売の販促コストが減ること。そして、参照価格が安定することです。大規模で低コストの運営ができる小売や、価格を重視する顧客層に向いています。一方、ハイ・ロー価格政策とは、通常価格を保ちながら、定期的な特売で集客する政策です。利点は、特売による集客力と話題性。お買い得感による来店動機。そして、価格に敏感なお客様は特売で、そうでないお客様は通常価格で買う、という実質的な価格差別がはたらいて、利益を確保できることです。生鮮品やファッションのような、鮮度や季節性の高い商材に向いています。留意点として、特売を多用しすぎると、参照価格が下がり、特売のときにしか買わない行動を助長するおそれがあります。"},
+E31:{q:"プロスペクト理論の要点と、価格や販売促進への応用例、そして、ナッジとは何かと、その活用例、留意点を述べる問題です。",
+m:"プロスペクト理論とは、カーネマンとトベルスキーが提唱した、人の価値判断の理論です。要点は3つあります。1つ目は、参照点依存です。人は絶対的な水準ではなく、基準となる点からの利得か損失かで価値を評価します。2つ目は、損失回避です。同じ金額でも、得の喜びより、損の痛みを大きく感じます。3つ目は、感応度逓減です。額が大きくなるほど、感じ方は鈍っていきます。応用例を挙げます。メーカー希望価格からの値引き表示は、参照点を高く置いて、お得という利得を感じさせる手法です。期間限定や、残りわずかという訴求は、今買わないと損をする、という損失回避に働きかけます。ポイント制度は、貯めたポイントを失いたくない気持ちが、乗り換えを防ぎます。次にナッジとは、セイラーが提唱した概念で、選択の自由を残したまま、選択環境の設計によって、望ましい行動を後押しする仕掛けです。活用例は、推奨プランをあらかじめ選んでおくデフォルト設定や、松竹梅の3段階で提示して、真ん中を選ばせる方法です。留意点として、消費者の不利益に誘導する設計は、スラッジやダークパターンと呼ばれ、不信とブランドの毀損、規制のリスクを招きます。顧客の利益と両立する設計が不可欠です。"},
+E32:{q:"カスタマージャーニーの概念と、ジャーニーマップを作る意義、そして、カスタマー・エンゲージメントとは何かと、高めるための施策を述べる問題です。",
+m:"カスタマージャーニーとは、顧客が認知、検討、購買、利用、推奨へと至る、一連の体験のプロセスを、旅にたとえた概念です。デジタル化によって、顧客との接点、つまりタッチポイントが、オンラインとオフラインに多様化したため、購買の前後を含む体験の全体が、競争の対象になりました。ジャーニーマップを作る意義は、3つあります。1つ目は、顧客の視点で全ての接点を見える化し、部門ごとに分断された施策を統合できることです。2つ目は、各段階での感情の起伏や、不満のポイントを特定して、改善の優先順位を付けられることです。3つ目は、段階ごとに適したコンテンツやチャネルを設計できることです。次に、カスタマー・エンゲージメントとは、購買にとどまらない、顧客のブランドへの能動的な関与や愛着のことです。継続利用、レビューの投稿、推奨、共創への参加として現れます。高める施策としては、ファンコミュニティやイベントの運営、お客様の投稿を促す仕掛け、データにもとづく一人ひとりへのコミュニケーション、そして、商品開発への顧客参加があります。エンゲージメントの高い顧客は、顧客生涯価値の向上と、推奨による新規顧客の獲得の、両面で収益に貢献します。"},
+E33:{q:"パーパス・ブランディングとは何か、そして、サステナブル・マーケティングやエシカル消費の潮流が与える影響と、取り組みの留意点を述べる問題です。",
+m:"パーパス・ブランディングとは、パーパス、すなわち企業の社会的な存在意義を軸に、ブランドを構築する手法です。機能的な価値や、情緒的な価値を超えて、何のために存在するのかを示し、価値観への共感によって、顧客や従業員との強い絆を作ります。背景には、社会課題への関心の高まり、価値観で商品を選ぶ消費者の増加、イーエスジー投資の拡大があります。サステナブル・マーケティングとは、顧客と企業と社会の、長期的な利益を両立させるマーケティングで、コトラーのいう、社会志向のマーケティング・コンセプトの発展形です。エシカル消費とは、環境や人権、地域への配慮を基準に商品を選ぶ、消費行動のことです。影響は3つあります。1つ目に、社会的な価値が、新しい差別化の軸や、価格プレミアムの源泉になります。これは脱コモディティ化にもつながります。2つ目に、原材料の調達から、製造、容器包装、廃棄まで、マーケティングで設計すべき範囲が広がります。3つ目に、情報開示と、追跡可能性への要求が高まります。留意点として、実態を伴わない環境訴求は、グリーンウォッシングと呼ばれ、発覚したときに強い不信とブランドの毀損を招きます。パーパスと事業の一貫性、そして、認証やデータといった証拠にもとづく訴求が不可欠です。"},
+E34:{q:"モノ消費からコト消費への変化と、トキ消費の概念、そして、モノを売る企業がコト消費に対応する方策を述べる問題です。",
+m:"モノ消費とは、製品の所有や機能そのものに、価値を見出す消費です。これに対してコト消費とは、体験やサービス、時間の過ごし方に価値を見出す消費で、経験価値を重視する流れです。背景には、物質的に満たされて、コモディティ化が進み、所有の価値が下がったこと、そして、エスエヌエスで体験が共有され、広がるようになったことがあります。さらにトキ消費とは、その時、その場でしか味わえない、二度と再現できない体験に、参加すること自体に価値を見出す消費です。限定イベントや、ライブ、フェスなどが例で、非再現性、参加性、貢献性が特徴とされます。モノを売る企業の対応策は、5つあります。1つ目は、製品を体験で包むことです。ワークショップや、体験型の店舗が例です。2つ目は、使う場面や、過ごし方の提案です。3つ目は、期間限定やコラボレーションといった、限定性の付与です。4つ目は、ファンコミュニティの形成です。5つ目は、サブスクリプションやレンタルといった、サービス化です。モノを体験の道具と位置づけ直し、経験価値で差別化することが、コモディティ化からの脱却にもつながります。"},
+E35:{q:"オーエムオーと、ディーツーシーをそれぞれ説明し、チャネル戦略とブランド構築をどう変えるかを論じる問題です。",
+m:"オーエムオーとは、オンライン・マージズ・ウィズ・オフラインの略で、オンラインとオフラインの境界をなくし、顧客のアイディーとデータで統合された、一つの購買体験として設計する考え方です。企業側のチャネル統合である、オムニチャネルをさらに進めて、顧客体験を起点に、オンとオフを融合させます。例としては、アプリの会員証で、店頭とネット通販の行動データをつなぐこと、お店で試してネットで買うこと、ネットで注文して店頭で受け取ることがあります。次に、ディーツーシーとは、メーカーが卸や小売を介さずに、自社の通販サイトやエスエヌエスを通じて、消費者に直接販売するモデルです。利点は4つあります。顧客データを直接得て、製品の改善や顧客管理に活かせること。中間マージンを削減できること。ブランドの世界観や物語を、一貫して伝えられること。そして、顧客との直接の関係や、コミュニティを築けることです。これらの潮流によって、チャネルは、単なる販売の経路から、顧客体験とデータの接点へと、役割が変わります。ブランドの構築も、マス広告による一方向の訴求から、エスエヌエスやコミュニティを通じた、関係構築と共創の型へと、重心が移っていきます。留意点は、物流や顧客対応を自社で担う負担と、自力での集客コストです。"},
+E36:{q:"顧客の購買決定の枠組みとしての、顧客知覚価値の概念を説明する問題です。公式模擬テストの問2と同じ型です。",
+m:"顧客知覚価値とは、ある商品から顧客が得られると感じる便益の合計と、その入手や使用にかかると感じるコストの合計との、差のことです。便益の合計には、製品の機能だけでなく、付帯するサービス、従業員の対応、そしてブランドイメージがもたらす便益が含まれます。コストの合計には、お金だけでなく、時間、労力、そして心理的な負担が含まれます。顧客は、複数の選択肢の中から、この知覚価値が最も大きいものを選ぶと考えられます。したがってマーケターは、便益の合計を高めるか、コストの合計を下げることで、選ばれる確率を高めることができます。価値はあくまで主観的な知覚なので、価値を正しく伝えるコミュニケーションも重要です。"},
+E37:{q:"ムード消費が発生するメカニズムを、自動化、問題解決、中核的便益という3つの言葉を使って説明し、さらに、エスティーピーの観点から対応戦略を論じる問題です。公式模擬テストの問3と問4と同じ型です。",
+m:"まず、メカニズムを説明します。ムードとは、特定の対象に向かわない、比較的弱く、一時的な気分の状態をいいます。通常の購買は、問題認識に始まり、情報探索と比較を経る、問題解決の過程をとります。しかしムード消費では、気分を変えたい、保ちたい、という内側の状態が引き金となって、明確な問題認識や、入念な比較を経ない、自動化された購買として生じます。選ばれる理由は、製品の中核的便益、つまり機能そのものではなく、気分の改善や維持という、情緒的な便益にあります。次に、エスティーピーの観点からの対応です。セグメンテーションは、年齢や性別といった固定的な属性ではなく、気分の状態や、利用場面で市場を切ります。例えば、頑張った日のご褒美の場面や、平日の夜のリフレッシュの場面です。ターゲティングは、そのムードが発生するシーンや時間帯に、届けられるかどうかで選びます。ポジショニングは、機能の優位性ではなく、情緒や世界観による位置づけを築きます。例えば、コンビニの高価格帯スイーツは、自分へのご褒美という位置づけを確立し、お菓子の機能ではなく、気分の価値で選ばれています。"},
+};
+
+/* ============================================================
+   重要度ランク
+   A＝最優先（昨年度の実出題テーマ＋再出題・類題の最有力候補）
+   B＝定番（推薦図書の主要理論で出題可能性が高い）
+   C＝周辺（仕上げ期に押さえる応用・周辺テーマ）
+   ============================================================ */
+const ESSAY_IMP = {
+  E01:"A", E02:"A", E03:"A", E04:"A", E05:"B",
+  E06:"A", E07:"A", E08:"A", E09:"B",
+  E23:"B", E24:"B", E25:"B", E26:"C",
+  E10:"A", E11:"A", E12:"A", E13:"A", E14:"A",
+  E15:"A", E16:"A", E17:"A", E18:"A", E19:"B",
+  E27:"B", E28:"B", E29:"C", E30:"C",
+  E20:"B", E21:"B", E22:"B",
+  E31:"B", E32:"B", E33:"B", E34:"B", E35:"C",
+  E36:"A", E37:"A",
+};
+const CARD_IMP = {
+  "STP":"A","効果的な細分化の5要件":"A","細分化の4変数":"A","リキッド消費":"A",
+  "ポジショニング":"B","標的市場選択の5パターン":"B","One to Oneマーケティング":"C",
+  "選択的注意":"A","選択的歪曲":"A","選択的保持":"A","認知的不協和":"A",
+  "購買意思決定プロセス":"B","関与":"B","精緻化見込みモデル":"B","想起集合":"B",
+  "準拠集団":"C","内的参照価格":"A","マズローの欲求階層":"B",
+  "多属性態度モデル":"B","知覚リスク":"B","ハーズバーグの2要因理論":"B",
+  "製品の5階層":"A","コモディティ化":"A","コモディティ化の供給側要因":"A","コモディティ化の需要側要因":"A",
+  "脱コモディティ化の方策":"A","経験価値マーケティング":"C","イノベーション普及の5属性":"A",
+  "イノベーター理論の採用者区分":"B","製品ライフサイクル":"B","計画的陳腐化":"C",
+  "損益分岐点販売量":"A","貢献利益（限界利益）":"A","交差弾力性":"A","カニバリゼーション":"A",
+  "需要の価格弾力性":"B","規模の経済":"A","経験曲線効果":"A",
+  "上澄み吸収価格戦略":"B","市場浸透価格戦略":"B","価格設定の3つの基本アプローチ":"B","心理的価格設定":"B",
+  "EDLP":"C","価格差別":"B","ダイナミック・プライシング":"C","フリーミアム":"C",
+  "競争地位別戦略":"B","ポーターの3つの基本戦略":"B","サービスの4特性":"B",
+  "サービス・プロフィット・チェーン":"C","ブランド・エクイティ":"B","ブランド拡張":"C",
+  "プッシュ戦略とプル戦略":"C","CRMとLTV":"C",
+  "プロスペクト理論":"B","ナッジ":"B","カスタマージャーニー":"B","カスタマー・エンゲージメント":"B",
+  "パーパス・ブランディング":"B","エシカル消費":"C","OMO":"C","D2C":"C","コト消費・トキ消費":"B",
+  "顧客知覚価値":"A","ムード消費":"A","製品の3層モデル":"A",
+};
+const impOfEssay = id => ESSAY_IMP[id] || "B";
+const impOfCard = t => CARD_IMP[t] || "B";
+const IMP_ORDER = {A:0, B:1, C:2};
+
+/* ============================================================
+   キーワード自動チェック — 各問題の答案に含まれるべき必須語。
+   「|」区切りは別表記（いずれか含まれればOK）
+   ============================================================ */
+const ESSAY_KW = {
+E01:["マーケティング・ミックス|マーケティングミックス","売上","差別化","ポジショニング","セグメント|細分化","価格競争"],
+E02:["地理","人口動態|デモグラフィック","心理|サイコグラフィック","行動変数|使用頻度|使用場面","ライフスタイル|価値観"],
+E03:["反応","同質","規模","売上","コスト","測定可能|到達可能|実行可能"],
+E04:["短命","アクセス","脱物質","ソリッド","所有","行動データ|利用場面|オケージョン"],
+E05:["単一セグメント集中|単一セグメント","選択的専門化","製品専門化","市場専門化","フルカバレッジ"],
+E06:["選択的注意","選択的歪曲","選択的保持","先入観|信念","記憶|反復"],
+E07:["フェスティンガー","緊張|不快感","高額","関与","保証|返品","フォロー|購入者"],
+E08:["問題認識","情報探索","代替品評価","購買決定","購買後","想起集合"],
+E09:["関与","精緻化","中心的ルート|中心的","周辺的ルート|周辺的","処理能力","持続"],
+E23:["信念","重要度","補償型","非補償型","連結型|辞書編集型","フィッシュバイン"],
+E24:["生理的","安全","所属|社会的","承認","自己実現","衛生要因","動機づけ要因"],
+E25:["不確実","機能的","金銭的","社会的","保証|返金","試用|トライアル|サンプル"],
+E26:["商業的|非商業","信頼","保存|拡散","レビュー","インフルエンサー|アンバサダー|UGC","ステルスマーケティング|ステマ|景品表示法"],
+E10:["中核ベネフィット","基本製品","期待製品","膨張製品|拡大製品","潜在製品","差別化"],
+E11:["同質","価格のみ|価格だけ|価格が唯一","標準化|成熟","模倣|モジュール","過剰性能","学習|目が肥え","価格比較|価格感度"],
+E12:["価格競争","利益率|収益性","悪循環|同質化","規模の経済|経験曲線","淘汰|再編","ロイヤルティ"],
+E13:["経験価値","ブランド","サービス化|ソリューション|コト売り","カテゴリー","顧客関係|サブスクリプション|スイッチングコスト","競争軸|選択基準"],
+E14:["相対的優位性","両立性|適合性","複雑性","試用可能性","観察可能性|可視性"],
+E15:["固定費","変動費","貢献利益|限界利益","40,000|40000|4万","50,000|50000|5万","弾力性|競合"],
+E16:["共食い|自社","交差弾力性","価格","需要","代替","増分|インクリメンタル|競合に奪われる"],
+E17:["規模","累積","倍増|2倍","習熟|学習","静態|一時点","動態","固定費"],
+E18:["参照価格","値上げ","お得|単位あたり|単価","ブランドイメージ|品質知覚|安売り","追随|対抗","価格競争|値下げ合戦|報復"],
+E19:["上澄み|スキミング","浸透|ペネトレーション","革新","模倣|特許","弾力性","規模の経済|経験曲線"],
+E27:["支払意思|支払ってもよい","識別|区分","転売|裁定","反発|規制","需給|需要","公平|不公平"],
+E28:["内容量|実質","ライン|廉価版|上位","参照価格","公正|便乗","理由|説明","リニューアル|価値向上|品質改善","据え置き|猶予"],
+E29:["継続|安定","LTV|生涯価値","データ","解約|チャーン","アクセス|リキッド","無料","転換|有料","限界費用"],
+E30:["常時|エブリデー","特売","信頼","平準化|効率","価格差別|価格感度","参照価格","チェリーピッキング|特売でしか"],
+E20:["市場全体|周辺需要","同質化","非価格","差別化","模倣","集中|専門化","疑似的|ミニ"],
+E21:["無形性","不可分性|同時","変動性|非均一","消滅性|貯蔵|在庫","物的証拠|有形化","標準化|マニュアル","平準化"],
+E22:["付加価値|資産","認知","知覚品質","連想","ロイヤルティ","価格プレミアム","拡張"],
+E31:["参照点","損失回避|損失","フレーム|限定","ナッジ","デフォルト|松竹梅|極端回避","スラッジ|ダークパターン"],
+E32:["タッチポイント|接点","認知","推奨","ペインポイント|不満","エンゲージメント","UGC|共創|コミュニティ","LTV|生涯価値"],
+E33:["存在意義","共感","社会|サステナブル","エシカル","差別化|プレミアム","グリーンウォッシ","一貫"],
+E34:["体験|経験価値","所有","非再現|その時|その場","参加","限定|イベント","コミュニティ|SNS","サービス化|サブスク"],
+E35:["融合|統合","顧客体験|体験","オムニチャネル","直接|直販","データ","世界観|ストーリー|物語","コミュニティ"],
+E36:["総顧客便益|便益","総顧客コスト|コスト","金銭","時間|労力|エネルギー","心理","知覚","最大"],
+E37:["自動化","問題解決","中核的便益","気分|ムード","情緒|感情","場面|シーン|オケージョン","世界観|ご褒美|気分転換"],
+};
+
+/* ============================================================
+   穴埋め（クローズ）ドリル — 答案で点になる「精密な暗記」の検査
+   ============================================================ */
+const CLOZE = [
+{id:"c01",d:"stp",q:"効果的な市場細分化の5要件：測定可能性・【1】・到達可能性・【2】・実行可能性",a:["利益確保可能性（十分な規模）","差別化可能性（反応の異質性）"]},
+{id:"c02",d:"stp",q:"リキッド消費：提唱者は【1】。3特徴は【2】・【3】・【4】。対概念は【5】消費",a:["バーディとエックハート","短命性","アクセス・ベース","脱物質","ソリッド"]},
+{id:"c03",d:"stp",q:"細分化の4変数：【1】的変数・【2】動態変数・【3】的変数・【4】変数",a:["地理","人口","心理","行動"]},
+{id:"c04",d:"stp",q:"標的市場選択の5パターン：単一セグメント集中・【1】・製品専門化・【2】・フルカバレッジ",a:["選択的専門化","市場専門化"]},
+{id:"c05",d:"cb",q:"知覚の選択性：選択的【1】→選択的【2】→選択的【3】。うち選択的【2】＝【4】や既存の信念に合わせて情報を解釈する傾向",a:["注意","歪曲","保持","先入観"]},
+{id:"c06",d:"cb",q:"認知的不協和：提唱は【1】。大きくなる条件は【2】な購買・【3】が高い購買・選択肢の魅力が【4】しているとき",a:["フェスティンガー","高額","関与","拮抗"]},
+{id:"c07",d:"cb",q:"購買意思決定プロセス：問題認識→【1】→【2】→購買決定→【3】",a:["情報探索","代替品評価","購買後行動"]},
+{id:"c08",d:"cb",q:"精緻化見込みモデル：提唱は【1】。高関与→【2】ルート（態度は【3】的）、低関与→【4】ルート（態度は一時的）",a:["ペティとカシオッポ","中心的","持続","周辺的"]},
+{id:"c09",d:"cb",q:"多属性態度モデル：態度＝各属性への【1】×【2】の総和。非補償型のうち、全属性が最低基準を超える必要＝【3】型、最重要属性から順に比較＝【4】型",a:["信念","重要度","連結","辞書編集"]},
+{id:"c10",d:"cb",q:"マズローの欲求階層：生理的→【1】→【2】→【3】→自己実現",a:["安全","所属と愛（社会的）","承認"]},
+{id:"c11",d:"cb",q:"ハーズバーグの2要因理論：不満足を防ぐ【1】要因／満足を生む【2】要因。【1】要因の解消だけでは【3】は生まれない",a:["衛生","動機づけ","選ばれる理由（選好）"]},
+{id:"c12",d:"cb",q:"知覚リスクの種類：【1】的・金銭的・身体的・【2】的・心理的・【3】的",a:["機能","社会","時間"]},
+{id:"c13",d:"cb",q:"プロスペクト理論：【1】依存・【2】回避・感応度【3】。提唱は【4】",a:["参照点","損失","逓減","カーネマンとトベルスキー"]},
+{id:"c14",d:"pr",q:"製品の5階層：【1】→基本製品→【2】製品→【3】製品→潜在製品。差別化は主に【3】製品の層で生じる",a:["中核ベネフィット","期待","膨張"]},
+{id:"c15",d:"pr",q:"コモディティ化の供給側要因：技術の【1】・標準化、【2】化による模倣容易化、性能が要求水準を超える【3】",a:["成熟","モジュール","過剰性能"]},
+{id:"c16",d:"pr",q:"コモディティ化の需要側要因：顧客の【1】（目が肥える）、ニーズ飽和による【2】化、情報化による価格【3】の容易化",a:["学習","低関与","比較"]},
+{id:"c17",d:"pr",q:"ロジャースの普及5属性：【1】的優位性・【2】性・複雑性・【3】可能性・【4】可能性",a:["相対","両立（適合）","試用","観察"]},
+{id:"c18",d:"pr",q:"採用者区分：イノベーター【1】%→アーリーアダプター【2】%→各34%→ラガード16%。普及の溝を強調した理論は【3】のキャズム論",a:["2.5","13.5","ムーア"]},
+{id:"c19",d:"price",q:"損益分岐点販売量＝【1】÷（販売価格−【2】）＝【1】÷【3】",a:["固定費","単位変動費","貢献利益（限界利益）"]},
+{id:"c20",d:"price",q:"交差弾力性：一方の財の【1】の変化率に対する他方の財の【2】の変化率。プラス＝【3】財、マイナス＝【4】財",a:["価格","需要量","代替","補完"]},
+{id:"c21",d:"price",q:"経験曲線効果：【1】生産量が【2】するごとに単位コストが約【3】%低下。提唱は【4】",a:["累積","倍増","10〜30","BCG（ボストン・コンサルティング・グループ）"]},
+{id:"c22",d:"price",q:"規模の経済＝【1】の生産規模に依存する【2】的効果／経験曲線効果＝【3】生産量に依存する【4】的効果",a:["一時点","静態","累積","動態"]},
+{id:"c23",d:"price",q:"スキミングの条件：【1】性が高い・【2】が困難・価格感度の【3】い層が存在。ペネトレーションの条件：価格弾力性が【4】い・規模の経済／経験曲線が働く",a:["革新","模倣","低","高"]},
+{id:"c24",d:"comp",q:"サービスの4特性：【1】性・【2】性・【3】性・【4】性",a:["無形","不可分","変動","消滅"]},
+{id:"c25",d:"comp",q:"ブランド・エクイティの構成要素（アーカー）：ブランド【1】・知覚【2】・ブランド【3】・ブランド【4】",a:["認知","品質","連想","ロイヤルティ"]},
+{id:"c26",d:"comp",q:"リーダーの定石：【1】需要の拡大・【2】化対応・【3】価格対応。ニッチャーの定石：集中による【4】的独占",a:["周辺（市場全体）","同質","非","疑似"]},
+{id:"c27",d:"cb",q:"顧客知覚価値＝総顧客【1】−総顧客【2】。【2】には金銭のほか【3】・労力・【4】が含まれる",a:["便益","コスト","時間","心理（的コスト）"]},
+{id:"c28",d:"pr",q:"製品の3層モデル：【1】・【2】・【3】。「製品に付随する付加的な消費者サービスや便益」＝【3】",a:["中核（本質的便益）","形態（品質・デザイン・ブランド等）","付随機能"]},
+];
+
+/* ============================================================
+   論点マップ — 出題可能性のある論点の自信度セルフチェック
+   ============================================================ */
+const TOPICS = [
+{g:"戦略・環境分析", items:[
+  "マーケティング・コンセプトの変遷（生産→製品→販売→マーケティング→社会志向）",
+  "3C分析・SWOT・PEST",
+  "アンゾフの成長マトリクス（市場浸透・新製品・新市場・多角化）",
+  "PPM（プロダクト・ポートフォリオ・マネジメント）",
+  "ポーターの5要因（業界の競争構造）",
+  "ポーターの3つの基本戦略",
+  "コトラーの競争地位別戦略",
+  "マーケティング・マイオピア（近視眼）",
+  "顧客知覚価値と顧客満足",
+]},
+{g:"STP", items:[
+  "細分化の4変数と具体例",
+  "効果的な細分化の5要件",
+  "細分化の程度のトレードオフ",
+  "ターゲティングの5パターン",
+  "ポジショニングと知覚マップ",
+  "リキッド消費・消費スタイルの変化",
+]},
+{g:"消費者行動", items:[
+  "購買意思決定プロセスの5段階",
+  "知覚の選択性（注意・歪曲・保持）",
+  "学習理論（古典的・オペラント条件づけ）",
+  "動機づけ理論（マズロー・ハーズバーグ）",
+  "態度と多属性態度モデル・意思決定ルール",
+  "関与と精緻化見込みモデル",
+  "認知的不協和と購買後行動",
+  "準拠集団・オピニオンリーダー",
+  "知覚リスクと低減行動",
+  "行動経済学（プロスペクト理論・ナッジ）",
+  "ムード・感情と消費行動（ムード消費）",
+]},
+{g:"製品", items:[
+  "製品の5階層",
+  "製品分類（最寄品・買回品・専門品）",
+  "製品ミックス（幅・深さ・整合性）",
+  "製品ライフサイクルと段階別戦略",
+  "新製品開発プロセス",
+  "普及理論（ロジャースの5属性・採用者区分・キャズム）",
+  "コモディティ化の要因・帰結・脱却",
+  "計画的陳腐化",
+  "製品の3層モデル（中核・形態・付随機能）",
+]},
+{g:"ブランド", items:[
+  "ブランド・エクイティ（アーカー）",
+  "ブランド戦略（拡張・ライン拡張・マルチブランド）",
+  "NB（ナショナルブランド）とPB（プライベートブランド）",
+  "パーパス・ブランディング",
+]},
+{g:"価格", items:[
+  "価格設定の3つの基本アプローチ",
+  "損益分岐点分析（計算含む）",
+  "需要の価格弾力性・交差弾力性",
+  "新製品価格（スキミング・ペネトレーション）",
+  "心理的価格設定・参照価格",
+  "価格差別・ダイナミック・プライシング",
+  "EDLPとハイ・ロー",
+  "サブスクリプション・フリーミアム",
+  "値上げ・実質値下げの知覚マネジメント",
+]},
+{g:"流通・チャネル", items:[
+  "チャネルの段階数と幅（開放的・選択的・専属的）",
+  "垂直的マーケティング・システム（VMS）",
+  "小売業態と小売の輪の理論",
+  "卸売業の機能",
+  "物流・サプライチェーン・マネジメント",
+  "オムニチャネル・OMO・D2C",
+]},
+{g:"プロモーション", items:[
+  "IMC（統合型マーケティング・コミュニケーション）",
+  "広告（媒体特性・効果測定）",
+  "販売促進（消費者向け・流通向け）",
+  "PR・パブリシティ",
+  "人的販売",
+  "プッシュ戦略とプル戦略",
+  "購買行動モデル（AIDMA・AISAS）",
+  "トリプルメディア（ペイド・オウンド・アーンド）",
+  "クチコミ・UGC・ステマ規制",
+]},
+{g:"サービス・関係性", items:[
+  "サービスの4特性と対応",
+  "サービス・プロフィット・チェーン",
+  "サービス品質の評価（期待と知覚のギャップ）",
+  "CRM・LTV・顧客維持",
+  "カスタマージャーニー・エンゲージメント",
+]},
+{g:"その他の頻出領域", items:[
+  "マーケティング・リサーチ（プロセス・定量と定性）",
+  "B2Bマーケティングの特徴（組織購買・DMU）",
+  "サステナブル・マーケティング・エシカル消費",
+  "コト消費・トキ消費・経験価値",
+  "デジタル・マーケティングの基礎（検索・SNS・データ活用）",
+]},
+];
+
+/* ============================================================
+   状態管理 — 多層永続化
+   層1: localStorage（同期・高速）
+   層2: IndexedDB（localStorageが消える環境へのフォールバック）
+   層3: バックアップファイルの書き出し／復元（端末間の引き継ぎ・完全保証）
+   ============================================================ */
+const LS_KEY = "mk1dojo";
+const BLANK = ()=>({essays:{},cards:{},days:{},clz:{},topics:{},ts:0});
+
+let lsOK = false;
+try{ localStorage.setItem("__mk1t","1"); localStorage.removeItem("__mk1t"); lsOK = true; }catch(e){}
+
+let idbOK = ("indexedDB" in window);
+function idbOpen(){
+  return new Promise((res,rej)=>{
+    const r = indexedDB.open("mk1dojo", 1);
+    r.onupgradeneeded = ()=>{ r.result.createObjectStore("kv"); };
+    r.onsuccess = ()=>res(r.result);
+    r.onerror = ()=>rej(r.error);
+    r.onblocked = ()=>rej(new Error("blocked"));
+  });
+}
+async function idbSet(obj){
+  if(!idbOK) return;
+  try{
+    const db = await idbOpen();
+    await new Promise((res,rej)=>{
+      const tx = db.transaction("kv","readwrite");
+      tx.objectStore("kv").put(JSON.stringify(obj), "state");
+      tx.oncomplete = res; tx.onerror = ()=>rej(tx.error);
+    });
+    db.close();
+  }catch(e){ idbOK = false; }
+}
+async function idbGet(){
+  if(!idbOK) return null;
+  try{
+    const db = await idbOpen();
+    const v = await new Promise((res,rej)=>{
+      const rq = db.transaction("kv").objectStore("kv").get("state");
+      rq.onsuccess = ()=>res(rq.result); rq.onerror = ()=>rej(rq.error);
+    });
+    db.close();
+    return v? JSON.parse(v) : null;
+  }catch(e){ idbOK = false; return null; }
+}
+
+let S = loadSync();
+function loadSync(){
+  try{
+    if(lsOK){
+      const v = JSON.parse(localStorage.getItem(LS_KEY)||"null");
+      if(v) return Object.assign(BLANK(), v);
+    }
+  }catch(e){}
+  return BLANK();
+}
+function save(){
+  S.ts = Date.now();
+  if(lsOK){ try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){ lsOK=false; } }
+  idbSet(S);
+}
+
+/* バックアップの書き出し・復元 */
+let dataMsg = "";
+async function exportFile(){
+  const d = new Date(), pad = n=>String(n).padStart(2,"0");
+  const name = `marken1-shinchoku-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;
+  const json = JSON.stringify(S);
+  // claude.ai上のArtifactでは downloads 機能（確認ダイアログ付き）が最も確実
+  if(window.claude && window.claude.downloads){
+    try{
+      await window.claude.downloads.save({filename:name, data:json});
+      markBackup(); return true;
+    }catch(err){
+      if(err && err.code === "declined") return false;      // 保存をやめた
+      if(err && err.code === "rate_limited") return false;  // 直前の確認が開いている
+      // それ以外はブラウザ標準の方法へフォールバック
+    }
+  }
+  try{
+    const blob = new Blob([json], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    markBackup(); return true;
+  }catch(e){ return false; }
+}
+function markBackup(){ S.lastBackup = todayKey(); save(); }
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); return true; }
+  catch(e){
+    try{
+      const ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta);
+      ta.select(); const ok = document.execCommand("copy"); ta.remove();
+      return ok;
+    }catch(e2){ return false; }
+  }
+}
+function exportClipboard(){ return copyText(JSON.stringify(S)); }
+
+/* 得点区分換算（合否通知書と同じ物差し） */
+function gradeOf(pct){ // 各問 0-100%
+  if(pct>=75) return "S"; if(pct>=50) return "A"; if(pct>=25) return "B"; if(pct>=1) return "C"; return "D";
+}
+function gradeTotal(t){ // 総得点 0-400
+  if(t>=300) return "S"; if(t>=200) return "A"; if(t>=100) return "B"; if(t>=1) return "C"; return "D";
+}
+
+/* キーワード自動チェック：答案に必須語が含まれるか */
+function kwCheck(id, ans){
+  const kws = ESSAY_KW[id] || [];
+  const text = (ans||"").replace(/\s/g,"");
+  return kws.map(kw=>{
+    const alts = kw.split("|");
+    return {label: alts[0], hit: alts.some(a=>text.includes(a))};
+  });
+}
+
+/* Claude採点用プロンプト生成 */
+function gradePrompt(e, ans){
+  return `あなたはマーケティング検定1級（記述式）の採点者です。以下の解答を厳格に採点してください。
+
+【問題】
+${e.q}
+
+【模範解答の骨子】
+${e.model}
+
+【採点ポイント】
+${e.points.map((p,i)=>`${i+1}. ${p}`).join("\n")}
+
+【受験者の解答】
+${ans || "（未記入）"}
+
+次の形式で出力してください：
+1. 採点ポイントごとの充足判定（○△×と、その根拠を1行ずつ）
+2. 内容の事実誤認・概念の混同・論理の飛躍（あれば具体的に指摘。なければ「なし」）
+3. 100点満点の評価点と得点区分（S:75点以上／A:50〜74／B:25〜49／C:1〜24）
+4. この解答を75点（S水準）に引き上げるための改善点を3つ以内で`;
+}
+function importText(text){
+  try{
+    const v = JSON.parse(text);
+    if(!v || typeof v !== "object" || (!v.essays && !v.cards)) throw new Error("format");
+    S = Object.assign(BLANK(), v);
+    save();
+    return true;
+  }catch(e){ return false; }
+}
+
+/* ============================================================
+   継続支援 — 学習ストリーク・今日のミッション・復習キュー
+   ============================================================ */
+function dayKey(d){ const p=n=>String(n).padStart(2,"0"); return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
+function todayKey(){ return dayKey(new Date()); }
+function bump(kind, n=1){
+  S.days = S.days || {};
+  const o = S.days[todayKey()] = S.days[todayKey()] || {e:0,c:0,a:0};
+  o[kind] = (o[kind]||0) + n;
+  save();
+}
+function dayActive(k){
+  const o = (S.days||{})[k];
+  return !!(o && ((o.e||0)>0 || (o.c||0)>0 || (o.a||0)>0));
+}
+function streak(){
+  let n = 0;
+  const d = new Date();
+  if(!dayActive(dayKey(d))) d.setDate(d.getDate()-1); // 今日まだ未学習でも昨日までの連続は保つ
+  while(dayActive(dayKey(d))){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+function missions(){
+  const o = (S.days||{})[todayKey()] || {e:0,c:0,a:0};
+  return [
+    {t:"記述問題を1問解いて自己採点する", done:(o.e||0)>=1, goto:"essay", prog:(o.e||0)>=1?"":"0/1"},
+    {t:"用語ドリルを5枚めくる", done:(o.c||0)>=5, goto:"cards", prog:Math.min(o.c||0,5)+"/5"},
+    {t:"音声学習を3トラック聞く", done:(o.a||0)>=3, goto:"audio", prog:Math.min(o.a||0,3)+"/3"},
+  ];
+}
+function reviewQueue(){
+  return ESSAYS
+    .filter(e=>{ const sc=essayScore(e.id); return sc!=null && sc<0.8; })
+    .sort((a,b)=>essayScore(a.id)-essayScore(b.id))
+    .slice(0,3);
+}
+function nextQuestion(){
+  const prio = ["cb","price","stp","pr","comp"]; // 昨年B領域を最優先
+  for(const imp of ["A","B","C"]){              // 重要度Aから消化する
+    for(const d of prio){
+      const e = ESSAYS.find(x=>x.d===d && impOfEssay(x.id)===imp && essayScore(x.id)==null);
+      if(e) return e;
+    }
+  }
+  return null;
+}
+
+/* ============================================================
+   模試モード — 本番と同じ4題構成・120分
+   ============================================================ */
+function mockPick(){
+  const doms = ["stp","cb","pr","price"]; // 昨年の大問1〜4に対応
+  return doms.map(d=>{
+    const kaku = ESSAYS.filter(e=>e.d===d && e.title.includes("昨年度型"));
+    const pool = kaku.length? kaku : ESSAYS.filter(e=>e.d===d);
+    return pool[Math.floor(Math.random()*pool.length)].id;
+  });
+}
+function mockStart(){
+  // 模試対象の過去採点をリセットせず、新しい答案は上書きで書く運用
+  S.mock = { qids: mockPick(), end: Date.now() + 120*60*1000 };
+  delete S.mockResult;
+  save(); render();
+}
+function mockFinish(){
+  if(!S.mock) return;
+  const per = S.mock.qids.map(id=>({ id, sc: essayScore(id) }));
+  const total = Math.round(per.reduce((a,p)=>a+(p.sc||0)*100, 0));
+  S.mockResult = { per, total, date: todayKey() };
+  delete S.mock;
+  save(); render();
+}
+function fmtRemain(){
+  if(!S.mock) return "";
+  const r = Math.max(0, S.mock.end - Date.now());
+  const m = Math.floor(r/60000), s = Math.floor(r%60000/1000);
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+setInterval(()=>{
+  let f = document.getElementById("mockfloat");
+  if(S.mock){
+    if(!f){
+      f = document.createElement("button");
+      f.id = "mockfloat"; f.className = "mockfloat";
+      f.addEventListener("click", ()=>{ view="essay"; curEssay=null; render(); });
+      document.body.appendChild(f);
+    }
+    f.textContent = (S.mock.end-Date.now()<=0)? "模試 時間終了" : "模試 残り "+fmtRemain();
+    const mt = document.getElementById("mocktimer");
+    if(mt) mt.textContent = fmtRemain();
+  } else if(f) f.remove();
+}, 1000);
+
+/* ============================================================
+   音声学習 — Web Speech API（端末内蔵の音声合成・オフライン動作）
+   ============================================================ */
+const AU = {
+  src:"cards", dom:"all", imp:"all", quiz:true,
+  rate:1.0, loop:false,
+  i:0, playing:false, list:[], voice:null, gen:0,
+};
+const ttsOK = ("speechSynthesis" in window) && ("SpeechSynthesisUtterance" in window);
+let auTimer = null, wakeLock = null;
+
+function auPickVoice(){
+  if(!ttsOK) return;
+  const vs = speechSynthesis.getVoices().filter(v=>v.lang && v.lang.toLowerCase().startsWith("ja"));
+  AU.voice = vs.find(v=>/Kyoko|Google 日本語|O-Ren|Hattori/i.test(v.name)) || vs[0] || null;
+}
+if(ttsOK){
+  auPickVoice();
+  speechSynthesis.onvoiceschanged = auPickVoice;
+}
+
+/* 読み上げ用テキスト整形（音声原稿にない教材のフォールバック用） */
+const AU_CIRC = {"①":"。1つ目。","②":"。2つ目。","③":"。3つ目。","④":"。4つ目。","⑤":"。5つ目。","⑥":"。6つ目。","⑦":"。7つ目。"};
+function auSanitize(t){
+  return t
+    .replace(/【[^】]*】/g,"")
+    .replace(/（E\d{2}[^）]*）/g,"")
+    .replace(/\(1\)/g,"。問1。").replace(/\(2\)/g,"。問2。").replace(/\(3\)/g,"。問3。")
+    .replace(/[①-⑦]/g, m=>AU_CIRC[m]||"。")
+    .replace(/Bardhi\s*(と|&)\s*Eckhardt/g,"バーディとエックハート")
+    .replace(/One to One/g,"ワン・トゥ・ワン")
+    .replace(/→/g,"、")
+    .replace(/[⇔↔]/g,"、逆に、")
+    .replace(/vs/g,"、対、")
+    .replace(/／/g,"、")
+    .replace(/&/g,"・")
+    .replace(/…/g,"、")
+    .replace(/[（(]/g,"、")
+    .replace(/[）)]/g,"、")
+    .replace(/\s*\n\s*/g,"。")
+    .replace(/、+/g,"、")
+    .replace(/、。/g,"。")
+    .replace(/。+/g,"。");
+}
+
+/* 用語名の読み（アルファベット略語などを聞き取りやすく） */
+const AU_READ = {
+  "STP":"エスティーピー",
+  "One to Oneマーケティング":"ワン・トゥ・ワン・マーケティング",
+  "EDLP":"イーディーエルピー",
+  "CRMとLTV":"シーアールエムと、エルティーブイ",
+  "貢献利益（限界利益）":"貢献利益",
+};
+const auTermRead = t => AU_READ[t] || t;
+
+function auBuild(){
+  if(AU.src==="cards"){
+    const cs = CARDS.filter(c=>
+      (AU.dom==="all" || c.d===AU.dom) &&
+      (AU.imp==="all" || impOfCard(c.t)===AU.imp));
+    return cs.map(c=>{
+      const spoken = CARD_AUDIO[c.t] || c.f;
+      return {title:c.t, sub:DOMAINS[c.d], text:spoken,
+        parts: AU.quiz
+          ? [auTermRead(c.t)+"。これは、どのような概念でしょうか。", spoken]
+          : [spoken]};
+    });
+  }
+  const es = ESSAYS.filter(e=>
+    (AU.dom==="all" || e.d===AU.dom) &&
+    (AU.imp==="all" || impOfEssay(e.id)===AU.imp));
+  return es.map(e=>{
+    const a = ESSAY_AUDIO[e.id] || {};
+    return {title:e.title.replace("【昨年度型】","").replace("【弱点強化】",""), sub:DOMAINS[e.d], text:a.m || e.model,
+      parts:["問題です。"+(a.q || e.q), "解答のポイントを説明します。"+(a.m || e.model)]};
+  });
+}
+function auGap(){ return (AU.src==="cards" && AU.quiz)? 2600 : 1000; }
+
+async function auWake(){
+  try{ if("wakeLock" in navigator) wakeLock = await navigator.wakeLock.request("screen"); }catch(e){}
+}
+function auWakeRelease(){ try{ if(wakeLock) wakeLock.release(); }catch(e){} wakeLock=null; }
+document.addEventListener("visibilitychange", ()=>{
+  if(document.visibilityState==="visible" && AU.playing) auWake();
+});
+
+function auSpeakItem(){
+  const item = AU.list[AU.i];
+  if(!item){ auStop(); return; }
+  auUpdateNow();
+  clearTimeout(auTimer);
+  const gen = ++AU.gen; // 世代：cancel済み音声の遅延イベントを無効化する
+  const parts = item.parts.map(auSanitize);
+  const speakPart = pi=>{
+    if(!AU.playing || gen !== AU.gen) return;
+    const u = new SpeechSynthesisUtterance(parts[pi]);
+    u.lang = "ja-JP";
+    if(AU.voice) u.voice = AU.voice;
+    u.rate = AU.rate;
+    u.onend = ()=>{
+      if(!AU.playing || gen !== AU.gen) return;
+      if(pi+1 < parts.length){ auTimer = setTimeout(()=>speakPart(pi+1), auGap()); }
+      else { auTimer = setTimeout(()=>auAdvance(), 1100); }
+    };
+    u.onerror = ()=>{
+      if(!AU.playing || gen !== AU.gen) return;
+      auTimer = setTimeout(()=>auAdvance(), 600);
+    };
+    speechSynthesis.speak(u);
+  };
+  speakPart(0);
+}
+function auAdvance(){
+  bump("a"); // 今日のミッション：音声トラック数
+  AU.i++;
+  if(AU.i >= AU.list.length){
+    if(AU.loop) AU.i = 0;
+    else { auStop(); return; }
+  }
+  auSpeakItem();
+}
+function auPlay(){
+  if(!ttsOK) return;
+  if(!AU.list.length) AU.list = auBuild();
+  if(AU.i >= AU.list.length) AU.i = 0;
+  AU.playing = true;
+  speechSynthesis.cancel();
+  auWake();
+  auSpeakItem();
+  auUpdateNow();
+}
+function auStop(){
+  AU.playing = false;
+  clearTimeout(auTimer);
+  if(ttsOK) speechSynthesis.cancel();
+  auWakeRelease();
+  auUpdateNow();
+}
+function auSkip(dir){
+  clearTimeout(auTimer);
+  if(ttsOK) speechSynthesis.cancel();
+  AU.i = Math.min(Math.max(AU.i+dir, 0), Math.max(AU.list.length-1,0));
+  if(AU.playing) auSpeakItem(); else auUpdateNow();
+}
+function auReset(){
+  const wasPlaying = AU.playing;
+  auStop();
+  AU.list = auBuild();
+  AU.i = 0;
+  if(wasPlaying) auPlay(); else auUpdateNow();
+}
+function auUpdateNow(){
+  const item = AU.list[AU.i];
+  const t=$("#pl-title"), c=$("#pl-cnt"), x=$("#pl-text"), b=$("#pl-toggle"), k=$("#pl-kicker");
+  if(b) b.textContent = AU.playing? "⏸":"▶";
+  if(!item) return;
+  if(t) t.textContent = item.title;
+  if(k) k.textContent = item.sub;
+  if(c) c.textContent = `${AU.i+1} / ${AU.list.length}`;
+  if(x) x.textContent = item.text;
+}
+
+/* ============================================================
+   ユーティリティ
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function daysToExam(){
+  const exam = new Date(2026,8,6); // 2026-09-06
+  const now = new Date(); now.setHours(0,0,0,0);
+  return Math.max(0, Math.round((exam - now)/86400000));
+}
+function essayScore(id){
+  const e = S.essays[id];
+  if(!e || e.score==null) return null;
+  return e.score;
+}
+function domainStats(d){
+  const qs = ESSAYS.filter(e=>e.d===d);
+  const scored = qs.map(q=>essayScore(q.id)).filter(v=>v!=null);
+  const cds = CARDS.filter(c=>c.d===d);
+  const known = cds.filter(c=>S.cards[c.t]===1).length;
+  return {
+    qTotal: qs.length, qDone: scored.length,
+    qAvg: scored.length? scored.reduce((a,b)=>a+b,0)/scored.length : null,
+    cTotal: cds.length, cKnown: known,
+  };
+}
+
+/* ============================================================
+   描画
+   ============================================================ */
+let view = "home";
+let curEssay = null;
+let fc = {domain:"all", imp:"all", idx:0, flip:false};
+let impFilter = "all";      // 記述演習の重要度フィルタ
+let roundConfirm = false;   // 周回リセットの2段階確認
+
+/* 周回リセット：採点のみ白紙化（解答文・学習記録・周回履歴は保持） */
+function roundReset(){
+  const scored = ESSAYS.map(e=>essayScore(e.id)).filter(v=>v!=null);
+  if(scored.length){
+    S.rounds = S.rounds || [];
+    S.rounds.push({
+      date: todayKey(),
+      count: scored.length,
+      avg: Math.round(scored.reduce((a,b)=>a+b,0)/scored.length*100),
+    });
+  }
+  for(const id of Object.keys(S.essays)){
+    const st = S.essays[id];
+    delete st.checks; delete st.score; delete st.reveal;
+  }
+  delete S.mock; delete S.mockResult;
+  save();
+}
+
+function render(){
+  document.querySelectorAll("nav.tabs button").forEach(b=>{
+    b.setAttribute("aria-selected", b.dataset.v===view ? "true":"false");
+  });
+  const m = $("#main");
+  if(view==="home") m.innerHTML = renderHome();
+  else if(view==="essay") m.innerHTML = curEssay? renderEssayDetail(curEssay) : renderEssayList();
+  else if(view==="past") m.innerHTML = renderPast();
+  else if(view==="cards") m.innerHTML = renderCards();
+  else if(view==="audio") m.innerHTML = renderAudio();
+  else if(view==="topics") m.innerHTML = renderTopics();
+  else if(view==="sheet") m.innerHTML = renderSheet();
+  m.className = "view";
+  bindMain();
+  window.scrollTo(0,0);
+}
+
+function renderHome(){
+  const totalQ = ESSAYS.length;
+  const scores = ESSAYS.map(e=>essayScore(e.id)).filter(v=>v!=null);
+  const doneQ = scores.length;
+  const knownC = CARDS.filter(c=>S.cards[c.t]===1).length;
+  const avg = scores.length? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length*100) : null;
+
+  let weakest=null, weakestVal=2;
+  const domRows = Object.entries(DOMAINS).map(([d,name])=>{
+    const st = domainStats(d);
+    const prog = (st.qTotal+st.cTotal)? (st.qDone*(st.qAvg??0)+st.cKnown)/(st.qTotal+st.cTotal) : 0;
+    if(prog<weakestVal){weakestVal=prog; weakest=name;}
+    return `<div class="dom-row"><span class="nm">${name}</span>
+      <span class="bar"><i style="width:${Math.round(prog*100)}%"></i></span>
+      <span class="pc">${Math.round(prog*100)}%</span></div>`;
+  }).join("");
+
+  const ms = missions();
+  const stk = streak();
+  const rq = reviewQueue();
+  const next = nextQuestion();
+  const autoOK = lsOK || idbOK;
+  const msg = dataMsg; dataMsg = "";
+
+  return `
+  <h2 class="sec">今日の学習</h2>
+  <div class="daily">
+    <div class="streak"><div class="n">${stk}</div><div class="l">連続学習日</div></div>
+    <div class="missions">
+      ${ms.map(m=>`<button class="mission ${m.done?"done":""}" data-goto="${m.goto}">
+        <span class="mk">${m.done?"✓":""}</span><span class="tx">${m.t}</span>
+        <span class="pg">${m.done?"完了":(m.prog||"")}</span></button>`).join("")}
+    </div>
+  </div>
+  <p class="muted" style="margin:8px 0 0">ミッションをどれか1つでも行えば「学習した日」になり、連続日数が伸びます。1日15分でOK。タップでその教材に移動します。</p>
+
+  <h2 class="sec">昨年の結果と、今年の作戦</h2>
+  <div class="card">
+    <div class="lastyear">
+      <div class="lygrade"><div class="g ok">A</div><div class="t">第1問<br>STP</div></div>
+      <div class="lygrade"><div class="g ng">B</div><div class="t">第2問<br>消費者行動</div></div>
+      <div class="lygrade"><div class="g ok">A</div><div class="t">第3問<br>製品</div></div>
+      <div class="lygrade"><div class="g ng">B</div><div class="t">第4問<br>価格</div></div>
+    </div>
+    <p style="font-size:14px; margin:12px 0 0">総得点はA（200〜299点）で、合格ライン（240点程度＋上位20%）まであと一歩でした。<b>第1問・第3問はすでに合格水準。</b>勝負は<b style="color:var(--bad)">第2問「消費者行動」と第4問「価格」をBからAに上げる</b>ことです。この2領域は演習を8問・9問に増強済みで、「今日の一問」も弱点領域から優先出題します。各大問60点で計240点。B領域の+15点ずつが合否を分けます。</p>
+  </div>
+
+  <h2 class="sec">学習の現在地</h2>
+  <div class="stats">
+    <div class="stat"><div class="n">${doneQ}<span class="muted" style="font-size:13px">/${totalQ}</span></div><div class="l">記述 採点済み</div></div>
+    <div class="stat"><div class="n">${avg!=null? avg+"%":"—"}</div><div class="l">自己採点平均${avg!=null? "（"+gradeOf(avg)+"相当）":""}</div></div>
+    <div class="stat"><div class="n">${knownC}<span class="muted" style="font-size:13px">/${CARDS.length}</span></div><div class="l">用語 習得</div></div>
+  </div>
+  <div class="card" style="margin-top:12px">${domRows}
+    ${weakest? `<p class="muted" style="margin:10px 0 0">▸ 進捗が最も低い領域：<b style="color:var(--warn)">${weakest}</b></p>`:""}
+  </div>
+
+  ${rq.length? `<h2 class="sec">復習キュー — 自己採点80%未満</h2>
+  <p class="muted" style="margin:0 0 8px">記述式は「2回目に完全再現できるか」が得点力。時間を置いて解き直しましょう。</p>
+  ${rq.map(e=>{const sc=essayScore(e.id);
+    return `<button class="qrow" data-open="${e.id}"><span class="st mid"></span>
+      <span class="ttl">${esc(e.title)}</span><span class="sc">${Math.round(sc*100)}%</span></button>`;}).join("")}`:""}
+
+  ${next? `<h2 class="sec">今日の一問（弱点領域を優先）</h2>
+  <button class="qrow" data-open="${next.id}">
+    <span class="st"></span><span class="ttl">${esc(next.title)}</span>
+    <span class="sc">${DOMAINS[next.d]}</span>
+  </button>`:""}
+
+  <h2 class="sec">弱点発見・仕上げツール</h2>
+  ${(()=>{ const tp = topicStats(); return `
+  <button class="qrow" data-goto="topics">
+    <span class="st ${tp.r1>0?"mid":tp.r0===tp.total?"":"done"}"></span>
+    <span class="ttl">論点マップ — 出題論点の自信度チェック</span>
+    <span class="sc">${tp.r0===tp.total? "未評価" : `×${tp.r1}・△${tp.r2}・○${tp.r3}`}</span>
+  </button>`;})()}
+  <button class="qrow" data-goto="sheet">
+    <span class="st"></span>
+    <span class="ttl">直前総まとめシート — ランクAの骨子と定義を一気読み</span>
+    <span class="sc">前日用</span>
+  </button>
+
+  <h2 class="sec">合格戦略（上位20%に入るために）</h2>
+  <div class="card" style="font-size:14px">
+    <p style="margin:0 0 8px"><b>① 型を持つ。</b>「定義 → 論理展開 → 示唆・自分の考え」の3段構成で書けば安定して部分点が取れる。指定語句がある問題は、<b>語句同士を因果関係でつなぐ</b>ことが採点の中心。</p>
+    <p style="margin:0 0 8px"><b>② 時間配分と字数感覚。</b>4題120分＝1題30分。公式模試の小問構成は「30字短答→250字→300字→400字」＝1大問約1,000字。書き出す前に1分で骨子を作り、目標字数±2割で書き切る。週1回は模試モードで通し練習を。</p>
+    <p style="margin:0 0 8px"><b>③ B領域の底上げが最優先。</b>消費者行動と価格は「概念の正確な定義＋指定視点への切り分け」で確実に部分点を積む。計算問題（損益分岐点）は満点必須。</p>
+    <p style="margin:0"><b>④ 毎日触れる。</b>記述は書かない日でも、音声学習で模範解答の論理展開を耳に入れておく。移動時間が復習時間になる。</p>
+  </div>
+
+  <h2 class="sec">学習データの保存・引き継ぎ</h2>
+  <div class="card" style="font-size:13.5px">
+    <p style="margin:0">この端末への自動保存：${autoOK
+      ? `<b style="color:var(--good)">有効</b>（ブラウザ内に二重保存${lsOK&&idbOK? "":"・片系のみ"}）`
+      : `<b style="color:var(--bad)">無効</b> — この環境ではブラウザ内保存が使えません`}
+      　／　最終バックアップ：${S.lastBackup? `<b>${esc(S.lastBackup.replace(/-/g,"/"))}</b>` : `<b style="color:var(--warn)">未実施</b>`}</p>
+    <p class="muted" style="margin:6px 0 0">⚠ claude.ai内で開いている場合、自動保存の領域はアプリの更新などで<b>消えることがあります</b>。学習した日は「進捗をファイルに保存」を習慣にしてください（復元はいつでもできます）。</p>
+    <div class="btnrow">
+      <button class="btn primary" id="expfile">進捗をファイルに保存</button>
+      <button class="btn ghost" id="expclip">進捗コードをコピー</button>
+      <button class="btn ghost" id="impbtn">ファイルから復元</button>
+      <input type="file" id="impfile" accept=".json,application/json" style="display:none">
+    </div>
+    <p class="datamsg" id="datamsg">${esc(msg)}</p>
+    <details class="ansd">
+      <summary>進捗コードを貼り付けて復元する</summary>
+      <textarea class="paste" id="pastebox" placeholder='ここに進捗コード（{"essays":...}で始まるテキスト）を貼り付け'></textarea>
+      <div class="btnrow" style="margin-top:8px"><button class="btn ghost" id="imppaste">貼り付けた内容で復元</button></div>
+    </details>
+    <p class="muted" style="margin:10px 0 0">ブラウザの「閲覧履歴・サイトデータの削除」を行うと自動保存分は消えます。週1回程度「ファイルに保存」しておくと確実です。PCとスマホの間で進捗を引き継ぐときも、保存→もう一方の端末で復元、の手順で移せます。</p>
+  </div>
+
+  <h2 class="sec">試験情報（日本マーケティング協会 公式）</h2>
+  <div class="card">
+    <dl class="exam-meta">
+      <dt>試験日</dt><dd>2026年9月6日（日）14:00〜16:00（CBT）</dd>
+      <dt>形式</dt><dd>記述式・4題・120分（1題あたり約30分）</dd>
+      <dt>合格基準</dt><dd>400点満点の60%程度 かつ 受験者全体の<b>上位20%</b></dd>
+      <dt>受験資格</dt><dd>マーケティング検定2級合格者</dd>
+      <dt>推薦図書</dt><dd style="font-weight:400;font-size:12.5px">『マーケティング（New Liberal Arts Selection）』／『コトラー&ケラー&チェルネフ マーケティング・マネジメント〔原書16版〕』／『ゼミナール マーケティング入門 第2版』</dd>
+    </dl>
+  </div>
+
+  <p class="note-src">出典・根拠：試験概要と推薦図書は<a href="https://www.jma-jp.org/marken/level1" target="_blank" rel="noopener">日本マーケティング協会「マーケティング検定1級」公式ページ</a>および<a href="https://www.jma-jp.org/marken/textbook" target="_blank" rel="noopener">公式問題集&参考書籍ページ</a>（2026年7月確認）。出題形式の分析には協会公開の<a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-0mkIIk5XWWpnvFHa9bjEFz7v632KhRK-AXN19hbocvY4Q/viewform" target="_blank" rel="noopener">公式模擬テスト</a>（2026年7月確認）を参照。昨年の得点区分は受験者本人の合否通知書（令和7年度）による。演習・用語の内容はコトラー&ケラー&チェルネフ『マーケティング・マネジメント』等の推薦図書に示された標準的マーケティング理論、および受験者本人の2025年度受験メモに基づく。昨年度問題の復元は記憶メモによるものであり、実際の出題文とは異なる。</p>`;
+}
+
+function renderEssayList(){
+  let html = "";
+  if(S.mockResult){
+    const r = S.mockResult;
+    html += `<div class="card">
+      <h3 class="serif" style="margin:0 0 6px; font-size:16px">模試結果（${r.date.replace(/-/g,"/")}）</h3>
+      <p style="font-size:15px; margin:0">推定 <b style="font-size:24px">${r.total}</b> / 400点（総得点区分 <b>${gradeTotal(r.total)}</b>）—
+      ${r.total>=240
+        ? `<b style="color:var(--good)">合格ライン相当です。この水準を安定させましょう。</b>`
+        : `<b style="color:var(--warn)">合格ライン（約240点）まであと${240-r.total}点。</b>採点ポイントの取りこぼしを復習キューで潰しましょう。`}</p>
+      <p class="muted" style="margin:8px 0 0">${r.per.map((p,i)=>`第${i+1}問 ${p.sc==null?"未採点":Math.round(p.sc*100)+"点（"+gradeOf(Math.round(p.sc*100))+"）"}`).join("　")}　※昨年はA・B・A・B</p>
+      <div class="btnrow"><button class="btn ghost" id="mockclose">閉じる</button></div>
+    </div>`;
+  }
+  if(S.mock){
+    html += `<div class="card" style="border-color:var(--gold)">
+      <h3 class="serif" style="margin:0 0 4px; font-size:16px">模試 実施中 — 残り <span id="mocktimer">${fmtRemain()}</span></h3>
+      <p class="muted" style="margin:0 0 10px">本番と同じ4題・120分（1題約30分）。各問で解答→模範解答を開いて自己採点まで済ませ、最後に「模試を終了」を押してください。</p>
+      ${S.mock.qids.map((id,i)=>{
+        const e = ESSAYS.find(x=>x.id===id); const sc = essayScore(id);
+        return `<button class="qrow" data-open="${id}"><span class="st ${sc==null?"":sc>=0.8?"done":"mid"}"></span>
+          <span class="ttl">第${i+1}問　${esc(e.title)}</span>
+          <span class="sc">${sc==null? "未":Math.round(sc*100)+"%"}</span></button>`;}).join("")}
+      <div class="btnrow"><button class="btn primary" id="mockfin">模試を終了して結果を見る</button></div>
+    </div>`;
+  } else {
+    html += `<div class="card">
+      <h3 class="serif" style="margin:0 0 4px; font-size:16px">模試モード（本番シミュレーション）</h3>
+      <p class="muted" style="margin:0 0 10px">昨年度型の4題を本番と同じ構成（STP／消費者行動／製品／価格）でランダム出題し、120分の時計が走ります。週1回の通し練習で時間配分の感覚を作りましょう。</p>
+      <div class="btnrow" style="margin-top:0"><button class="btn primary" id="mockstart">模試を始める（4題・120分）</button></div>
+    </div>`;
+  }
+  /* 周回管理 */
+  const round = (S.rounds||[]).length + 1;
+  const prev = (S.rounds||[])[(S.rounds||[]).length-1];
+  const scoredNow = ESSAYS.map(e=>essayScore(e.id)).filter(v=>v!=null);
+  html += `<div class="card">
+    <h3 class="serif" style="margin:0 0 4px; font-size:16px">周回管理 — 現在 ${round}周目</h3>
+    <p class="muted" style="margin:0 0 10px">${prev
+      ? `前周（${prev.date.replace(/-/g,"/")}終了）：${prev.count}問・平均${prev.avg}%。今周は前周より上を目指しましょう。`
+      : `全問の自己採点を終えたら2周目へ。周回を重ねるほど「型」が身につきます。`}
+    リセットしても<b>解答文と学習記録は残り</b>、採点だけが白紙に戻ります。前周の成績は記録されます。</p>
+    <div class="btnrow" style="margin-top:0">
+      ${roundConfirm
+        ? `<button class="btn primary" id="roundgo">本当にリセットして${round+1}周目へ</button>
+           <button class="btn ghost" id="roundcancel">やめる</button>`
+        : `<button class="btn ghost" id="roundask" ${scoredNow.length? "":"disabled"}>採点をリセットして次の周回へ（採点済み ${scoredNow.length}問）</button>`}
+    </div>
+  </div>`;
+
+  html += `<p class="muted" style="margin-top:14px">昨年度の出題形式を再現した記述問題。解答を書いたら「模範解答と採点ポイント」を開き、含められた要素にチェックして自己採点します。<span class="chip gold">昨年度型</span> は2025年度の実出題テーマ、<span class="chip gold">弱点強化</span> は昨年B評価だった領域の追加問題です。</p>
+  <div class="impfilter"><span class="lbl">重要度で絞り込み：</span>
+    ${["all","A","B","C"].map(k=>`<button data-if="${k}" aria-pressed="${impFilter===k}">${k==="all"?"すべて":"ランク"+k}</button>`).join("")}
+    <span class="muted" style="font-size:11.5px">A＝昨年出題テーマ＋最有力／B＝定番／C＝周辺</span>
+  </div>`;
+  for(const [d,name] of Object.entries(DOMAINS)){
+    const qs = ESSAYS.filter(e=>e.d===d && (impFilter==="all" || impOfEssay(e.id)===impFilter))
+      .slice().sort((a,b)=>IMP_ORDER[impOfEssay(a.id)]-IMP_ORDER[impOfEssay(b.id)]);
+    if(!qs.length) continue;
+    html += `<h2 class="sec">${name}${(d==="cb"||d==="price")? "　★昨年B・最重点":""}</h2>`;
+    html += qs.map(e=>{
+      const sc = essayScore(e.id);
+      const cls = sc==null? "" : sc>=0.8? "done":"mid";
+      return `<button class="qrow" data-open="${e.id}">
+        <span class="st ${cls}"></span>
+        <span class="imp ${impOfEssay(e.id)}">${impOfEssay(e.id)}</span>
+        <span class="ttl">${esc(e.title)}</span>
+        <span class="sc">${sc==null? "未" : Math.round(sc*100)+"%"}</span>
+      </button>`;
+    }).join("");
+  }
+  return html;
+}
+
+function renderEssayDetail(id){
+  const e = ESSAYS.find(x=>x.id===id);
+  const st = S.essays[id] || {};
+  const revealed = !!st.reveal;
+  const checks = st.checks || e.points.map(()=>false);
+  const qhtml = esc(e.q).replace(/「(.+?)」/g, (m,w)=> e.q.indexOf("必ず用いて")>=0 && e.q.indexOf(m) < e.q.indexOf("必ず用いて") ? `「<span class="req">${w}</span>」` : m);
+  return `
+  <button class="backlink" data-back="1">← 問題一覧に戻る</button>
+  <div class="card">
+    <div class="q-head">
+      <span class="imp ${impOfEssay(e.id)}" style="padding:0 7px">重要度 ${impOfEssay(e.id)}</span>
+      <span class="chip">${DOMAINS[e.d]}</span>
+      ${e.title.includes("昨年度型")? `<span class="chip gold">昨年度型</span>`:""}
+      ${e.title.includes("弱点強化")? `<span class="chip gold">弱点強化</span>`:""}
+      ${e.title.includes("公式模試型")? `<span class="chip gold">公式模試型</span>`:""}
+      <span class="chip">目安 ${e.min}分</span>
+      ${e.chars? `<span class="chip">目標 ${e.chars}字</span>`:""}
+    </div>
+    <h3 class="serif" style="margin:4px 0 10px; font-size:17px">${esc(e.title)}</h3>
+    <div class="q-body">${qhtml}</div>
+    <textarea class="ans" id="ansbox" placeholder="ここに解答を書く（自動保存されます）。まず1分で骨子：キーワードを矢印でつなぐ。">${esc(st.ans||"")}</textarea>
+    <div class="charcount"><span id="cc">${(st.ans||"").length}</span> 字${e.chars? `　／　目標 ${e.chars}字（±2割）`:""}</div>
+    <div class="btnrow">
+      ${revealed? "" : `<button class="btn primary" id="reveal">模範解答と採点ポイントを見る</button>`}
+    </div>
+    ${revealed? (()=>{
+      const kws = kwCheck(id, st.ans);
+      const scN = checks.filter(Boolean).length;
+      const pct = Math.round(scN/e.points.length*100);
+      return `
+    <div class="model">
+      ${kws.length? `
+      <h3>キーワード自動チェック — あなたの解答文に含まれているか</h3>
+      <div class="kwwrap">
+        ${kws.map(k=>`<span class="kw ${k.hit?"hit":"miss"}">${k.hit?"✓":"⚠"} ${esc(k.label)}</span>`).join("")}
+      </div>
+      <p class="muted" style="margin:2px 0 14px">⚠ の語は答案に見当たりません。別表現で書けていれば問題ありませんが、採点者に伝わるのは「その概念の名前を正しく使った答案」です。</p>`:""}
+      <h3>模範解答</h3>
+      <div class="mtext">${esc(e.model)}</div>
+      <h3 style="margin-top:16px">採点ポイント — 自分の解答に含められた項目にチェック</h3>
+      <div id="pts">
+      ${e.points.map((p,i)=>`
+        <label class="pt ${checks[i]? "on":""}"><input type="checkbox" data-pi="${i}" ${checks[i]?"checked":""}>${esc(p)}</label>`).join("")}
+      </div>
+      <div class="scorebox">自己採点：<b id="scv">${scN}</b> / ${e.points.length}
+        <span style="margin-left:10px">得点区分換算：<b id="scg">${gradeOf(pct)}</b></span>
+        <span class="muted" style="margin-left:8px">S:75%〜／A:50〜74％。目標はS、最低でもAの上位。</span></div>
+      <div class="btnrow">
+        <button class="btn ghost" id="claudegrade">Claude採点用プロンプトをコピー</button>
+      </div>
+      <p class="muted" id="cgmsg" style="margin:6px 0 0">コピーしたら、Claude（アプリやWeb）に貼り付けると、事実誤認・論理の飛躍まで含めた厳格な採点が受けられます。</p>
+      <textarea class="paste" id="cgbox" style="display:none" readonly aria-label="採点用プロンプト"></textarea>
+    </div>`;})():""}
+  </div>`;
+}
+
+function renderPast(){
+  let html = `
+  <div class="card" style="border-color:var(--gold)">
+    <h3 class="serif" style="margin:0 0 6px; font-size:16px">公式模擬テストの分析（2026年7月確認）</h3>
+    <p style="font-size:14px; margin:0 0 8px">協会が公開している<a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-0mkIIk5XWWpnvFHa9bjEFz7v632KhRK-AXN19hbocvY4Q/viewform" target="_blank" rel="noopener" style="color:var(--focus)">1級模擬テスト</a>は小問4つ構成。ここから読める出題の型：</p>
+    <p style="font-size:13.5px; margin:0 0 8px; line-height:2">
+    ① <b>用語の短答（30字以内）</b>——定義から用語名を正確に答える「逆想起」型（出題例：付随機能）<br>
+    ② <b>概念の説明（250字以内）</b>——重要概念を一言一句正確に（出題例：顧客知覚価値 → <button class="linkq" data-open="E36">演習 E36</button>）<br>
+    ③ <b>指定語句でメカニズム論述（300字以内）</b>——語句を因果でつなぐ（出題例：ムード消費 → <button class="linkq" data-open="E37">演習 E37</button>）<br>
+    ④ <b>指定観点で戦略論述・具体例付き（400字以内）</b>——STPなどの枠組みで構成し具体例で締める</p>
+    <p class="muted" style="margin:0">昨年のリキッド消費に続き、模試でもムード消費——<b>最新の消費トレンド概念が毎回1テーマ入る</b>と想定して準備するのが安全です。用語ドリルは「定義を見て用語名を言える」逆方向でも仕上げてください（カードの表裏反転を活用）。</p>
+  </div>
+  <p class="muted" style="margin-top:14px">2025年度試験（あなたの受験メモに基づく復元）。<b>実際の問題文そのものではありません</b>が、出題テーマと問われ方の型を掴めます。各設問から対応する演習問題に飛べます。</p>`;
+  html += PAST.map(p=>`
+  <div class="card">
+    <h3 class="serif" style="margin:0 0 4px; font-size:17px">${p.no} <span class="muted" style="font-size:13px; font-weight:400">${esc(p.theme)}</span></h3>
+    ${p.subs.map(s=>`
+    <div class="past-q">
+      <h4>${s.s}</h4>
+      <div class="memo">メモ：${esc(s.memo)}</div>
+      <p style="margin:4px 0; font-size:14px"><b>出題の狙い（推定）：</b>${esc(s.intent)}</p>
+      <details class="ansd"><summary>解答方針を見る</summary><div class="in">${esc(s.ans)}</div></details>
+      <button class="linkq" data-open="${s.link}">→ 対応演習（${s.link}）を解く</button>
+    </div>`).join("")}
+  </div>`).join("");
+  return html;
+}
+
+function fcList(){
+  return CARDS.filter(c=>
+    (fc.domain==="all" || c.d===fc.domain) &&
+    (fc.imp==="all" || impOfCard(c.t)===fc.imp));
+}
+let cz = {idx:0, open:false};
+function clozeList(){ return fc.domain==="all"? CLOZE : CLOZE.filter(x=>x.d===fc.domain); }
+function cardModeToggle(){
+  return `<div class="modetoggle">
+    <button data-cmode="card" aria-pressed="${fc.mode!=="cloze"}">用語カード</button>
+    <button data-cmode="cloze" aria-pressed="${fc.mode==="cloze"}">穴埋めドリル</button>
+  </div>`;
+}
+function renderCloze(){
+  const list = clozeList();
+  if(!list.length) return `<div class="fcwrap">${cardModeToggle()}<div class="card">この領域の穴埋め問題はありません。</div></div>`;
+  if(cz.idx >= list.length) cz.idx = 0;
+  const c = list[cz.idx];
+  const known = S.clz[c.id]===1;
+  const knownCount = list.filter(x=>S.clz[x.id]===1).length;
+  const qhtml = esc(c.q).replace(/【(\d)】/g, '<span class="blank">$1</span>');
+  return `
+  <div class="fcwrap">
+    ${cardModeToggle()}
+    <div class="fcfilter">
+      <button data-fd="all" aria-pressed="${fc.domain==="all"}">すべて</button>
+      ${Object.entries(DOMAINS).map(([d,n])=>`<button data-fd="${d}" aria-pressed="${fc.domain===d}">${n}</button>`).join("")}
+    </div>
+    <p class="muted" style="margin:0 0 10px">習得 ${knownCount} / ${list.length} ${known?"（このカードは習得済み✓）":""}　—　空欄を頭の中で埋めてから答えを開く。<b>一言一句のレベル</b>で言えたら「覚えた」。答案の得点は用語の精密さで決まります。</p>
+    <div class="fcard" style="cursor:default">
+      <div class="clz-q">${qhtml}</div>
+      ${cz.open? `<div class="clz-a">${c.a.map((a,i)=>`<div class="row"><b>${i+1}</b><span>${esc(a)}</span></div>`).join("")}</div>`:""}
+    </div>
+    <div class="fcnav">
+      <button class="btn ghost" id="czprev" aria-label="前へ">←</button>
+      ${cz.open
+        ? `<button class="btn dunno" id="czno">まだ</button><button class="btn know" id="czyes">覚えた</button>`
+        : `<button class="btn primary" id="czreveal">答えを見る</button>`}
+      <button class="btn ghost" id="cznext" aria-label="次へ">→</button>
+      <span class="cnt">${cz.idx+1} / ${list.length}</span>
+    </div>
+  </div>`;
+}
+function renderCards(){
+  if(fc.mode==="cloze") return renderCloze();
+  const list = fcList();
+  if(fc.idx >= list.length) fc.idx = 0;
+  const c = list[fc.idx];
+  const known = c && S.cards[c.t]===1;
+  const knownCount = list.filter(x=>S.cards[x.t]===1).length;
+  return `
+  <div class="fcwrap">
+    ${cardModeToggle()}
+    <div class="fcfilter">
+      <button data-fd="all" aria-pressed="${fc.domain==="all"}">すべて</button>
+      ${Object.entries(DOMAINS).map(([d,n])=>`<button data-fd="${d}" aria-pressed="${fc.domain===d}">${n}</button>`).join("")}
+    </div>
+    <div class="impfilter"><span class="lbl">重要度：</span>
+      ${["all","A","B","C"].map(k=>`<button data-cif="${k}" aria-pressed="${fc.imp===k}">${k==="all"?"すべて":k}</button>`).join("")}
+      <button data-crev="1" aria-pressed="${!!fc.rev}">逆想起（定義→用語）</button>
+    </div>
+    <p class="muted" style="margin:0 0 10px">習得 ${knownCount} / ${list.length}　—　${fc.rev? "定義を読んで<b>用語名を正確に言えるか</b>。公式模試の短答（30字）はこの逆想起型です。" : "カードをタップで定義表示。記述式では<b>定義を自分の言葉で正確に書ける</b>ことが得点の土台。周回はランクAから。"}</p>
+    ${c? (()=>{
+      const termFace = `<div class="term"><span class="imp ${impOfCard(c.t)}" style="margin-right:6px">${impOfCard(c.t)}</span>${esc(c.t)} ${known? "✓":""}</div>`;
+      const defFace = `<div class="def">${esc(c.f)}</div>`;
+      const front = fc.rev? defFace+`<div class="hint">この定義の用語名は？ タップで答え</div>` : termFace+`<div class="hint">タップして定義を確認</div>`;
+      const back  = fc.rev? termFace+`<div class="hint">タップで定義に戻る</div>` : defFace+`<div class="hint">タップで用語に戻る</div>`;
+      return `
+    <div class="fcard" id="fcard" role="button" tabindex="0" aria-label="カードをめくる">
+      ${fc.flip? back : front}
+    </div>`;})() : ""}
+    ${c? `
+    <div class="fcnav">
+      <button class="btn ghost" id="fprev" aria-label="前のカード">←</button>
+      <button class="btn dunno" id="fno">まだ</button>
+      <button class="btn know" id="fyes">覚えた</button>
+      <button class="btn ghost" id="fnext" aria-label="次のカード">→</button>
+      <span class="cnt">${fc.idx+1} / ${list.length}</span>
+    </div>
+    <div class="btnrow" style="justify-content:center">
+      <button class="btn ghost" id="fshuffle">シャッフル</button>
+      <button class="btn ghost" id="funknown">「まだ」だけ表示</button>
+    </div>`
+    : `<div class="card">この領域のカードはありません。</div>`}
+  </div>`;
+}
+
+function renderAudio(){
+  if(!ttsOK){
+    return `<div class="card"><p style="margin:0">この環境ではブラウザの音声合成が利用できません。iPhoneのSafari、AndroidのChrome、またはPCのブラウザでお試しください。</p></div>`;
+  }
+  AU.list = AU.list.length? AU.list : auBuild();
+  const item = AU.list[Math.min(AU.i, AU.list.length-1)];
+  return `
+  <div class="plwrap">
+    <div class="plopts" role="group" aria-label="教材の選択">
+      <button data-asrc="cards" aria-pressed="${AU.src==="cards"}">用語ドリル（${CARDS.length}語）</button>
+      <button data-asrc="essays" aria-pressed="${AU.src==="essays"}">記述の模範解答（${ESSAYS.length}問）</button>
+    </div>
+    <div class="plopts" role="group" aria-label="領域の選択">
+      <button data-adom="all" aria-pressed="${AU.dom==="all"}">すべて</button>
+      ${Object.entries(DOMAINS).map(([d,n])=>`<button data-adom="${d}" aria-pressed="${AU.dom===d}">${n}</button>`).join("")}
+    </div>
+    <div class="plopts" role="group" aria-label="重要度の選択">
+      ${["all","A","B","C"].map(k=>`<button data-aimp="${k}" aria-pressed="${AU.imp===k}">${k==="all"?"重要度すべて":"ランク"+k}</button>`).join("")}
+    </div>
+
+    <div class="plnow" style="margin-top:14px">
+      <div class="pl-kicker" id="pl-kicker">${item? esc(item.sub):""}</div>
+      <div class="pl-title serif" id="pl-title">${item? esc(item.title):"—"}</div>
+      <div class="pl-cnt" id="pl-cnt">${AU.list.length? (AU.i+1)+" / "+AU.list.length : "0 / 0"}</div>
+      <div class="plctrl">
+        <button class="plbtn" id="pl-prev" aria-label="前へ">⏮</button>
+        <button class="plbtn main" id="pl-toggle" aria-label="再生・停止">${AU.playing? "⏸":"▶"}</button>
+        <button class="plbtn" id="pl-next" aria-label="次へ">⏭</button>
+      </div>
+      <div class="plopts">
+        <button id="pl-rate">速度 ${AU.rate.toFixed(2).replace(/0$/,"")}x</button>
+        <button id="pl-loop" aria-pressed="${AU.loop}">ループ</button>
+        ${AU.src==="cards"? `<button id="pl-quiz" aria-pressed="${AU.quiz}">想起モード（間をあける）</button>`:""}
+      </div>
+      <div class="pl-text" id="pl-text">${item? esc(item.text):""}</div>
+    </div>
+
+    <p class="plnote">📱 <b>使い方のコツ</b>：再生中は他のタブ（用語ドリル等）に移動しても音声は続きます。スマホでは<b>画面を消すと停止する</b>ため、再生中は画面が自動で点灯維持されます（対応端末）。ジムでは画面を伏せずポケットへ。<b>🚗 運転中の操作は絶対にしないでください</b>——乗車前に再生・ループをONにしてから出発を。音声はブラウザ内蔵の合成音声で、通信は不要です。</p>
+    <p class="plnote">🎧 <b>おすすめ</b>：①「用語ドリル×想起モード」＝用語を聞いて数秒で定義を思い出す→答え合わせ。②「模範解答×1.25倍速」＝答案の論理展開を耳から刷り込む。昨年Bだった消費者行動・価格の領域フィルタで重点的に。</p>
+  </div>`;
+}
+
+/* ============================================================
+   論点マップ
+   ============================================================ */
+let tpFilter = "all"; // all | weak(×と△のみ)
+function topicStats(){
+  const st = {r3:0, r2:0, r1:0, r0:0, total:0};
+  TOPICS.forEach((grp,gi)=>grp.items.forEach((_,ii)=>{
+    st.total++;
+    const v = (S.topics||{})[gi+"-"+ii] || 0;
+    if(v===3) st.r3++; else if(v===2) st.r2++; else if(v===1) st.r1++; else st.r0++;
+  }));
+  return st;
+}
+function renderTopics(){
+  const st = topicStats();
+  let html = `
+  <p class="muted" style="margin-top:0">出題されうる論点の一覧です。各論点を「<b>骨子まで書けるか</b>」の基準で自己評価してください。上級者の学習効率は<b>穴の特定</b>で決まります。×と△だけを潰していけば、本番で初見の論点に当たる確率を最小化できます。</p>
+  <div class="tp-sum">
+    <div class="cell"><div class="n" style="color:var(--good)">${st.r3}</div><div class="l">○ 書ける</div></div>
+    <div class="cell"><div class="n" style="color:var(--warn)">${st.r2}</div><div class="l">△ 曖昧</div></div>
+    <div class="cell"><div class="n" style="color:var(--bad)">${st.r1}</div><div class="l">× 書けない</div></div>
+    <div class="cell"><div class="n" style="color:var(--ink2)">${st.r0}</div><div class="l">未評価</div></div>
+  </div>
+  <div class="impfilter">
+    <button data-tf="all" aria-pressed="${tpFilter==="all"}">すべて表示</button>
+    <button data-tf="weak" aria-pressed="${tpFilter==="weak"}">×・△・未評価だけ表示</button>
+  </div>`;
+  TOPICS.forEach((grp,gi)=>{
+    const rows = grp.items.map((t,ii)=>{
+      const key = gi+"-"+ii;
+      const v = (S.topics||{})[key] || 0;
+      if(tpFilter==="weak" && v===3) return "";
+      return `<div class="tp-row r${v}">
+        <span class="nm">${esc(t)}</span>
+        <span class="tp-btns">
+          <button data-tk="${key}" data-tv="3" class="${v===3?"on3":""}" aria-label="書ける">○</button>
+          <button data-tk="${key}" data-tv="2" class="${v===2?"on2":""}" aria-label="曖昧">△</button>
+          <button data-tk="${key}" data-tv="1" class="${v===1?"on1":""}" aria-label="書けない">×</button>
+        </span>
+      </div>`;
+    }).join("");
+    if(rows.trim()) html += `<h2 class="sec">${grp.g}</h2><div class="card">${rows}</div>`;
+  });
+  html += `<p class="muted">※ 同じボタンをもう一度押すと評価を解除できます。×の論点はまず用語ドリル・音声学習で該当領域をインプットし、対応する演習があれば解いてください。</p>`;
+  return html;
+}
+
+/* ============================================================
+   直前総まとめシート（ランクA骨子の一覧）
+   ============================================================ */
+function renderSheet(){
+  const essA = ESSAYS.filter(e=>impOfEssay(e.id)==="A");
+  const cardA = CARDS.filter(c=>impOfCard(c.t)==="A");
+  return `
+  <button class="backlink" data-goto="home">← ホームに戻る</button>
+  <h2 class="sec">直前総まとめ — ランクA 記述${essA.length}問の骨子</h2>
+  <p class="muted" style="margin:0 0 14px">試験前日・当日朝の最終確認用。骨子の流れだけを頭に再生してください。</p>
+  <div class="card">
+    ${essA.map(e=>`<div class="sheet-item">
+      <h4>${esc(e.title.replace("【昨年度型】","").replace("【弱点強化】",""))} <span class="chip">${DOMAINS[e.d]}</span></h4>
+      <div class="bd">${esc(e.model.replace("【解答骨子】\n",""))}</div>
+    </div>`).join("")}
+  </div>
+  <h2 class="sec">ランクA 用語${cardA.length}語の定義</h2>
+  <div class="card">
+    ${cardA.map(c=>`<div class="sheet-item">
+      <h4>${esc(c.t)}</h4>
+      <div class="bd">${esc(c.f)}</div>
+    </div>`).join("")}
+  </div>`;
+}
+
+/* ============================================================
+   イベント
+   ============================================================ */
+document.querySelectorAll("nav.tabs button").forEach(b=>{
+  b.addEventListener("click", ()=>{ view=b.dataset.v; if(view!=="essay") curEssay=null; render(); });
+});
+
+function bindMain(){
+  document.querySelectorAll("[data-open]").forEach(b=>{
+    b.addEventListener("click", ()=>{ curEssay=b.dataset.open; view="essay"; render(); });
+  });
+  document.querySelectorAll("[data-goto]").forEach(b=>{
+    b.addEventListener("click", ()=>{ view=b.dataset.goto; curEssay=null; render(); });
+  });
+  const back = $("[data-back]");
+  if(back) back.addEventListener("click", ()=>{ curEssay=null; render(); });
+
+  const ans = $("#ansbox");
+  if(ans){
+    ans.addEventListener("input", ()=>{
+      const st = S.essays[curEssay] = S.essays[curEssay]||{};
+      st.ans = ans.value; save();
+      const cc=$("#cc"); if(cc) cc.textContent = ans.value.length;
+    });
+  }
+  const rev = $("#reveal");
+  if(rev) rev.addEventListener("click", ()=>{
+    const st = S.essays[curEssay] = S.essays[curEssay]||{};
+    st.reveal = true; save(); render();
+  });
+  document.querySelectorAll("[data-pi]").forEach(ch=>{
+    ch.addEventListener("change", ()=>{
+      const e = ESSAYS.find(x=>x.id===curEssay);
+      const st = S.essays[curEssay] = S.essays[curEssay]||{};
+      st.checks = st.checks || e.points.map(()=>false);
+      st.checks[+ch.dataset.pi] = ch.checked;
+      st.score = st.checks.filter(Boolean).length / e.points.length;
+      if(st.mday !== todayKey()){ st.mday = todayKey(); bump("e"); } else { save(); }
+      ch.closest(".pt").classList.toggle("on", ch.checked);
+      const scv=$("#scv"); if(scv) scv.textContent = st.checks.filter(Boolean).length;
+      const scg=$("#scg"); if(scg) scg.textContent = gradeOf(Math.round(st.score*100));
+    });
+  });
+
+  /* Claude採点プロンプトのコピー */
+  const cg = $("#claudegrade");
+  if(cg) cg.addEventListener("click", async ()=>{
+    const e = ESSAYS.find(x=>x.id===curEssay);
+    const st = S.essays[curEssay] || {};
+    const prompt = gradePrompt(e, st.ans);
+    const ok = await copyText(prompt);
+    const m = $("#cgmsg");
+    if(ok){
+      if(m) m.textContent = "コピーしました。Claudeに貼り付けると、事実誤認・論理の飛躍を含む厳格な採点が受けられます。";
+    } else {
+      // クリップボードが使えない環境：全文を表示して手動コピーしてもらう
+      if(m) m.textContent = "自動コピーできない環境のため、下の全文を長押し（または全選択）してコピーしてください。";
+      const box = $("#cgbox");
+      if(box){ box.style.display="block"; box.value = prompt; box.focus(); box.select(); }
+    }
+  });
+
+  /* 模試モード */
+  const mst=$("#mockstart"), mfn=$("#mockfin"), mcl=$("#mockclose");
+  if(mst) mst.addEventListener("click", mockStart);
+  if(mfn) mfn.addEventListener("click", mockFinish);
+  if(mcl) mcl.addEventListener("click", ()=>{ delete S.mockResult; save(); render(); });
+
+  /* 重要度フィルタ（記述演習） */
+  document.querySelectorAll("[data-if]").forEach(b=>{
+    b.addEventListener("click", ()=>{ impFilter=b.dataset.if; render(); });
+  });
+  /* 重要度フィルタ（用語ドリル） */
+  document.querySelectorAll("[data-cif]").forEach(b=>{
+    b.addEventListener("click", ()=>{ fc.imp=b.dataset.cif; fc.idx=0; fc.flip=false; render(); });
+  });
+  /* 逆想起モード（定義→用語） */
+  document.querySelectorAll("[data-crev]").forEach(b=>{
+    b.addEventListener("click", ()=>{ fc.rev=!fc.rev; fc.flip=false; render(); });
+  });
+  /* 重要度フィルタ（音声学習） */
+  document.querySelectorAll("[data-aimp]").forEach(b=>{
+    b.addEventListener("click", ()=>{ AU.imp=b.dataset.aimp; auReset(); render(); });
+  });
+
+  /* 周回リセット（2段階確認） */
+  const ra=$("#roundask"), rg=$("#roundgo"), rc=$("#roundcancel");
+  if(ra) ra.addEventListener("click", ()=>{ roundConfirm=true; render(); });
+  if(rc) rc.addEventListener("click", ()=>{ roundConfirm=false; render(); });
+  if(rg) rg.addEventListener("click", ()=>{ roundConfirm=false; roundReset(); render(); });
+
+  /* 用語カード／穴埋めモード切替 */
+  document.querySelectorAll("[data-cmode]").forEach(b=>{
+    b.addEventListener("click", ()=>{ fc.mode=b.dataset.cmode; cz.open=false; render(); });
+  });
+  /* 穴埋めドリル */
+  const czList = clozeList();
+  const czMove = dir=>{ cz.idx=(cz.idx+dir+czList.length)%Math.max(czList.length,1); cz.open=false; render(); };
+  const czp=$("#czprev"), czn=$("#cznext"), czr=$("#czreveal"), czy=$("#czyes"), czx=$("#czno");
+  if(czp) czp.addEventListener("click", ()=>czMove(-1));
+  if(czn) czn.addEventListener("click", ()=>czMove(1));
+  if(czr) czr.addEventListener("click", ()=>{ cz.open=true; render(); });
+  if(czy) czy.addEventListener("click", ()=>{ S.clz[czList[cz.idx].id]=1; bump("c"); czMove(1); });
+  if(czx) czx.addEventListener("click", ()=>{ delete S.clz[czList[cz.idx].id]; bump("c"); czMove(1); });
+
+  /* 論点マップ */
+  document.querySelectorAll("[data-tf]").forEach(b=>{
+    b.addEventListener("click", ()=>{ tpFilter=b.dataset.tf; render(); });
+  });
+  document.querySelectorAll("[data-tk]").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      const k=b.dataset.tk, v=+b.dataset.tv;
+      S.topics = S.topics || {};
+      S.topics[k] = (S.topics[k]===v)? 0 : v; // 同じ評価をもう一度押すと解除
+      save(); render();
+    });
+  });
+
+  /* データ保存・復元 */
+  const setMsg = (t, bad)=>{ const m=$("#datamsg"); if(m){ m.textContent=t; m.style.color = bad? "var(--bad)":"var(--good)"; } };
+  const ef=$("#expfile"), ec=$("#expclip"), ib=$("#impbtn"), iff=$("#impfile"), ip=$("#imppaste");
+  if(ef) ef.addEventListener("click", async ()=>{
+    const ok = await exportFile();
+    setMsg(ok? "バックアップファイルを保存しました。" : "保存されませんでした。「進捗コードをコピー」もお試しください。", !ok);
+  });
+  if(ec) ec.addEventListener("click", async ()=>{
+    const ok = await exportClipboard();
+    if(ok) markBackup();
+    setMsg(ok? "進捗コードをコピーしました。メモアプリ等に貼って保管してください。" : "コピーできませんでした。", !ok);
+  });
+  if(ib && iff){
+    ib.addEventListener("click", ()=>iff.click());
+    iff.addEventListener("change", ()=>{
+      const f = iff.files[0]; if(!f) return;
+      const r = new FileReader();
+      r.onload = ()=>{
+        if(importText(r.result)){ dataMsg="進捗を復元しました。"; render(); }
+        else setMsg("復元できませんでした。ファイルの内容をご確認ください。", true);
+      };
+      r.readAsText(f);
+    });
+  }
+  if(ip) ip.addEventListener("click", ()=>{
+    const box = $("#pastebox");
+    if(box && importText(box.value.trim())){ dataMsg="進捗を復元しました。"; render(); }
+    else setMsg("復元できませんでした。貼り付けた内容をご確認ください。", true);
+  });
+
+  /* 音声学習 */
+  document.querySelectorAll("[data-asrc]").forEach(b=>{
+    b.addEventListener("click", ()=>{ AU.src=b.dataset.asrc; auReset(); render(); });
+  });
+  document.querySelectorAll("[data-adom]").forEach(b=>{
+    b.addEventListener("click", ()=>{ AU.dom=b.dataset.adom; auReset(); render(); });
+  });
+  const pt=$("#pl-toggle"), pp=$("#pl-prev"), pn=$("#pl-next"), pr=$("#pl-rate"), pl=$("#pl-loop"), pq=$("#pl-quiz");
+  if(pt) pt.addEventListener("click", ()=>{ AU.playing? auStop() : auPlay(); });
+  if(pp) pp.addEventListener("click", ()=>auSkip(-1));
+  if(pn) pn.addEventListener("click", ()=>auSkip(1));
+  if(pr) pr.addEventListener("click", ()=>{
+    const rates=[1.0,1.25,1.5,0.8];
+    AU.rate = rates[(rates.indexOf(AU.rate)+1) % rates.length];
+    pr.textContent = "速度 "+AU.rate.toFixed(2).replace(/0$/,"")+"x";
+  });
+  if(pl) pl.addEventListener("click", ()=>{ AU.loop=!AU.loop; pl.setAttribute("aria-pressed", AU.loop); });
+  if(pq) pq.addEventListener("click", ()=>{ AU.quiz=!AU.quiz; auReset(); render(); });
+
+  /* flashcards */
+  document.querySelectorAll("[data-fd]").forEach(b=>{
+    b.addEventListener("click", ()=>{ fc.domain=b.dataset.fd; fc.idx=0; fc.flip=false; cz.idx=0; cz.open=false; render(); });
+  });
+  const card = $("#fcard");
+  if(card){
+    const flip = ()=>{ fc.flip=!fc.flip; render(); };
+    card.addEventListener("click", flip);
+    card.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault(); flip();} });
+  }
+  const list = fcList();
+  const move = dir=>{ fc.idx=(fc.idx+dir+list.length)%list.length; fc.flip=false; render(); };
+  const fp=$("#fprev"), fn=$("#fnext"), fy=$("#fyes"), fo=$("#fno"), fs=$("#fshuffle"), fu=$("#funknown");
+  if(fp) fp.addEventListener("click", ()=>move(-1));
+  if(fn) fn.addEventListener("click", ()=>move(1));
+  if(fy) fy.addEventListener("click", ()=>{ S.cards[list[fc.idx].t]=1; bump("c"); move(1); });
+  if(fo) fo.addEventListener("click", ()=>{ delete S.cards[list[fc.idx].t]; bump("c"); move(1); });
+  if(fs) fs.addEventListener("click", ()=>{
+    for(let i=CARDS.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [CARDS[i],CARDS[j]]=[CARDS[j],CARDS[i]];}
+    fc.idx=0; fc.flip=false; render();
+  });
+  if(fu) fu.addEventListener("click", ()=>{
+    const unknown = CARDS.filter(c=>S.cards[c.t]!==1);
+    if(unknown.length){
+      CARDS.sort((a,b)=>(S.cards[a.t]===1?1:0)-(S.cards[b.t]===1?1:0));
+      fc.idx=0; fc.flip=false; render();
+    }
+  });
+}
+
+/* 起動：IndexedDB側に新しいデータがあれば採用（localStorage消失時の自動復旧） */
+(async ()=>{
+  const v = await idbGet();
+  if(v && (v.ts||0) > (S.ts||0)){
+    S = Object.assign(BLANK(), v);
+    if(lsOK){ try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){} }
+    render();
+  }
+})();
+
+$("#cd").textContent = daysToExam();
+render();
+</script>
