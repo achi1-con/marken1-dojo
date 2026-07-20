@@ -232,6 +232,15 @@ details.ansd .in{font-size:14px; line-height:1.95; padding:8px 0 2px; white-spac
 .tp-btns button.on2{background:var(--warn); border-color:var(--warn); color:#fff}
 .tp-btns button.on1{background:var(--bad); border-color:var(--bad); color:#fff}
 
+/* ---- 暗記フック ---- */
+.mnem{background:color-mix(in srgb, var(--gold) 8%, var(--surface)); border:1px solid var(--gold);
+  border-radius:9px; padding:11px 14px; margin:10px 0}
+.mnem .lbl{font-size:11px; letter-spacing:.12em; color:var(--gold); font-weight:700; margin-bottom:4px}
+.mnem .ttl{font-size:14px; font-weight:700; margin-bottom:5px}
+.mnem .hk{font-size:15px; line-height:1.9; font-weight:600}
+.mnem .nt{font-size:12.5px; color:var(--ink2); line-height:1.7; margin-top:5px}
+.mnem-list .mnem{margin-bottom:8px}
+
 /* ---- 直前総まとめ ---- */
 .sheet-item{border-left:3px solid var(--gold); padding:2px 0 2px 14px; margin:0 0 18px}
 .sheet-item h4{margin:0 0 4px; font-size:15px}
@@ -1155,6 +1164,160 @@ const impOfCard = t => CARD_IMP[t] || "B";
 const IMP_ORDER = {A:0, B:1, C:2};
 
 /* ============================================================
+   暗記フック（記憶に残す語呂・意味順ストーリー）
+   本番で「順序を書ける」ことが記述の得点直結。ふざけていて構わない、
+   むしろ印象的な方が想起できる。key=用語名(CARDS.t) で紐づけ。
+   ============================================================ */
+const MNEMONIC = [
+/* ---------- STP ---------- */
+{key:"STP", cat:"stp", title:"STPの流れ",
+  hook:"切って（S）→ 狙って（T）→ 旗を立てる（P）",
+  note:"3語で購買までの型が再現できる。旗＝ポジショニング。"},
+{key:"細分化の4変数", cat:"stp", title:"細分化の4変数",
+  hook:"デジサビ ＝ デモ（人口動態）・ジオ（地理）・サイコ（心理）・ビヘイビア（行動）",
+  note:"「デジタルなサビが効いた4分け」。順不同でよいが4つ揃える。"},
+{key:"効果的な細分化の5要件", cat:"stp", title:"効果的な細分化の5要件",
+  hook:"マサダの丘で細分化 ＝ Measurable・Substantial・Accessible・Differentiable・Actionable",
+  note:"意味順「測って・儲かって・届いて・違って・やれる」を5拍で。"},
+{key:"標的市場選択の5パターン", cat:"stp", title:"標的市場選択の5パターン",
+  hook:"規模の階段：1点 → いくつか → 製品軸で複数 → 顧客軸で複数 → 全部",
+  note:"単一集中／選択的専門化／製品専門化／市場専門化／フルカバレッジ。中小は左端、大企業だけ右端。"},
+{key:"リキッド消費", cat:"stp", title:"リキッド消費の3特徴",
+  hook:"「短命・アクセス・脱物質」＝ 短く借りて、モノじゃない",
+  note:"バーディ&エックハート。対概念はソリッド消費。"},
+
+/* ---------- 消費者行動 ---------- */
+{key:"選択的注意", cat:"cb", title:"知覚の選択性3（注意・歪曲・保持）",
+  hook:"「気づいて・曲げて・覚える」＝ 失恋あるある3段活用",
+  note:"歪曲＝都合よく解釈、保持＝都合よく記憶。強いブランドほど有利に働く。"},
+{key:"購買意思決定プロセス", cat:"cb", title:"購買意思決定 5段階",
+  hook:"「気づいて・調べて・比べて・買って・振り返る」＝ 恋愛と同じ5段階",
+  note:"問題認識→情報探索→代替品評価→購買決定→購買後行動。低関与だと省略される。AIDMAとは別物。"},
+{key:"精緻化見込みモデル", cat:"cb", title:"ELMの2ルート分岐",
+  hook:"関与×能力 = 両方高→中心ルート（論拠を吟味・態度は持続的）／片方でも低→周辺ルート（雰囲気・タレント・態度は一時的）",
+  note:"疲れて頭が働かないCMは、有名人しか覚えていない＝周辺ルート。"},
+{key:"認知的不協和", cat:"cb", title:"認知的不協和が大きい条件",
+  hook:"「高くて・迷って・戻れない」＝ 高額・高関与・選択肢拮抗・意思決定不可逆",
+  note:"フェスティンガー。対策：購買後フォロー・保証・購入者向け広告。"},
+{key:"マズローの欲求階層", cat:"cb", title:"マズロー 5段階",
+  hook:"「食って・生きて・仲間と・拍手されて・自分になる」（生理→安全→社会→承認→自己実現）",
+  note:"人生の梯子。低次が満たされると高次が動機化。"},
+{key:"知覚リスク", cat:"cb", title:"知覚リスク 6種",
+  hook:"「効かない・高い・危ない・恥ずかしい・自分らしくない・時間のムダ」＝機能・金銭・身体・社会・心理・時間",
+  note:"失敗パターンで束にする。対策：保証・トライアル・レビュー・権威づけ。"},
+{key:"多属性態度モデル", cat:"cb", title:"多属性態度モデル",
+  hook:"態度 = Σ（信念 × 重要度）／補償型＝弱みを強みで補える／非補償型＝補えない（連結型・辞書編集型）",
+  note:"非補償型が使われる場面（低関与・時間なし）では、最重要属性の優位が命。"},
+{key:"ハーズバーグの2要因理論", cat:"cb", title:"ハーズバーグ 2要因",
+  hook:"衛生要因＝あって当たり前（無いと不満）／動機づけ要因＝あれば嬉しい。「不満なし ≠ 満足あり」",
+  note:"衛生要因の解消は選ばれる理由にならない。動機づけ要因の強化が差別化。"},
+{key:"プロスペクト理論", cat:"cb", title:"プロスペクト理論 3要素",
+  hook:"「基準がある・損は倍痛い・慣れる」＝ 参照点依存・損失回避・感応度逓減",
+  note:"カーネマン&トベルスキー。値引き表示・限定訴求・ポイント制度の理論的基盤。"},
+{key:"ムード消費", cat:"cb", title:"ムード消費のメカニズム",
+  hook:"「気分で買う・頭を使わない・機能を見ない」＝ 情緒的便益・自動化・問題解決を経ない",
+  note:"対応：気分/場面で細分化＋情緒でポジショニング（例：スタバのサードプレイス）。"},
+{key:"顧客知覚価値", cat:"cb", title:"顧客知覚価値",
+  hook:"価値 ＝ もらえるもの − 払うもの。便益4（商品・サービス・人・ブランド）− コスト4（金・時間・労力・気疲れ）",
+  note:"打ち手は「便益を上げる」か「コストを下げる」の2方向。"},
+
+/* ---------- 製品 ---------- */
+{key:"製品の5階層", cat:"pr", title:"製品の5階層",
+  hook:"「本音 → 形 → 当たり前 → 驚き → 未来」＝ 中核ベネフィット・基本・期待・膨張・潜在",
+  note:"ホテル例：眠り→ベッド→清潔→アメニティ→新体験。差別化は膨張の層で生じ、やがて期待化する。"},
+{key:"製品の3層モデル", cat:"pr", title:"製品の3層モデル（石井）",
+  hook:"「中身・見た目・おまけ」＝ 中核・形態・付随機能",
+  note:"公式模試 問1「付随機能」の出典。コトラー5階層と対で覚える。"},
+{key:"コモディティ化の供給側要因", cat:"pr", title:"コモディティ化 供給側4要因",
+  hook:"「シェフ（技術成熟）が同レシピ（モジュール化）で作りすぎ（過剰性能）て余った（供給過剰）」",
+  note:"顧客が違いを認識できなくなる原因を、作り手側から4つ。"},
+{key:"コモディティ化の需要側要因", cat:"pr", title:"コモディティ化 需要側3要因",
+  hook:"「目が肥えて・興味失せて・値段比べる」＝ 学習・低関与化・価格比較の容易化",
+  note:"客側の3ステップ。デジタル化で全部加速。"},
+{key:"脱コモディティ化の方策", cat:"pr", title:"脱コモディティ化 5方策",
+  hook:"「体験・ブランド・コト売り・新カテゴリー・関係」で価格以外へ逃げる",
+  note:"共通原理：競争軸を機能・価格の外へ。"},
+{key:"イノベーション普及の5属性", cat:"pr", title:"ロジャース普及 5属性",
+  hook:"「双竜服、試感（そうりょうふく・しかん）」＝ 相対的優位・両立・複雑・試用・観察",
+  note:"複雑性だけ「低いほど普及」で逆方向。他は「高いほど普及」。"},
+{key:"イノベーター理論の採用者区分", cat:"pr", title:"採用者 5区分（数字）",
+  hook:"2.5% → 13.5% → 34% → 34% → 16%（イノベ→アーリー→前M→後M→ラガード）",
+  note:"キャズムは16%（イノベ+アーリー）の壁。前後Mが最大市場。"},
+{key:"製品ライフサイクル", cat:"pr", title:"PLC 4段階",
+  hook:"「生まれて・伸びて・熟して・枯れる」＝ 導入・成長・成熟・衰退（＝人生）",
+  note:"段階ごとに戦略の定石が変わる。"},
+
+/* ---------- 価格 ---------- */
+{key:"損益分岐点販売量", cat:"price", title:"損益分岐点",
+  hook:"固定費 ÷ 貢献利益 ＝「固定費を1個ずつ割り勘」。目標利益版は分子に足すだけ",
+  note:"貢献利益＝価格−単位変動費。1個売って回収できる額。"},
+{key:"交差弾力性", cat:"price", title:"交差弾力性の符号",
+  hook:"「＋はライバル、−は味方、0は他人」＝ 正:代替・負:補完・0:独立",
+  note:"自社製品同士の正弾力性が大→カニバリ発生。"},
+{key:"経験曲線効果", cat:"price", title:"経験曲線効果",
+  hook:"「累積2倍で 1〜3割オフ（BCG）」",
+  note:"規模の経済＝一時点の規模、経験曲線＝累積量。混同注意（昨年の設問がこれ）。"},
+{key:"上澄み吸収価格戦略", cat:"price", title:"スキミング／ペネトレーション条件",
+  hook:"スキミング ＝「独占できる高機能で先食い」／ペネトレーション ＝「安売り一気にシェア奪取」",
+  note:"スキミング条件：革新性高・模倣困難。ペネトレ条件：弾力性高・規模の経済/経験曲線が効く。"},
+{key:"価格設定の3つの基本アプローチ", cat:"price", title:"価格設定 3アプローチ",
+  hook:"「かかり・欲しさ・敵の値」＝ コスト志向・需要志向・競争志向",
+  note:"実務は3つの折衷。"},
+{key:"心理的価格設定", cat:"price", title:"心理的価格設定 4種",
+  hook:"「198円（端数）・高いブランド（威光）・自販機（慣習）・松竹梅（ライニング）」",
+  note:"例で束にすると想起しやすい。"},
+{key:"価格差別", cat:"price", title:"価格差別の3成立条件",
+  hook:"「見分けて・転売止めて・怒られない」＝ 識別・裁定防止・反発回避",
+  note:"学割・時間帯別料金・早割の理論的基盤。"},
+
+/* ---------- 競争戦略・サービス・ブランド ---------- */
+{key:"競争地位別戦略", cat:"comp", title:"競争地位別 4地位の定石",
+  hook:"「王は同質化で潰す、若造は違いを見せる、パクリ屋は儲ける、隅の職人は独占」",
+  note:"リーダー=同質化+非価格対応+周辺需要拡大、チャレンジャー=差別化、フォロワー=模倣、ニッチャー=集中。"},
+{key:"ポーターの3つの基本戦略", cat:"comp", title:"ポーター 3基本戦略",
+  hook:"「安く・違って・絞る」＝ コスト・差別化・集中",
+  note:"どれも選ばず中途半端＝スタック・イン・ザ・ミドルは低収益。"},
+{key:"サービスの4特性", cat:"comp", title:"サービス 4特性",
+  hook:"「見えない → その場 → ばらつく → 残らない」＝ 無形・不可分・変動・消滅",
+  note:"対応：有形化・人材教育・標準化・需要平準化。"},
+{key:"サービス・プロフィット・チェーン", cat:"comp", title:"サービス・プロフィット・チェーン",
+  hook:"「働き手が幸せ → 良品質 → 客も幸せ → リピート → 儲かる」5リンクの因果",
+  note:"起点は必ず「従業員満足」。"},
+{key:"ブランド・エクイティ", cat:"comp", title:"ブランド・エクイティ 4要素",
+  hook:"「知ってる・良いと思う・イメージある・好き」＝ 認知・知覚品質・連想・ロイヤルティ（アーカー）",
+  note:"顧客の心の4層。エクイティ高→価格プレミアム＋脱価格競争。"},
+{key:"カスタマージャーニー", cat:"comp", title:"カスタマージャーニー 5段階",
+  hook:"「知る → 迷う → 買う → 使う → 広める」＝ 認知・検討・購買・利用・推奨",
+  note:"接点=タッチポイント、感情の谷=ペインポイントを可視化。"},
+];
+const mnemOf = key => MNEMONIC.find(m=>m.key===key);
+/* 記述問題→暗記フックのキー紐付け（1問に複数可） */
+const ESSAY_MNEMONIC = {
+  E01:["STP"], E02:["細分化の4変数"], E03:["効果的な細分化の5要件"], E04:["リキッド消費"], E05:["標的市場選択の5パターン"],
+  E06:["選択的注意"], E07:["認知的不協和"], E08:["購買意思決定プロセス"], E09:["精緻化見込みモデル"],
+  E23:["多属性態度モデル"], E24:["マズローの欲求階層","ハーズバーグの2要因理論"], E25:["知覚リスク"],
+  E10:["製品の5階層"], E11:["コモディティ化の供給側要因","コモディティ化の需要側要因"], E13:["脱コモディティ化の方策"], E14:["イノベーション普及の5属性"],
+  E15:["損益分岐点販売量"], E16:["交差弾力性"], E17:["経験曲線効果"], E19:["上澄み吸収価格戦略"],
+  E27:["価格差別"], E30:["心理的価格設定"],
+  E20:["競争地位別戦略"], E21:["サービスの4特性"], E22:["ブランド・エクイティ"],
+  E31:["プロスペクト理論"], E32:["カスタマージャーニー"], E34:["製品ライフサイクル"],
+  E36:["顧客知覚価値"], E37:["ムード消費"],
+};
+/* 穴埋め問題→暗記フックのキー紐付け */
+const CLOZE_MNEMONIC = {
+  c01:"効果的な細分化の5要件", c02:"リキッド消費", c03:"細分化の4変数", c04:"標的市場選択の5パターン",
+  c05:"選択的注意", c06:"認知的不協和", c07:"購買意思決定プロセス", c08:"精緻化見込みモデル",
+  c09:"多属性態度モデル", c10:"マズローの欲求階層", c11:"ハーズバーグの2要因理論", c12:"知覚リスク",
+  c13:"プロスペクト理論",
+  c14:"製品の5階層", c15:"コモディティ化の供給側要因", c16:"コモディティ化の需要側要因",
+  c17:"イノベーション普及の5属性", c18:"イノベーター理論の採用者区分",
+  c19:"損益分岐点販売量", c20:"交差弾力性", c21:"経験曲線効果", c22:"経験曲線効果",
+  c23:"上澄み吸収価格戦略",
+  c24:"サービスの4特性", c25:"ブランド・エクイティ", c26:"競争地位別戦略",
+  c27:"顧客知覚価値", c28:"製品の3層モデル",
+};
+
+/* ============================================================
    キーワード自動チェック — 各問題の答案に含まれるべき必須語。
    「|」区切りは別表記（いずれか含まれればOK）
    ============================================================ */
@@ -1450,6 +1613,23 @@ function kwCheck(id, ans){
     const alts = kw.split("|");
     return {label: alts[0], hit: alts.some(a=>text.includes(a))};
   });
+}
+
+/* 暗記フックのHTML片を生成 */
+function mnemHtml(m){
+  if(!m) return "";
+  return `<div class="mnem"><div class="lbl">🧠 覚え方</div>
+    <div class="ttl">${esc(m.title)}</div>
+    <div class="hk">${esc(m.hook)}</div>
+    ${m.note? `<div class="nt">${esc(m.note)}</div>`:""}</div>`;
+}
+function mnemForEssay(id){
+  const keys = ESSAY_MNEMONIC[id] || [];
+  return keys.map(k=>mnemHtml(mnemOf(k))).filter(Boolean).join("");
+}
+function mnemForCloze(id){
+  const key = CLOZE_MNEMONIC[id];
+  return key? mnemHtml(mnemOf(key)) : "";
 }
 
 /* Claude採点用プロンプト生成 */
@@ -2040,6 +2220,7 @@ function renderEssayDetail(id){
       <p class="muted" style="margin:2px 0 14px">⚠ の語は答案に見当たりません。別表現で書けていれば問題ありませんが、採点者に伝わるのは「その概念の名前を正しく使った答案」です。</p>`:""}
       <h3>模範解答</h3>
       <div class="mtext">${esc(e.model)}</div>
+      ${mnemForEssay(id)}
       <h3 style="margin-top:16px">採点ポイント — 自分の解答に含められた項目にチェック</h3>
       <div id="pts">
       ${e.points.map((p,i)=>`
@@ -2116,7 +2297,7 @@ function renderCloze(){
     <p class="muted" style="margin:0 0 10px">習得 ${knownCount} / ${list.length} ${known?"（このカードは習得済み✓）":""}　—　空欄を頭の中で埋めてから答えを開く。<b>一言一句のレベル</b>で言えたら「覚えた」。答案の得点は用語の精密さで決まります。</p>
     <div class="fcard" style="cursor:default">
       <div class="clz-q">${qhtml}</div>
-      ${cz.open? `<div class="clz-a">${c.a.map((a,i)=>`<div class="row"><b>${i+1}</b><span>${esc(a)}</span></div>`).join("")}</div>`:""}
+      ${cz.open? `<div class="clz-a">${c.a.map((a,i)=>`<div class="row"><b>${i+1}</b><span>${esc(a)}</span></div>`).join("")}${mnemForCloze(c.id)}</div>`:""}
     </div>
     <div class="fcnav">
       <button class="btn ghost" id="czprev" aria-label="前へ">←</button>
@@ -2148,9 +2329,11 @@ function renderCards(){
     </div>
     <p class="muted" style="margin:0 0 10px">習得 ${knownCount} / ${list.length}　—　${fc.rev? "定義を読んで<b>用語名を正確に言えるか</b>。公式模試の短答（30字）はこの逆想起型です。" : "カードをタップで定義表示。記述式では<b>定義を自分の言葉で正確に書ける</b>ことが得点の土台。周回はランクAから。"}</p>
     ${c? (()=>{
-      const termFace = `<div class="term"><span class="imp ${impOfCard(c.t)}" style="margin-right:6px">${impOfCard(c.t)}</span>${esc(c.t)} ${known? "✓":""}</div>`;
-      const defFace = `<div class="def">${esc(c.f)}</div>`;
-      const front = fc.rev? defFace+`<div class="hint">この定義の用語名は？ タップで答え</div>` : termFace+`<div class="hint">タップして定義を確認</div>`;
+      const m = mnemOf(c.t);
+      const mHtml = fc.flip? mnemHtml(m) : "";
+      const termFace = `<div class="term"><span class="imp ${impOfCard(c.t)}" style="margin-right:6px">${impOfCard(c.t)}</span>${esc(c.t)} ${known? "✓":""}${m && !fc.rev? ' <span style="font-size:12px; color:var(--gold); margin-left:4px">🧠</span>':""}</div>`;
+      const defFace = `<div class="def">${esc(c.f)}${mHtml}</div>`;
+      const front = fc.rev? defFace+`<div class="hint">この定義の用語名は？ タップで答え</div>` : termFace+`<div class="hint">タップして定義${m?"と覚え方":""}を確認</div>`;
       const back  = fc.rev? termFace+`<div class="hint">タップで定義に戻る</div>` : defFace+`<div class="hint">タップで用語に戻る</div>`;
       return `
     <div class="fcard" id="fcard" role="button" tabindex="0" aria-label="カードをめくる">
@@ -2269,6 +2452,12 @@ function renderSheet(){
   const cardA = CARDS.filter(c=>impOfCard(c.t)==="A");
   return `
   <button class="backlink" data-goto="home">← ホームに戻る</button>
+  <h2 class="sec">暗記フック集 — 列挙・順序の全 ${MNEMONIC.length} 項目</h2>
+  <p class="muted" style="margin:0 0 10px">本番で「順序を書ける」ことが記述の得点直結。会場入り直前の最終確認に。</p>
+  <div class="card mnem-list">
+    ${MNEMONIC.map(m=>mnemHtml(m)).join("")}
+  </div>
+
   <h2 class="sec">直前総まとめ — ランクA 記述${essA.length}問の骨子</h2>
   <p class="muted" style="margin:0 0 14px">試験前日・当日朝の最終確認用。骨子の流れだけを頭に再生してください。</p>
   <div class="card">
